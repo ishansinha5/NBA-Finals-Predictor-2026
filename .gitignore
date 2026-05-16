@@ -1,0 +1,12 @@
+# Ignore the virtual environment (we don't want to upload gigabytes of AI libraries)
+venv/
+
+# Ignore the raw data and output graphs so we don't accidentally leak data or bloat the repo
+data/
+output/
+raw_playoff_data.csv
+scored_playoff_data.csv
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
