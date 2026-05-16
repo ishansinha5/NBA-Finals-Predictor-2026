@@ -1,7 +1,7 @@
-# Ignore the virtual environment (we don't want to upload gigabytes of AI libraries)
+# Ignore the virtual environment
 venv/
 
-# Ignore the raw data and output graphs so we don't accidentally leak data or bloat the repo
+# Ignore the raw data and output graphs 
 data/
 output/
 raw_playoff_data.csv
