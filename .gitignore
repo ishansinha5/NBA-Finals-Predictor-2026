@@ -1,8 +1,8 @@
 # Ignore the virtual environment
 venv/
 
-# Ignore the raw data and output graphs 
-data/
+# Ignore the raw data CSVs but ALLOW the folder and JSON files
+data/**/*.csv
 output/
 raw_playoff_data.csv
 scored_playoff_data.csv
