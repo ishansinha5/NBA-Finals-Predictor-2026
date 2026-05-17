@@ -45,6 +45,59 @@ class PlayoffPredictor:
         
         logging.info(f"Successfully saved the trained model to {save_path}!")
 
+    def evaluate_model(self, csv_path):
+        logging.info("Testing the AI on the historical data to see if it learned the patterns...")
+        df = pd.read_csv(csv_path)
+        
+        # putting all of my 7 custom emotions into a list for the features again
+        feature_columns = []
+        feature_columns.append('confidence')
+        feature_columns.append('content')
+        feature_columns.append('neutrality')
+        feature_columns.append('frustration')
+        feature_columns.append('upset')
+        feature_columns.append('anxiety')
+        feature_columns.append('surprise')
+        
+        X = df[feature_columns]
+        y_actual = df['won_championship']
+        
+        load_path = os.path.join(self.model_dir, "playoff_rf_model.pkl")
+        
+        # opening the saved weights
+        file = open(load_path, "rb")
+        rf_model = pickle.load(file)
+        file.close()
+        
+        predictions = rf_model.predict(X)
+        
+        # calculating how many it got right manually to see the math
+        correct_guesses = 0
+        total_guesses = len(predictions)
+        
+        for i in range(total_guesses):
+            if (predictions[i] == y_actual[i]):
+                correct_guesses = correct_guesses + 1
+                
+        accuracy = correct_guesses / total_guesses
+        logging.info(f"Model Accuracy on Historical Data: {accuracy}")
+        
+        # finding out which teams the AI actually thought won
+        df['predicted_win'] = predictions
+        predicted_champs = []
+        
+        for index in range(len(df)):
+            row = df.iloc[index]
+            if (row['predicted_win'] == 1):
+                team_name = row['team']
+                # making sure I don't add the same team twice to my print list
+                if (team_name not in predicted_champs):
+                    predicted_champs.append(team_name)
+                    
+        logging.info("The AI predicts these teams had championship-level press conferences:")
+        for team in predicted_champs:
+            logging.info(f"- {team}")
+
 def run_tests():
     logging.info("Running tests for the predictor...")
     
