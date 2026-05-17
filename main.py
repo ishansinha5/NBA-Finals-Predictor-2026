@@ -3,7 +3,6 @@ import logging
 import json
 import os
 
-# importing my custom tools from the scripts folder
 from scripts.data_ingestion import TranscriptIngestor
 from scripts.sentiment_engine import SentimentEngine
 from scripts.visualization import EmotionVisualizer
@@ -15,13 +14,10 @@ def main():
     logging.info("Starting the 2026 NBA Finals NLP Pipeline...")
     logging.info("PHASE 2: Generating Historical Training Data")
     
-    # setting up the path to the database file so I can load it 
-    # making sure this matches the actual file name we saved in the data folder
     manifest_path = "./data/videos.json"
     video_list = []
     
     try:
-        # opening the json file to read the video data so it isn't hardcoded anymore
         json_file = open(manifest_path, 'r')
         video_list = json.load(json_file)
         json_file.close()
@@ -30,50 +26,39 @@ def main():
         logging.error(f"Could not load the json file because of error: {e}")
         return
     
-    # Step 1: Ingest the data
+    # Implementing the new chunking strategy so we don't overwhelm the network
+    target_team = "Celtics" 
+    chunked_video_list = []
+    
+    # looping through the massive database and only pulling out the team we want right now
+    for video in video_list:
+        if (video['team'] == target_team):
+            chunked_video_list.append(video)
+            
+    logging.info(f"Chunking strategy active: Only processing {len(chunked_video_list)} videos for the {target_team}.")
+    
     logging.info("--- Phase 1: Data Ingestion (Historical) ---")
     
     ingestor = TranscriptIngestor(data_dir="./data/historical/")
-    raw_df = ingestor.fetch_transcripts(video_list)
+    raw_df = ingestor.fetch_transcripts(chunked_video_list)
     
-    # checking if the dataframe is empty so we don't break the sentiment engine
     if (raw_df.empty == True):
         logging.error("We didn't get any data! Stopping the pipeline.")
         return
     
-    ingestor.save_to_csv(raw_df, "raw_historical.csv")
-    
-    # Step 2: Run the Sentiment Engine
-    logging.info("--- Phase 2: Sentiment Analysis (Historical) ---")
-    engine = SentimentEngine()
-    scored_df = engine.process_dataframe(raw_df)
-    
-    ingestor.save_to_csv(scored_df, "scored_historical.csv")
-    
-    # Step 3: Train the AI
-    logging.info("--- Phase 3: Model Training & Evaluation ---")
-    
-    # getting the exact path where I just saved the scored csv
-    scored_csv_path = os.path.join("./data/historical/", "scored_historical.csv")
-    
-    predictor = PlayoffPredictor(model_dir="./models/")
-    predictor.train_model(scored_csv_path)
-    
-    # running the new evaluation function to see how it did on the past 2 years
-    predictor.evaluate_model(scored_csv_path)
-    
-    # Step 4: Visualize the Data
-    logging.info("--- Phase 4: Generating Graphs ---")
-    visualizer = EmotionVisualizer(output_dir="./output/")
-    
-    # reading the scored data so I can pass it to the visualizer
-    scored_df = pd.read_csv(scored_csv_path)
-    
-    # generating a graph for the Celtics and Thunder to see their championship runs
-    visualizer.plot_time_series(scored_df, "Celtics")
-    visualizer.plot_time_series(scored_df, "Thunder")
-        
-    logging.info("Historical data pipeline finished successfully! We are ready for live 2026 predictions.")
+    # The rest of the pipeline is commented out temporarily while we focus solely on getting the data downloaded
+    # ingestor.save_to_csv(raw_df, "raw_historical.csv")
+    # engine = SentimentEngine()
+    # scored_df = engine.process_dataframe(raw_df)
+    # ingestor.save_to_csv(scored_df, "scored_historical.csv")
+    # scored_csv_path = os.path.join("./data/historical/", "scored_historical.csv")
+    # predictor = PlayoffPredictor(model_dir="./models/")
+    # predictor.train_model(scored_csv_path)
+    # predictor.evaluate_model(scored_csv_path)
+    # visualizer = EmotionVisualizer(output_dir="./output/")
+    # scored_df = pd.read_csv(scored_csv_path)
+    # visualizer.plot_time_series(scored_df, "Celtics")
+    # visualizer.plot_time_series(scored_df, "Thunder")
 
 if (__name__ == "__main__"):
     main()
