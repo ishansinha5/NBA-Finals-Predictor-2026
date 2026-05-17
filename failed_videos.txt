@@ -31,3 +31,11 @@ SmFIFIsvBD4 (Video deleted/private)
 E7Ydj4ys-hl (Video deleted/private)
 
 9177hDJPVOQ (Video deleted/private)
+
+Out of the 19 Pacers videos attempted, 4 logs failed (representing 3 unique videos that were deleted or made private by the channel).
+
+KvwdhDrtqYI (Deleted/Private)
+
+NSo0Hz_3gs (Deleted/Private)
+
+QDOhKf3IfRq (Deleted/Private - Your script actually checked this one twice!)

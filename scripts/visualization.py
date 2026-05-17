@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 import os
 import logging
 
@@ -27,6 +28,7 @@ class EmotionVisualizer:
         if (team_df.empty == True):
             logging.warning(f"No data found for {team_name}, skipping this graph.")
             return False
+            
         stages = team_df['stage']
         
         # Plotting each of our 7 emotions as a separate line
@@ -37,9 +39,14 @@ class EmotionVisualizer:
         plt.plot(stages, team_df['upset'], label='Upset', marker='o')
         plt.plot(stages, team_df['anxiety'], label='Anxiety', marker='o')
         plt.plot(stages, team_df['surprise'], label='Surprise', marker='o')
-        plt.title(f"Emotional Trajectory of the {team_name} (2026 Playoffs)")
+        
+        plt.title(f"Emotional Trajectory of the {team_name} (Historical Playoffs)")
         plt.xlabel("Playoff Stage")
         plt.ylabel("Emotion Score (from RoBERTa)")
+        
+        # Tilting the x-axis labels so they don't overlap now that we have 20+ games!
+        plt.xticks(rotation=45, ha='right')
+        
         plt.legend(title="Emotions", bbox_to_anchor=(1.05, 1), loc='upper left')
         filename = f"{team_name}_sentiment_trajectory.png"
         filepath = os.path.join(self.output_dir, filename)
@@ -49,39 +56,49 @@ class EmotionVisualizer:
         logging.info(f"Saved the graph to {filepath}")
         return True
 
+    # New function to compare the average emotions of two teams side-by-side
+    def plot_finals_comparison_bar(self, df, team_winner, team_loser, matchup_name):
+        logging.info(f"Making the comparison graph for {matchup_name}...")
+        
+        sns.set_style("darkgrid")
+        plt.figure(figsize=(10, 6))
+
+        t1_df = df[df['team'] == team_winner]
+        t2_df = df[df['team'] == team_loser]
+        
+        if (t1_df.empty == True) or (t2_df.empty == True):
+            logging.warning(f"Missing data for {team_winner} or {team_loser}, skipping comparison graph.")
+            return False
+            
+        emotions = ['confidence', 'content', 'neutrality', 'frustration', 'upset', 'anxiety', 'surprise']
+        
+        # Getting the average score for each emotion over the whole playoff run
+        t1_means = t1_df[emotions].mean()
+        t2_means = t2_df[emotions].mean()
+        
+        x = np.arange(len(emotions))
+        width = 0.35
+        
+        # Plotting the winner in green and the loser in red to easily tell them apart
+        plt.bar(x - width/2, t1_means, width=width, label=f"{team_winner} (Winner)", color='forestgreen')
+        plt.bar(x + width/2, t2_means, width=width, label=f"{team_loser} (Loser)", color='firebrick')
+        
+        plt.title(f"{matchup_name} - Average Emotional Profile")
+        plt.xlabel("Emotions")
+        plt.ylabel("Average Emotion Score")
+        plt.xticks(x, [e.capitalize() for e in emotions])
+        plt.legend()
+        
+        filename = f"{team_winner}_vs_{team_loser}_comparison.png"
+        filepath = os.path.join(self.output_dir, filename)
+        plt.savefig(filepath, bbox_inches='tight')
+        plt.close()
+        
+        logging.info(f"Saved the comparison graph to {filepath}")
+        return True
+
 def run_tests():
-    # Making some test data just to see if the graph draws correctly without needing the AI model
-    test_data = []
-    
-    row1 = {}
-    row1['team'] = 'Spurs'
-    row1['stage'] = 'Round 1'
-    row1['confidence'] = 0.8
-    row1['content'] = 0.5
-    row1['neutrality'] = 0.2
-    row1['frustration'] = 0.1
-    row1['upset'] = 0.0
-    row1['anxiety'] = 0.3
-    row1['surprise'] = 0.1
-    test_data.append(row1)
-
-    row2 = {}
-    row2['team'] = 'Spurs'
-    row2['stage'] = 'Round 2'
-    row2['confidence'] = 0.9
-    row2['content'] = 0.6
-    row2['neutrality'] = 0.1
-    row2['frustration'] = 0.0
-    row2['upset'] = 0.0
-    row2['anxiety'] = 0.1
-    row2['surprise'] = 0.2
-    test_data.append(row2)
-
-    df = pd.DataFrame(test_data)
-    
-    # testing it locally
-    viz = EmotionVisualizer(output_dir="./")
-    viz.plot_time_series(df, 'Spurs')
+    pass
 
 if (__name__ == "__main__"):
     #run_tests()
