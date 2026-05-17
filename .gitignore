@@ -10,3 +10,7 @@ scored_playoff_data.csv
 # Ignore Python cache files
 __pycache__/
 *.pyc
+
+# Ignoring saved ML models 
+models/
+*.pkl
