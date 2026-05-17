@@ -3,7 +3,6 @@ import pandas as pd
 from youtube_transcript_api import YouTubeTranscriptApi
 import logging
 
-# Setting up logging so I can see what the code is doing in the terminal, I read that it was more professional than using print
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 # Class to handle grabbing Youtube captions and doing some basic cleaning
@@ -12,7 +11,6 @@ class TranscriptIngestor:
         self.data_dir = data_dir
         self.min_words = min_words
         
-        # Checking if the directory exists so the script doesn't crash when saving
         if (not os.path.exists(self.data_dir)):
             os.makedirs(self.data_dir)
 
@@ -41,12 +39,30 @@ class TranscriptIngestor:
             
             try:
                 # Asking youtube for the captions
-                transcript_list = YouTubeTranscriptApi.get_transcript(vid_id)
+                raw_transcript_list = YouTubeTranscriptApi.get_transcript(vid_id)
                 
-                is_good, full_text = self.evaluate_transcript(transcript_list)
+                # Setting up the timestamps if we have mashed together interviews
+                start_time = 0.0
+                end_time = 999999.0
+                
+                if ('start_time' in video):
+                    start_time = video['start_time']
+                    
+                if ('end_time' in video):
+                    end_time = video['end_time']
+                
+                # Slicing the transcript so we only get the parts we want
+                filtered_transcript_list = []
+                for segment in raw_transcript_list:
+                    segment_start = segment['start']
+                    if (segment_start >= start_time):
+                        if (segment_start <= end_time):
+                            filtered_transcript_list.append(segment)
+                
+                is_good, full_text = self.evaluate_transcript(filtered_transcript_list)
                 
                 if (is_good == False):
-                    logging.warning("Video too short, skipping it.")
+                    logging.warning("Video too short or sliced too small, skipping it.")
                     continue
                 
                 video_data = {}
@@ -62,6 +78,11 @@ class TranscriptIngestor:
                 else:
                     video_data['stage'] = 'Unknown'
                     
+                if ('won_championship' in video):
+                    video_data['won_championship'] = video['won_championship']
+                else:
+                    video_data['won_championship'] = 0
+                    
                 clean_text = full_text.replace('\n', ' ')
                 video_data['transcript'] = clean_text
                 
@@ -74,34 +95,7 @@ class TranscriptIngestor:
         df = pd.DataFrame(all_transcripts)
         return df
 
-    # Saving everything into a raw csv file
     def save_to_csv(self, df, filename="raw_transcripts.csv"):
         filepath = os.path.join(self.data_dir, filename)
         df.to_csv(filepath, index=False)
         logging.info(f"Saved the dataframe to {filepath}")
-
-# Testing function 
-def run_tests():
-    test_videos = []
-    
-    vid1 = {}
-    vid1['video_id'] = '6UMounb2UQA' 
-    vid1['team'] = 'Spurs'
-    vid1['stage'] = 'Round 2'
-    test_videos.append(vid1)
-
-    vid2 = {}
-    vid2['video_id'] = 'FAKE_ID_123'
-    vid2['team'] = 'Thunder'
-    vid2['stage'] = 'Round 2'
-    test_videos.append(vid2)
-
-    ingestor = TranscriptIngestor(data_dir="./")
-    df_raw = ingestor.fetch_transcripts(test_videos)
-    
-    if (not df_raw.empty):
-        print(df_raw.head())
-
-if (__name__ == "__main__"):
-    # run_tests()
-    pass

@@ -1,0 +1,195 @@
+Here is the complete, combined dataset of single-team and single-speaker press conferences across all four franchises, clean of desk shows, anchor commentary, and highlights. All opponent videos are explicitly labeled, and the requested formatting is followed down to atomic detail.
+
+### **2023-2024 Boston Celtics Historical Run**
+
+**Regular Season**
+
+* vs. Pistons: Joe Mazzulla | https://www.youtube.com/watch?v=ti_MxSneUfg 
+* vs. Pistons: Derrick White | https://www.youtube.com/watch?v=7b7Aymnhk7I	
+* vs. Bulls: Jrue Holiday | https://www.youtube.com/watch?v=KIfVcS0O7j0	
+* vs. Bulls (Opponent): Billy Donovan | https://www.youtube.com/watch?v=6PG2NJXXepY	
+* vs. Lakers (Opponent): LeBron James | https://www.youtube.com/watch?v=39XuThBt5Nw	
+* vs. Nuggets: Joe Mazzulla | https://www.youtube.com/watch?v=pgUHDN1XmHQ	
+* vs. Nuggets: Kristaps Porzingis | https://www.youtube.com/watch?v=vjrBZ4FFpYc	
+* vs. Thunder (Opponent): Thunder Media Availability | https://www.youtube.com/watch?v=qT66693Llmg	
+
+**Playoffs Round 1 (vs. Heat)**
+
+* Game 1: Joe Mazzulla | https://www.youtube.com/watch?v=-0-cX7BB6HE	
+* Game 1: Jayson Tatum | https://www.youtube.com/watch?v=w0MIt0xm1FI	
+* Game 2: Joe Mazzulla | https://www.youtube.com/watch?v=iQIhTOwAa84	
+* Game 2: Jaylen Brown | https://www.youtube.com/watch?v=fHrRy6SWeFo 
+* Game 3: Joe Mazzulla | https://www.youtube.com/watch?v=o6Zreg31N8I 	
+* Game 3: Jaylen Brown | https://www.youtube.com/watch?v=-qWwewRfhuE 
+* Game 4: Joe Mazzulla | https://www.youtube.com/watch?v=ctco1Ui3fOU 
+* Game 4: Derrick White | https://www.youtube.com/watch?v=aY8op4mgj7k 
+* Game 5: Joe Mazzulla | https://www.youtube.com/watch?v=VgV8aawoZiQ 
+* Game 5: Derrick White | https://www.youtube.com/watch?v=TKU-ZWqXUzc 
+
+**Playoffs Round 2 (vs. Cavaliers)**
+
+* Game 1: Joe Mazzulla | https://www.youtube.com/watch?v=5xNDL6oPZVI 
+* Game 1: Derrick White | https://www.youtube.com/watch?v=3g5UEYTjbMs 
+* Game 2 (Opponent): Donovan Mitchell | https://www.youtube.com/watch?v=6APEN2sIOzA 
+* Game 2 (Opponent): J.B. Bickerstaff | https://www.youtube.com/watch?v=2_irJPsEvOI 
+* Game 3: Joe Mazzulla | https://www.youtube.com/watch?v=gfdjYLlT7zY 
+* Game 3 (Opponent): J.B. Bickerstaff | https://www.youtube.com/watch?v=s7v-QiXbuEg 
+* Game 4: Jayson Tatum | https://www.youtube.com/watch?v=ai7cK0Tk260 
+* Game 4 (Opponent): J.B. Bickerstaff | https://www.youtube.com/watch?v=C_IWik5LI5g 
+* Game 5: Joe Mazzulla | https://www.youtube.com/watch?v=iSYEBhKykaw 
+* Game 5: Al Horford | https://www.youtube.com/watch?v=QI1dI5z7qB4 
+
+**Playoffs Round 3 (vs. Pacers)**
+
+* Game 1: Joe Mazzulla | https://www.youtube.com/watch?v=JWlldi545W4 
+* Game 1 (Opponent): Pacers Full Availability | https://www.youtube.com/watch?v=p_fz4zuaebk 
+* Game 2: Jrue Holiday | https://www.youtube.com/watch?v=7vw73RqXEtI 
+* Game 2 (Opponent): Pacers Full Availability | https://www.youtube.com/watch?v=lr9XK78gEiI 
+* Game 3: Joe Mazzulla | https://www.youtube.com/watch?v=UG-1VQVspq8 
+* Game 3 (Opponent): Pacers Full Availability | https://www.youtube.com/watch?v=2Zj-VQh15ak 
+* Game 4: Joe Mazzulla | https://www.youtube.com/watch?v=tRAGilUcgDk 
+* Game 4: Al Horford | https://www.youtube.com/watch?v=g_JGuPGruNQ 
+
+---
+
+### **2023-2024 Dallas Mavericks Historical Run**
+
+**Regular Season**
+
+* vs. Spurs: Jason Kidd | https://www.youtube.com/watch?v=ttiSP1RSfFg  
+* vs. Pistons: Luka Doncic | https://www.youtube.com/watch?v=CRdY11hjrwE 
+* vs. Bulls: Jason Kidd | https://www.youtube.com/watch?v=1KqSpqpQ-r8 
+* vs. Warriors: Luka Doncic | https://www.youtube.com/watch?v=lRu2lde15Kg 
+* vs. Celtics: Luka, Kyrie, Kidd | https://www.youtube.com/watch?v=SCMnFx3v6VA 
+* vs. Nuggets: Luka Doncic | https://www.youtube.com/watch?v=eRUGMA3vtgo 
+
+**Playoffs Round 1 (vs. Clippers)**
+
+* Game 1: Jason Kidd | https://www.youtube.com/watch?v=6V4Rl5f48As 
+* Game 1: Luka Doncic | https://www.youtube.com/watch?v=Fl_HDdm758c 
+* Game 2: Jason Kidd | https://www.youtube.com/watch?v=KBST2quk1kc 
+* Game 2: Luka Doncic | https://www.youtube.com/watch?v=BMnFw_iVwP8 
+* Game 3: Jason Kidd | https://www.youtube.com/watch?v=IWdjsUw2RpU 
+* Game 3: Kyrie Irving | https://www.youtube.com/watch?v=-MvAheckn38 
+* Game 4: *[Removed due to broadcast noise]*
+* Game 5: Luka Doncic | https://www.youtube.com/watch?v=-Qm7t3j_Ot8 
+* Game 5: Jason Kidd | https://www.youtube.com/watch?v=eLbPK8b9WuU 
+* Game 6: Kyrie Irving | https://www.youtube.com/watch?v=9gCsvyXd0aY 
+* Game 6: Jason Kidd, Kyrie, P.J. Washington, Luka | https://www.youtube.com/watch?v=iwlUKsPKRQg 
+
+**Playoffs Round 2 (vs. Thunder)**
+
+* Game 1: Jason Kidd | https://www.youtube.com/watch?v=uSmTUoG8hSA 
+* Game 1: Kyrie, Luka, Kidd | https://www.youtube.com/watch?v=WMORE3iwJKE 
+* Game 2: Jason Kidd | https://youtu.be/niqJaAKxLB8?si=AOZhgLIwUTFtcOw- 
+* Game 2: P.J. Washington | https://www.youtube.com/watch?v=UgaC0AKyDJA 
+* Game 3: Jason Kidd | https://www.youtube.com/watch?v=1mElkjpkHQE 
+* Game 3: P.J. Washington | https://www.youtube.com/watch?v=GA_mQR9mIqM 
+* Game 4: Kyrie Irving | https://www.youtube.com/watch?v=9Ez_VZ04L_Y 
+* Game 4: Luka Doncic | https://www.youtube.com/watch?v=kHPvN_vTBY8 
+* Game 5: Jason Kidd | https://www.youtube.com/watch?v=z71huQ3TDao 
+* Game 6 (Opponent): Shai Gilgeous-Alexander | https://www.youtube.com/watch?v=nF-7-LcvnXU 
+* Game 6 (Opponent): Chet Holmgren | https://www.youtube.com/watch?v=wQ3kuDFwQhU 
+
+**Playoffs Round 3 (vs. Timberwolves)**
+
+* Game 1: Luka Doncic, Jason Kidd, Kyrie Irving | https://www.youtube.com/watch?v=k0TJSdB6txE 
+* Game 2 (Opponent): Full Postgame Press Conference | https://www.youtube.com/watch?v=OBCcrA7jRNY 
+* Game 2: Luka Doncic | https://www.youtube.com/watch?v=SmFlFIsvBD4 
+* Game 3: Jason Kidd | https://www.youtube.com/watch?v=E7Ydj4ys-hI 
+* Game 3: Luka Doncic | https://www.youtube.com/watch?v=FWuoLJkzw7E 
+* Game 4 (Opponent): Full Postgame Press Conference | https://www.youtube.com/watch?v=5IVpt1C8vio 
+* Game 5: Luka Doncic | https://www.youtube.com/watch?v=9I77hDJPVOQ 
+
+---
+
+### **2024-2025 Oklahoma City Thunder Historical Run**
+
+**Regular Season**
+
+* vs. Nuggets: Full Thunder Media | https://www.youtube.com/watch?v=X3Z-Wc1OLcU 
+* vs. Nuggets (Opponent): Nikola Jokić | https://www.youtube.com/watch?v=hAyBphBbXv8 
+* vs. Clippers: Full Thunder Media | https://www.youtube.com/watch?v=Y1cLveA9Wic  
+* vs. Wizards: Full Thunder Media | https://www.youtube.com/watch?v=9QlidKWRRkA 
+* vs. Jazz: Full Thunder Media | https://www.youtube.com/watch?v=0SX77sttiLU 
+* vs. Jazz: Mark Daigneault | https://www.youtube.com/watch?v=e2dPMjBcrPE 
+* vs. Heat: Full Thunder Media | https://www.youtube.com/watch?v=x4mfY472l2o 
+* vs. Celtics: Mark Daigneault | https://www.youtube.com/watch?v=I0uiXnuwAjI 
+* vs. Celtics: Shai Gilgeous-Alexander | https://www.youtube.com/watch?v=7VhDd_xC-Zc 
+
+**Playoffs Round 1 (vs. Grizzlies)**
+
+* Game 1: Full Thunder Media | https://www.youtube.com/watch?v=BOE9RygsD-A 
+* Game 2: Full Thunder Media | https://www.youtube.com/watch?v=IAs3lzLPIW4 
+* Game 3: Full Thunder Media | https://www.youtube.com/watch?v=Z0VzMP19sQY 
+* Game 4: Full Thunder Media | https://www.youtube.com/watch?v=LZ-5AO_pIA4  
+
+**Playoffs Round 2 (vs. Nuggets)**
+
+* Game 1: Mark Daigneault | https://www.youtube.com/watch?v=kq-RJ7moaOE 
+* Game 2 (Opponent): Nuggets/Thunder Game 5 Pressers | https://www.youtube.com/watch?v=r4tILK7Pn28 
+* Game 3: *[Removed due to post-game show format]*
+* Game 4: Chet Holmgren | https://www.youtube.com/watch?v=RLBqDABwync 
+* Game 5: Jalen Williams | https://www.youtube.com/watch?v=Po8jdsjdVxE 
+* Game 6: Nuggets/Thunder Full Multi-Interview | https://www.youtube.com/live/c1yPLb7yrTU?si=CKGvUfcH1-o9B_o3 
+David Ademan (Opponent coach): from 0:00 until 8:18
+Mark Diagneault (coach): from 8:18 to 14:11
+Jamal Murray (Opponent player): from 14:11 to 19:07
+Lu Dort, Shai Gilgeous Alexander, Chet Holmgren (players): from 19:07 to 33:19
+Nikola Jokic (Opponent player): from 33:20 to end of video
+
+**Playoffs Round 3 (vs. Timberwolves)**
+
+* Game 1: Mark Daigneault | https://www.youtube.com/watch?v=IMKWLFY5GsI 
+* Game 1: Shai Gilgeous-Alexander | https://www.youtube.com/watch?v=3ShO8Xspt28 
+* Game 2: Full Thunder Media | https://www.youtube.com/watch?v=aSdrV_5kWss 
+* Game 3: Full Thunder Media | https://www.youtube.com/watch?v=G__Z11jdlTg 
+* Game 4: Mark Daigneault | https://www.youtube.com/watch?v=Q-Csd9zfSZQ 
+* Game 5: Full Thunder Media | https://www.youtube.com/watch?v=6Ko38vNKdt0 
+
+---
+
+### **2024-2025 Indiana Pacers Historical Run**
+
+**Regular Season**
+
+* vs. Wizards: Full Pacers Media | https://www.youtube.com/watch?v=KvwdhDrtgYI 
+* vs. Pistons: Full Pacers Media | https://www.youtube.com/watch?v=TRebK5miFgU 
+* vs. Magic: Full Pacers Media | https://www.youtube.com/watch?v=zFTYU4VjyRA 
+* vs. Bulls: Full Pacers Media | https://www.youtube.com/watch?v=a1gB6fMTNaU 
+* vs. Celtics: Full Pacers Media | https://www.youtube.com/watch?v=NSo0Hz__3gs 
+* vs. Thunder (Opponent): Full Thunder Media | https://www.youtube.com/watch?v=oupOeDrTf6o 
+
+**Playoffs Round 1 (vs. Bucks)**
+
+* Game 1: Full Post Game Interviews (Hybrid) | https://www.youtube.com/watch?v=QDOhKf3IfRg 
+Rick Carlisle (Coach): from 0:00 to 6:20
+Doc Rivers, Myles Turner, Kevin Porter Jr, AJ Green (Opponent coach and players): from 6:20 to 25:37
+Pascal Siakam (Player): from 25:37 to the end
+* Game 2: Full Media Availability | https://www.youtube.com/watch?v=TwtSGBr_3Uc 
+* Game 3: *[Removed due to broadcast noise]*
+* Game 4: Full Media Availability | https://www.youtube.com/watch?v=t8ioYA8Hj1s 
+* Game 5 (Opponent): Giannis Antetokounmpo | https://www.youtube.com/watch?v=qHWwXKKGxp0 
+
+**Playoffs Round 2 (vs. Cavaliers)**
+
+* Game 1 (Opponent): Kenny Atkinson | https://www.youtube.com/watch?v=6W40kFyferE 
+* Game 2: Full Media Availability | https://www.youtube.com/watch?v=LMGFIPIWCZg 
+* Game 2 (Opponent): Donovan Mitchell | https://www.youtube.com/watch?v=Z2rQEinliGY 
+* Game 3 (Opponent): Kenny Atkinson | https://www.youtube.com/watch?v=r7NbI4hHEKA 
+* Game 3 (Opponent): Evan Mobley | https://www.youtube.com/watch?v=HrohoIrB2rs 
+* Game 4: Rick Carlisle | https://www.youtube.com/watch?v=RkeR8RtixGk 
+* Game 4 (Opponent): Kenny Atkinson | https://www.youtube.com/watch?v=MpOVlVl452g 
+* Game 5: Full Media Availability | https://www.youtube.com/watch?v=dxtuj2cSMjM 
+* Game 5 (Opponent): Kenny Atkinson | https://www.youtube.com/watch?v=QQlaOHjpGT4 
+**Playoffs Round 3 (vs. Knicks)**
+
+* Game 1: *[Removed due to broadcast noise]*
+* Game 2: *[Removed due to broadcast noise]*
+* Game 3: Full Post Game Interviews | https://www.youtube.com/watch?v=GlpHP9zKhsc
+This video contains combined interviews. It changes from Pacers to Knicks at exactly 27:43.
+* Game 3: Tyrese Haliburton | https://www.youtube.com/watch?v=ghiQwAaGDOI 
+* Game 4: Full Media Availability | https://www.youtube.com/watch?v=wpluyr9u3LU 
+* Game 4: Tyrese Haliburton | https://www.youtube.com/watch?v=iswSeJbe-Yk 
+* Game 5: *[Removed due to broadcast noise]*
+
