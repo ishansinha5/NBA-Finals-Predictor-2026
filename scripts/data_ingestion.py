@@ -99,3 +99,26 @@ class TranscriptIngestor:
         filepath = os.path.join(self.data_dir, filename)
         df.to_csv(filepath, index=False)
         logging.info(f"Saved the dataframe to {filepath}")
+
+def run_tests():
+    logging.info("Running tests for data ingestion...")
+    test_manifest = []
+    
+    # Setting up a single dummy video to test if the youtube api connects
+    test_vid = {}
+    test_vid['video_id'] = "ti_MxSneUfg"
+    test_vid['team'] = "Celtics"
+    test_vid['stage'] = "Reg Season - Pistons"
+    test_vid['won_championship'] = 1
+    
+    test_manifest.append(test_vid)
+    
+    # Making sure it saves to a test folder so I don't overwrite my real data
+    ingestor = TranscriptIngestor(data_dir="../data/test/")
+    df = ingestor.fetch_transcripts(test_manifest)
+    
+    print(df.head())
+
+if (__name__ == "__main__"):
+    # run_tests()
+    pass

@@ -112,8 +112,10 @@ class SentimentEngine:
     
 #Testing function to run some basic tests on the sentiment engine
 def run_tests():
+    logging.info("Running tests for the sentiment engine...")
     test_data = []
     
+    # Making a fake row of data to see if the huggingface model downloads and scores correctly
     row1 = {}
     row1['video_id'] = 'test1_thunder'
     row1['transcript'] = "We played great tonight. I am very proud of the team and we are ready for the next round."

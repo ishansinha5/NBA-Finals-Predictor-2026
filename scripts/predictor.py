@@ -44,3 +44,45 @@ class PlayoffPredictor:
         file.close()
         
         logging.info(f"Successfully saved the trained model to {save_path}!")
+
+def run_tests():
+    logging.info("Running tests for the predictor...")
+    
+    # Setting up dummy data to see if the model trains without crashing
+    test_data = []
+    
+    row1 = {}
+    row1['confidence'] = 0.9
+    row1['content'] = 0.8
+    row1['neutrality'] = 0.1
+    row1['frustration'] = 0.0
+    row1['upset'] = 0.0
+    row1['anxiety'] = 0.1
+    row1['surprise'] = 0.0
+    row1['won_championship'] = 1
+    test_data.append(row1)
+    
+    row2 = {}
+    row2['confidence'] = 0.2
+    row2['content'] = 0.1
+    row2['neutrality'] = 0.1
+    row2['frustration'] = 0.8
+    row2['upset'] = 0.9
+    row2['anxiety'] = 0.7
+    row2['surprise'] = 0.1
+    row2['won_championship'] = 0
+    test_data.append(row2)
+    
+    df = pd.DataFrame(test_data)
+    if (not os.path.exists("./models/")):
+        os.makedirs("./models/")
+        
+    df.to_csv("./models/test_scored_data.csv", index=False)
+    
+    predictor = PlayoffPredictor(model_dir="./models/")
+    predictor.train_model("./models/test_scored_data.csv")
+    logging.info("Model test passed and weights saved!")
+
+if (__name__ == "__main__"):
+    # run_tests()
+    pass
