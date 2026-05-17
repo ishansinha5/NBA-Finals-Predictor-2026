@@ -27,7 +27,7 @@ def main():
         return
     
     # Implementing the new chunking strategy so we don't overwhelm the network
-    target_team = "Celtics" 
+    target_team = "Mavericks" 
     chunked_video_list = []
     
     # looping through the massive database and only pulling out the team we want right now
