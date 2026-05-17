@@ -84,5 +84,5 @@ def run_tests():
     logging.info("Model test passed and weights saved!")
 
 if (__name__ == "__main__"):
-    # run_tests()
+    #run_tests()
     pass

@@ -43,7 +43,7 @@ class EmotionVisualizer:
         plt.legend(title="Emotions", bbox_to_anchor=(1.05, 1), loc='upper left')
         filename = f"{team_name}_sentiment_trajectory.png"
         filepath = os.path.join(self.output_dir, filename)
-        plt.savefig(filepath)
+        plt.savefig(filepath, bbox_inches='tight')
         plt.close()
         
         logging.info(f"Saved the graph to {filepath}")
@@ -84,5 +84,5 @@ def run_tests():
     viz.plot_time_series(df, 'Spurs')
 
 if (__name__ == "__main__"):
-    # run_tests()
+    #run_tests()
     pass

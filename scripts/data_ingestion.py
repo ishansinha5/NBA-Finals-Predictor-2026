@@ -18,7 +18,8 @@ class TranscriptIngestor:
     def evaluate_transcript(self, transcript_list):
         full_text = ""
         for segment in transcript_list:
-            text_part = segment['text']
+            # grabbing the text using dot notation since the library gives us objects now
+            text_part = segment.text
             full_text = full_text + text_part + " "
             
         words = full_text.split()
@@ -38,8 +39,9 @@ class TranscriptIngestor:
             logging.info(f"Checking video: {vid_id}")
             
             try:
-                # Asking youtube for the captions
-                raw_transcript_list = YouTubeTranscriptApi.get_transcript(vid_id)
+                # creating an instance of the api to fetch the captions according to the new update so it doesn't crash
+                ytt_api = YouTubeTranscriptApi()
+                raw_transcript_list = ytt_api.fetch(vid_id)
                 
                 # Setting up the timestamps if we have mashed together interviews
                 start_time = 0.0
@@ -54,7 +56,8 @@ class TranscriptIngestor:
                 # Slicing the transcript so we only get the parts we want
                 filtered_transcript_list = []
                 for segment in raw_transcript_list:
-                    segment_start = segment['start']
+                    # grabbing the start time using dot notation
+                    segment_start = segment.start
                     if (segment_start >= start_time):
                         if (segment_start <= end_time):
                             filtered_transcript_list.append(segment)
@@ -120,5 +123,5 @@ def run_tests():
     print(df.head())
 
 if (__name__ == "__main__"):
-    # run_tests()
+    #run_tests()
     pass
