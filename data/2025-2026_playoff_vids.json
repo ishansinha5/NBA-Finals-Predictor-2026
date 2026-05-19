@@ -1,0 +1,514 @@
+[
+  {
+    "video_id": "vxrNx038z2Q",
+    "team": "Thunder",
+    "stage": "Reg Season - Spurs (Opponent)",
+    "end_time": 1000.0
+  },
+  {
+    "video_id": "vxrNx038z2Q",
+    "team": "Spurs",
+    "stage": "Reg Season - Thunder",
+    "start_time": 1000.0
+  },
+  {
+    "video_id": "lMYLWaCPSnc",
+    "team": "Spurs",
+    "stage": "Reg Season - Thunder"
+  },
+  {
+    "video_id": "pazr3gYheas",
+    "team": "Spurs",
+    "stage": "Reg Season - Thunder"
+  },
+  {
+    "video_id": "SdgW62nxPx8",
+    "team": "Thunder",
+    "stage": "Reg Season - Spurs (Opponent)"
+  },
+  {
+    "video_id": "RJ8vLCuH4Eo",
+    "team": "Spurs",
+    "stage": "Reg Season - Magic"
+  },
+  {
+    "video_id": "A7sQJ8KzmcY",
+    "team": "Spurs",
+    "stage": "Reg Season - Magic"
+  },
+  {
+    "video_id": "OIa8MXbdhEo",
+    "team": "Spurs",
+    "stage": "Reg Season - Magic"
+  },
+  {
+    "video_id": "azP8VukLYeA",
+    "team": "Spurs",
+    "stage": "Reg Season - Magic"
+  },
+  {
+    "video_id": "UcwemfW0acY",
+    "team": "Spurs",
+    "stage": "Reg Season - Wizards"
+  },
+  {
+    "video_id": "SOk1VmU5koM",
+    "team": "Wizards",
+    "stage": "Reg Season - Spurs (Opponent)"
+  },
+  {
+    "video_id": "5kkeOuEGuqk",
+    "team": "Spurs",
+    "stage": "Reg Season - Wizards"
+  },
+  {
+    "video_id": "EoNXslyQPJY",
+    "team": "Spurs",
+    "stage": "Reg Season - Bulls"
+  },
+  {
+    "video_id": "1StOCywEDtI",
+    "team": "Bulls",
+    "stage": "Reg Season - Spurs (Opponent)"
+  },
+  {
+    "video_id": "5RLdy6WBfWA",
+    "team": "Spurs",
+    "stage": "Reg Season - Bulls"
+  },
+  {
+    "video_id": "K-BwHFg_NFs",
+    "team": "Spurs",
+    "stage": "Reg Season - Knicks"
+  },
+  {
+    "video_id": "tfNlsUpz4G0",
+    "team": "Spurs",
+    "stage": "Reg Season - Knicks"
+  },
+  {
+    "video_id": "fetLjJiZBRM",
+    "team": "Spurs",
+    "stage": "Reg Season - Knicks"
+  },
+  {
+    "video_id": "s2BSWOHXhTA",
+    "team": "Spurs",
+    "stage": "Reg Season - Cavaliers"
+  },
+  {
+    "video_id": "pd-ETCd7BQY",
+    "team": "Spurs",
+    "stage": "Reg Season - Cavaliers"
+  },
+  {
+    "video_id": "eIk2dPVx1V4",
+    "team": "Spurs",
+    "stage": "Reg Season - Cavaliers"
+  },
+  {
+    "video_id": "UTXer867ejg",
+    "team": "Spurs",
+    "stage": "Reg Season - Cavaliers"
+  },
+  {
+    "video_id": "gBH09GsCP6U",
+    "team": "Spurs",
+    "stage": "R1G1"
+  },
+  {
+    "video_id": "OTLDCp3MTN8",
+    "team": "Spurs",
+    "stage": "R1G1"
+  },
+  {
+    "video_id": "bz0n0zxoowc",
+    "team": "Spurs",
+    "stage": "R1G1"
+  },
+  {
+    "video_id": "qgENVYQG8bY",
+    "team": "Spurs",
+    "stage": "R1G2"
+  },
+  {
+    "video_id": "LasFgRzjGqo",
+    "team": "Spurs",
+    "stage": "R1G2"
+  },
+  {
+    "video_id": "8WhC9AaEW-A",
+    "team": "Spurs",
+    "stage": "R1G2"
+  },
+  {
+    "video_id": "jFvug4JWJag",
+    "team": "Spurs",
+    "stage": "R1G3"
+  },
+  {
+    "video_id": "SGxAlLrT-v4",
+    "team": "Spurs",
+    "stage": "R1G3"
+  },
+  {
+    "video_id": "eDRUuCGYjRw",
+    "team": "Spurs",
+    "stage": "R1G3"
+  },
+  {
+    "video_id": "FW4VwazujnA",
+    "team": "Spurs",
+    "stage": "R1G4"
+  },
+  {
+    "video_id": "_-4FRzYsO0I",
+    "team": "Spurs",
+    "stage": "R1G4"
+  },
+  {
+    "video_id": "G9xCCLFnWE0",
+    "team": "Spurs",
+    "stage": "R1G4"
+  },
+  {
+    "video_id": "YOu9OvdV1lo",
+    "team": "Spurs",
+    "stage": "R1G5"
+  },
+  {
+    "video_id": "rl-BKORzs9o",
+    "team": "Spurs",
+    "stage": "R1G5"
+  },
+  {
+    "video_id": "MTSCKsuKub0",
+    "team": "Spurs",
+    "stage": "R1G5"
+  },
+  {
+    "video_id": "eab3ZIjkx6M",
+    "team": "Spurs",
+    "stage": "R2G1"
+  },
+  {
+    "video_id": "s2sARr0qzig",
+    "team": "Spurs",
+    "stage": "R2G1"
+  },
+  {
+    "video_id": "HMnKgzgb4P8",
+    "team": "Spurs",
+    "stage": "R2G1"
+  },
+  {
+    "video_id": "msCAesIecV0",
+    "team": "Spurs",
+    "stage": "R2G2"
+  },
+  {
+    "video_id": "H0GSOjChMZg",
+    "team": "Spurs",
+    "stage": "R2G2"
+  },
+  {
+    "video_id": "wOU735Aq-AM",
+    "team": "Spurs",
+    "stage": "R2G2"
+  },
+  {
+    "video_id": "Wlo1zEJ5eUU",
+    "team": "Spurs",
+    "stage": "R2G3"
+  },
+  {
+    "video_id": "DYDpO2y4oTU",
+    "team": "Spurs",
+    "stage": "R2G3"
+  },
+  {
+    "video_id": "tgVTcYVID1w",
+    "team": "Spurs",
+    "stage": "R2G4"
+  },
+  {
+    "video_id": "zYsicr-kqx8",
+    "team": "Spurs",
+    "stage": "R2G4"
+  },
+  {
+    "video_id": "Qmgl2-DvBSk",
+    "team": "Spurs",
+    "stage": "R2G5"
+  },
+  {
+    "video_id": "c_egiiZClX8",
+    "team": "Spurs",
+    "stage": "R2G5"
+  },
+  {
+    "video_id": "KCbVv0J5To8",
+    "team": "Spurs",
+    "stage": "R2G5"
+  },
+  {
+    "video_id": "kpzEnnJRU64",
+    "team": "Spurs",
+    "stage": "R2G5"
+  },
+  {
+    "video_id": "_QkJK-2_n_8",
+    "team": "Spurs",
+    "stage": "R2G6"
+  },
+  {
+    "video_id": "3_ddyc8EVZI",
+    "team": "Spurs",
+    "stage": "R2G6"
+  },
+  {
+    "video_id": "GHXfVm_nrZY",
+    "team": "Spurs",
+    "stage": "R2G6"
+  },
+  {
+    "video_id": "ZfcFEDS9CYU",
+    "team": "Thunder",
+    "stage": "Reg Season - Spurs"
+  },
+  {
+    "video_id": "c_JIGcWyRl0",
+    "team": "Thunder",
+    "stage": "Reg Season - Spurs"
+  },
+  {
+    "video_id": "pazr3gYheas",
+    "team": "Spurs",
+    "stage": "Reg Season - Thunder (Opponent)"
+  },
+  {
+    "video_id": "yx6pcv_na0c",
+    "team": "Knicks",
+    "stage": "Reg Season - Thunder (Opponent)"
+  },
+  {
+    "video_id": "DdbVQoAgoTQ",
+    "team": "Knicks",
+    "stage": "Reg Season - Thunder (Opponent)"
+  },
+  {
+    "video_id": "6cUokfudSNo",
+    "team": "Thunder",
+    "stage": "Reg Season - Knicks"
+  },
+  {
+    "video_id": "kypF26Ktr6o",
+    "team": "Thunder",
+    "stage": "Reg Season - Knicks"
+  },
+  {
+    "video_id": "pr1dF6NXBwY",
+    "team": "Thunder",
+    "stage": "Reg Season - Knicks"
+  },
+  {
+    "video_id": "gozOuZ_arng",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Thunder (Opponent)"
+  },
+  {
+    "video_id": "Ms7wFCFRBD0",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Thunder (Opponent)"
+  },
+  {
+    "video_id": "uKF1mBol-1E",
+    "team": "Thunder",
+    "stage": "Reg Season - Cavaliers"
+  },
+  {
+    "video_id": "QI9uY1sKCNI",
+    "team": "Thunder",
+    "stage": "Reg Season - Cavaliers"
+  },
+  {
+    "video_id": "UmWgxrK1A7M",
+    "team": "Thunder",
+    "stage": "Reg Season - Cavaliers"
+  },
+  {
+    "video_id": "6qvx7l9efY4",
+    "team": "Thunder",
+    "stage": "Reg Season - Magic"
+  },
+  {
+    "video_id": "pOO4hkrMIE8",
+    "team": "Magic",
+    "stage": "Reg Season - Thunder (Opponent)"
+  },
+  {
+    "video_id": "M6LQ2hjjhLY",
+    "team": "Magic",
+    "stage": "Reg Season - Thunder (Opponent)"
+  },
+  {
+    "video_id": "4z3yuw96Zc8",
+    "team": "Thunder",
+    "stage": "Reg Season - Wizards"
+  },
+  {
+    "video_id": "XGbTfZEJ8Xc",
+    "team": "Thunder",
+    "stage": "Reg Season - Wizards"
+  },
+  {
+    "video_id": "Fyjnkx5t_UI",
+    "team": "Thunder",
+    "stage": "Reg Season - Wizards"
+  },
+  {
+    "video_id": "efBbWQna58o",
+    "team": "Thunder",
+    "stage": "Reg Season - Bulls"
+  },
+  {
+    "video_id": "BhbgKK_rFGM",
+    "team": "Thunder",
+    "stage": "Reg Season - Bulls"
+  },
+  {
+    "video_id": "z7j_O3P2vXA",
+    "team": "Bulls",
+    "stage": "Reg Season - Thunder (Opponent)"
+  },
+  {
+    "video_id": "nxZUQbvWYqI",
+    "team": "Thunder",
+    "stage": "Reg Season - Bulls"
+  },
+  {
+    "video_id": "gDxXNNUxHno",
+    "team": "Thunder",
+    "stage": "Reg Season - Bulls"
+  },
+  {
+    "video_id": "r9bLvlH5CyA",
+    "team": "Thunder",
+    "stage": "R1G1"
+  },
+  {
+    "video_id": "K7lQcpYOMpQ",
+    "team": "Thunder",
+    "stage": "R1G1"
+  },
+  {
+    "video_id": "1pjQZcLRhnI",
+    "team": "Thunder",
+    "stage": "R1G1"
+  },
+  {
+    "video_id": "XsPXu2KHWbY",
+    "team": "Thunder",
+    "stage": "R1G2"
+  },
+  {
+    "video_id": "hm9FDKcX_2o",
+    "team": "Thunder",
+    "stage": "R1G2"
+  },
+  {
+    "video_id": "Od3mTSt76MU",
+    "team": "Thunder",
+    "stage": "R1G2"
+  },
+  {
+    "video_id": "uV2WacK4NFM",
+    "team": "Thunder",
+    "stage": "R1G3"
+  },
+  {
+    "video_id": "yr0Bw_bbpcA",
+    "team": "Thunder",
+    "stage": "R1G3"
+  },
+  {
+    "video_id": "pJbDEnBaGYg",
+    "team": "Thunder",
+    "stage": "R1G3"
+  },
+  {
+    "video_id": "uIH3f3TRSJ4",
+    "team": "Thunder",
+    "stage": "R1G4"
+  },
+  {
+    "video_id": "zc6nxdPQtXc",
+    "team": "Thunder",
+    "stage": "R1G4"
+  },
+  {
+    "video_id": "mrMnHEDFIHY",
+    "team": "Thunder",
+    "stage": "R1G4"
+  },
+  {
+    "video_id": "lFPyolCPa4I",
+    "team": "Thunder",
+    "stage": "R2G1"
+  },
+  {
+    "video_id": "DOz-v5EdYzg",
+    "team": "Thunder",
+    "stage": "R2G1"
+  },
+  {
+    "video_id": "Zsxp5ulXqwo",
+    "team": "Thunder",
+    "stage": "R2G1"
+  },
+  {
+    "video_id": "1Lk5_RQ5WSE",
+    "team": "Thunder",
+    "stage": "R2G2"
+  },
+  {
+    "video_id": "vcgm3t0UN7g",
+    "team": "Thunder",
+    "stage": "R2G2"
+  },
+  {
+    "video_id": "UP2ACymMn5M",
+    "team": "Thunder",
+    "stage": "R2G2"
+  },
+  {
+    "video_id": "lPuz37P76kI",
+    "team": "Thunder",
+    "stage": "R2G3"
+  },
+  {
+    "video_id": "AnUmgcgTAP4",
+    "team": "Thunder",
+    "stage": "R2G3"
+  },
+  {
+    "video_id": "fZeHug8pCVQ",
+    "team": "Thunder",
+    "stage": "R2G3"
+  },
+  {
+    "video_id": "6qzXBEuMUTw",
+    "team": "Thunder",
+    "stage": "R2G4"
+  },
+  {
+    "video_id": "09rv4SNB74g",
+    "team": "Thunder",
+    "stage": "R2G4"
+  },
+  {
+    "video_id": "i89CBifspOg",
+    "team": "Thunder",
+    "stage": "R2G4"
+  }
+]
