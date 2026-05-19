@@ -28,7 +28,7 @@ def main():
         return
     
     # Chunking strategy active for the live teams
-    target_team = "Thunder" 
+    target_team = "Spurs" 
     chunked_video_list = []
     
     for video in video_list:
