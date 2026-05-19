@@ -38,20 +38,25 @@ class TranscriptIngestor:
             for index in range(len(existing_df)):
                 row = existing_df.iloc[index]
                 vid = row['video_id']
-                completed_ids.append(vid)
+                team = row['team']
+                # FIX: Creating a composite key so overlapping videos don't skip the second team
+                completed_ids.append(f"{vid}_{team}")
             logging.info("Found a checkpoint file! Skipping the videos we already have.")
 
-        # going back to a purely anonymous api connection so we drop the burned cookie
         ytt_api = YouTubeTranscriptApi()
 
         for video in video_metadata:
             vid_id = video['video_id']
+            team_name = video.get('team', 'Unknown')
             
-            if (vid_id in completed_ids):
-                logging.info(f"Already downloaded {vid_id}, skipping it.")
+            # FIX: Check against the new composite key
+            composite_key = f"{vid_id}_{team_name}"
+            
+            if (composite_key in completed_ids):
+                logging.info(f"Already downloaded {vid_id} for the {team_name}, skipping it.")
                 continue
                 
-            logging.info(f"Checking video: {vid_id}")
+            logging.info(f"Checking video: {vid_id} for the {team_name}")
             
             try:
                 raw_transcript_list = ytt_api.fetch(vid_id)
@@ -80,11 +85,7 @@ class TranscriptIngestor:
                 
                 video_data = {}
                 video_data['video_id'] = vid_id
-                
-                if ('team' in video):
-                    video_data['team'] = video['team']
-                else:
-                    video_data['team'] = 'Unknown'
+                video_data['team'] = team_name
                     
                 if ('stage' in video):
                     video_data['stage'] = video['stage']
