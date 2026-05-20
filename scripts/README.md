@@ -1,18 +1,15 @@
 # Execution Scripts
 
-This module contains the object-oriented Python classes that drive the pipeline.
+This module contains the object-oriented Python classes and patch scripts that drive the pipeline.
 
-## 1. `data_ingestion.py` (`TranscriptIngestor`)
-Traditional stats are easy to scrape; raw audio is not. The `TranscriptIngestor` class interfaces with YouTube to extract closed captions. 
+## 1. Core Engine
+* **`data_ingestion.py` (`TranscriptIngestor`):** Interfaces with YouTube to extract closed captions. Implements a resilient checkpointing system (`.ingestion_checkpoint`) to prevent duplicate API calls and handle YouTube's rate-limiting.
+* **`sentiment_engine.py` (`SentimentEngine`):** Initializes the Hugging Face `roberta-base-go_emotions` pipeline. **Crucial Optimization:** Transcripts are hardcapped at 2500 characters. This prevents context window overflow and ensures the model isolates the player's primary emotional state without getting noisy signals from long media questions.
+* **`visualization.py` (`EmotionVisualizer`):** Maps emotional trajectories. Includes a string parsing loop to clean messy categorical data (e.g., converting "Reg Season - Magic" to "Regular Season (Opp: Magic)") for readable X-axis plotting.
+* **`predictor.py` (`PlayoffPredictor`):** The ML Inference engine. Loads the `.pkl` Random Forest model, aggregates feature vectors via `mean()` pooling, and extracts probabilities. Includes defensive fallback logic to use raw Confidence scores if the model encounters single-class data errors.
 
-**The Spurs Dilemma:** A significant engineering challenge occurred during ingestion. While most NBA teams provide auto-captions, the San Antonio Spurs media channels aggressively disable them. Because a core constraint of this project was keeping the compute cost low and the architecture lean, I engineered a lightweight patch to extract the raw audio stream via `yt-dlp` and transcribe it locally, bypassing the need for expensive third-party transcription APIs.
+## 2. Hardened Edge-Case Patches
+Data pipelines are rarely perfect. These scripts were engineered to handle specific architectural failures and edge cases without bloating the core engine.
 
-## 2. `sentiment_engine.py` (`SentimentEngine`)
-The NLP Feature Extractor. It initializes the Hugging Face `roberta-base-go_emotions` pipeline locally. 
-* **The Truncation Strategy:** Transcripts are hardcapped at 2500 characters. This prevents context window overflow and ensures the model scores the immediate, raw emotional response of the player/coach, filtering out media noise.
-
-## 3. `visualization.py` (`EmotionVisualizer`)
-Data translation and visual mapping. Includes a custom string parsing loop to clean messy regular season data identifiers for readable X-axis plotting.
-
-## 4. `predictor.py` (`PlayoffPredictor`)
-The ML Inference engine. It loads the compiled `.pkl` Random Forest model, aggregates live team feature vectors via `mean()` pooling, and extracts class probabilities.
+* **`whisper_patch.py` (The Spurs Dilemma):** While most NBA teams provide auto-captions, the San Antonio Spurs aggressively disable them. Because a core constraint of this project was sustainable, lean computing, I built a two-tier extraction patch. It first attempts to proxy the video through a lightweight Hugging Face Gradio Space API. If that times out, it cascades gracefully to a local `yt-dlp` audio extraction and processes the waveform through `faster-whisper`. It sanitizes the output and generates a CSV-safe patch file.
+* **`homogenize_csv.py` (Schema Alignment):** A utility script built to repair corrupted data ingestions. During a specific scrape, PyArrow typing failed due to a schema shift (thousands of characters of transcript data shifted into the integer `won_championship` column, rendering `transcript` as NaN). This script generates boolean masks to isolate the affected Spurs rows, shifts the textual data back to the correct column, and resets the target variable to `"0"`, saving the pipeline from catastrophic downstream type-errors.

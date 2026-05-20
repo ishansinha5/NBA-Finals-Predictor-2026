@@ -8,6 +8,14 @@ st.title("Live 2026 Head-to-Head Matchups")
 
 teams = ["Spurs", "Thunder", "Knicks", "Cavaliers"]
 
+# Exact map to your uploaded logo files
+logo_map = {
+    "Spurs": "San-Antonio-Spurs-Logo-1973.png",
+    "Thunder": "Oklahoma-City-Thunder-logo.png",
+    "Knicks": "New-York-Knicks-logo.png",
+    "Cavaliers": "Cleveland-Cavaliers-Logo-2004-2010.png"
+}
+
 col1, col2 = st.columns(2)
 with col1:
     team1 = st.selectbox("Team 1", teams, index=0)
@@ -16,15 +24,14 @@ with col2:
 
 st.markdown("---")
 
-# Dynamic 50/50 Image Split based on dropdown
+# Dynamic 50/50 Logo Split
 img_col1, img_col2 = st.columns(2)
 with img_col1:
-    # Ensure your images are named 'spurs_image.jpg', 'knicks_image.jpg', etc.
-    t1_img_path = f"streamlit_app/assets/{team1.lower()}_image.jpg"
+    t1_img_path = f"streamlit_app/assets/{logo_map[team1]}"
     if os.path.exists(t1_img_path):
         st.image(t1_img_path, use_container_width=True)
 with img_col2:
-    t2_img_path = f"streamlit_app/assets/{team2.lower()}_image.jpg"
+    t2_img_path = f"streamlit_app/assets/{logo_map[team2]}"
     if os.path.exists(t2_img_path):
         st.image(t2_img_path, use_container_width=True)
 
@@ -43,19 +50,19 @@ elif os.path.exists(txt_path_2):
 
 st.markdown("---")
 
-# Make comparison graph massive
+# Massive Comparison Graph
 st.subheader("Aggregate Emotional Profile")
-img_path_1 = f"streamlit_app/assets/{team1}_vs_{team2}_comparison.png"
-img_path_2 = f"streamlit_app/assets/{team2}_vs_{team1}_comparison.png"
+comp_path_1 = f"streamlit_app/assets/{team1}_vs_{team2}_comparison.png"
+comp_path_2 = f"streamlit_app/assets/{team2}_vs_{team1}_comparison.png"
 
-if os.path.exists(img_path_1):
-    st.image(Image.open(img_path_1), use_container_width=True)
-elif os.path.exists(img_path_2):
-    st.image(Image.open(img_path_2), use_container_width=True)
+if os.path.exists(comp_path_1):
+    st.image(Image.open(comp_path_1), use_container_width=True)
+elif os.path.exists(comp_path_2):
+    st.image(Image.open(comp_path_2), use_container_width=True)
 
 st.markdown("---")
 
-# Trajectories stacked vertically
+# Trajectories
 st.subheader("Chronological Playoff Trajectories")
 t1_traj = f"streamlit_app/assets/{team1}_sentiment_trajectory.png"
 t2_traj = f"streamlit_app/assets/{team2}_sentiment_trajectory.png"

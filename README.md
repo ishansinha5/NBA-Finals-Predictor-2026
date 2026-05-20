@@ -11,7 +11,7 @@ I built this Natural Language Processing (NLP) pipeline to branch out from tradi
 ![Knicks Trajectory](streamlit_app/assets/Knicks_sentiment_trajectory.png)
 
 ## Sustainable & Lean Engineering
-A massive priority for this build was architectural efficiency. Instead of brute-forcing transcripts through expensive cloud APIs or massive, energy-intensive LLMs, this pipeline runs entirely on sustainable, locally executed small-parameter models (like `roberta-base-go_emotions`). It is computationally lean, highly cost-effective, and proves you don't need a massive cloud cluster to run powerful NLP.
+A massive priority for this build was architectural efficiency. Instead of brute-forcing transcripts through massive cloud APIs or energy-intensive LLMs, this pipeline runs entirely on sustainable, locally executed small-parameter models (like `roberta-base-go_emotions`). It is computationally lean, highly cost-effective, and proves you don't need a massive cloud cluster to run powerful NLP.
 
 ## Core Architecture
 This operates on a 4-phase pipeline, transitioning unstructured audio/video data into a predictive probability matrix:
@@ -20,3 +20,9 @@ This operates on a 4-phase pipeline, transitioning unstructured audio/video data
 2. **Sentiment Extraction (NLP):** Processing text through a local Hugging Face transformer to generate 7-dimensional emotional feature vectors.
 3. **Data Visualization:** Generation of chronological emotion-state trajectories using Seaborn and Matplotlib.
 4. **Machine Learning Inference:** A Random Forest Classifier trained on historical 2024/2025 playoff data to identify "Championship Mindsets" and predict series winners.
+
+## How to Repurpose This Pipeline
+This architecture is sport and domain-agnostic. To repurpose this pipeline for the NFL, Premier League, or even political debates:
+1. **Swap the Manifest:** Replace `2025-2026_playoff_vids.json` with a list of YouTube UUIDs relevant to your domain.
+2. **Retrain the Model:** Provide a `raw_historical.csv` with known target variables (0 or 1) so the Random Forest can learn the specific emotional baseline of a "winner" in your chosen domain.
+3. **Run `main.py`:** The pipeline will seamlessly ingest, score, and predict against your new historical baseline.
