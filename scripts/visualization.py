@@ -19,19 +19,31 @@ class EmotionVisualizer:
     def plot_time_series(self, df, team_name):
         logging.info(f"Making the graph for the {team_name}...")
         
-        # I want the graph to look clean, so I am using seaborn's darkgrid style
         sns.set_style("darkgrid")
         plt.figure(figsize=(12, 8))
-        team_df = df[df['team'] == team_name]
-        
-        # Error handling for if we don't have data for the team
-        team_df = team_df[~team_df['stage'].str.contains("Reg Season", na=False)]
+        team_df = df[df['team'] == team_name].copy() 
         
         if (team_df.empty == True):
             logging.warning(f"No data found for {team_name}, skipping this graph.")
             return False
             
-        stages = team_df['stage']
+        # --- NEW CODE: Extract opponent name and reformat the string ---
+        clean_stages = []
+        for stage in team_df['stage']:
+            if "Reg Season" in stage:
+                try:
+                    # Parses "Reg Season - Magic (Opponent)" -> extracts "Magic"
+                    opp_name = stage.split('-')[1].split('(')[0].strip()
+                    clean_stages.append(f"Regular Season (Opp: {opp_name})")
+                except Exception:
+                    # Fallback just in case a string is formatted weirdly
+                    clean_stages.append("Regular Season")
+            else:
+                clean_stages.append(stage)
+                
+        team_df['clean_stage'] = clean_stages
+        
+        stages = team_df['clean_stage']
         
         # Plotting each of our 7 emotions as a separate line
         plt.plot(stages, team_df['confidence'], label='Confidence', marker='o')
@@ -45,7 +57,7 @@ class EmotionVisualizer:
         plt.title(f"Emotional Trajectory of the {team_name} (2026 Playoffs)")
         plt.ylabel("Emotion Score (from RoBERTa)")
         
-        # Tilting the x-axis labels so they don't overlap now that we have 20+ games!
+        # Tilting the x-axis labels so they don't overlap
         plt.xticks(rotation=45, ha='right')
         
         plt.legend(title="Emotions", bbox_to_anchor=(1.05, 1), loc='upper left')
@@ -56,7 +68,6 @@ class EmotionVisualizer:
         
         logging.info(f"Saved the graph to {filepath}")
         return True
-
     # New function to compare the average emotions of two teams side-by-side
     def plot_finals_comparison_bar(self, df, team_winner, team_loser, matchup_name):
         logging.info(f"Making the comparison graph for {matchup_name}...")
