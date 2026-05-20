@@ -2,6 +2,7 @@ import pandas as pd
 import logging
 import json
 import os
+import itertools
 
 from scripts.data_ingestion import TranscriptIngestor
 from scripts.sentiment_engine import SentimentEngine
@@ -50,31 +51,29 @@ def main():
     logging.info("--- Phase 3: Generating Live Visualizations ---")
     live_scored_df = pd.read_csv(scored_csv_path)
     
-    # Initialize your existing visualizer
     visualizer = EmotionVisualizer(output_dir="./output/live_2026/")
-    
-    # Generate individual team trajectories
     teams = ["Spurs", "Thunder", "Knicks", "Cavaliers"]
+    
+    # 1. Generate individual team trajectories
     for team in teams:
-        # Pass the full df; plot_time_series filters it internally
         visualizer.plot_time_series(live_scored_df, team_name=team)
         
-    # Generate head-to-head comparisons
-    visualizer.plot_finals_comparison_bar(live_scored_df, "Spurs", "Thunder", "Spurs vs Thunder WCF")
-    visualizer.plot_finals_comparison_bar(live_scored_df, "Knicks", "Cavaliers", "Knicks vs Cavaliers ECF")
+    # 2. Generate ALL 6 possible head-to-head comparisons
+    matchups = list(itertools.combinations(teams, 2))
+    for t1, t2 in matchups:
+        visualizer.plot_finals_comparison_bar(live_scored_df, t1, t2, f"{t1} vs {t2}")
     
-    logging.info("Phase 3 Complete! Visualizations saved to /output/live_2026/")
+    logging.info("Phase 3 Complete! All visualization combinations saved.")
+
     # --- Phase 4: Matchup Inference ---
     logging.info("--- Phase 4: Matchup Inference ---")
     predictor = PlayoffPredictor(model_dir="./models/")
     
-    # Predict Conference Finals
-    wcf_winner = predictor.predict_matchup("Spurs", "Thunder", scored_csv_path)
-    ecf_winner = predictor.predict_matchup("Knicks", "Cavaliers", scored_csv_path)
+    # Predict every possible combination and output text files
+    for t1, t2 in matchups:
+        predictor.predict_matchup(t1, t2, scored_csv_path)
     
-    # Predict NBA Finals
-    champion = predictor.predict_matchup(wcf_winner, ecf_winner, scored_csv_path)
-    logging.info(f"The 2026 Predicted NBA Champion is: {champion}!")
+    logging.info("Phase 4 Complete! All prediction text files generated.")
 
 if __name__ == "__main__":
     main()
