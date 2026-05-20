@@ -101,22 +101,32 @@ class PlayoffPredictor:
     def predict_matchup(self, team1, team2, live_csv_path, output_dir="./output/predictions/"):
         import os
         import pandas as pd
+        import joblib
         import logging
         
         os.makedirs(output_dir, exist_ok=True)
-        df = pd.read_csv(live_csv_path)
         
-        # Extract features for both teams
+        # 1. Foolproof Model Loading
+        model_path = os.path.join(self.model_dir, "playoff_rf_model.pkl")
+        if not hasattr(self, 'model'):
+            if os.path.exists(model_path):
+                self.model = joblib.load(model_path)
+            else:
+                logging.error(f"Cannot find trained model at {model_path}")
+                return None
+
+        # 2. Extract Data
+        df = pd.read_csv(live_csv_path)
         features = ['confidence', 'content', 'neutrality', 'frustration', 'upset', 'anxiety', 'surprise']
         
         t1_data = df[df['team'] == team1][features].mean()
         t2_data = df[df['team'] == team2][features].mean()
         
-        # Predict using the loaded Random Forest (.predict_proba gives percentages)
-        t1_prob = self.model.predict_proba([t1_data])[0][1] # Probability of Championship Mindset (Class 1)
+        # 3. Predict using the Random Forest
+        t1_prob = self.model.predict_proba([t1_data])[0][1] 
         t2_prob = self.model.predict_proba([t2_data])[0][1]
         
-        # Determine Winner
+        # 4. Determine Winner
         if t1_prob > t2_prob:
             winner, loser = team1, team2
             win_prob, lose_prob = t1_prob, t2_prob
@@ -126,10 +136,9 @@ class PlayoffPredictor:
             win_prob, lose_prob = t2_prob, t1_prob
             diffs = t2_data - t1_data
             
-        # Top 3 Emotional Differentiators
         top_diffs = diffs.sort_values(ascending=False).head(3)
         
-        # Generate Text Summary
+        # 5. Generate Text Summary
         summary = (
             f"PREDICTED WINNER: {winner}\n"
             f"CHAMPIONSHIP MINDSET CONFIDENCE: {win_prob * 100:.1f}%\n"
@@ -141,7 +150,7 @@ class PlayoffPredictor:
             
         summary += f"\nANALYSIS: The {winner} project a much stronger championship psychology, driven primarily by elevated {top_diffs.index[0]}."
         
-        # Save to TXT
+        # 6. Save to TXT
         filepath = os.path.join(output_dir, f"{team1}_vs_{team2}.txt")
         with open(filepath, "w") as f:
             f.write(summary)

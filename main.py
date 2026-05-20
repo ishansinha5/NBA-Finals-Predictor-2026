@@ -69,6 +69,9 @@ def main():
     logging.info("--- Phase 4: Matchup Inference ---")
     predictor = PlayoffPredictor(model_dir="./models/")
     
+    # LOAD THE MODEL INTO MEMORY FIRST
+    predictor.load_model()
+    
     # Predict every possible combination and output text files
     for t1, t2 in matchups:
         predictor.predict_matchup(t1, t2, scored_csv_path)

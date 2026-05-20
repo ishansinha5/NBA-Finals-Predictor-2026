@@ -79,8 +79,8 @@ class EmotionVisualizer:
         width = 0.35
         
         # Plotting the winner in green and the loser in red to easily tell them apart
-        plt.bar(x - width/2, t1_means, width=width, label=f"{team_winner} (Winner)", color='forestgreen')
-        plt.bar(x + width/2, t2_means, width=width, label=f"{team_loser} (Loser)", color='firebrick')
+        plt.bar(x - width/2, t1_means, width=width, label=f"{team_winner}", color='forestgreen')
+        plt.bar(x + width/2, t2_means, width=width, label=f"{team_loser}", color='firebrick')
         
         plt.title(f"{matchup_name} - Average Emotional Profile")
         plt.xlabel("Emotions")
