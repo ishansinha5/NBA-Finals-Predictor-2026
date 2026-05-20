@@ -56,15 +56,14 @@ def main():
     # Generate individual team trajectories
     teams = ["Spurs", "Thunder", "Knicks", "Cavaliers"]
     for team in teams:
-        team_data = live_scored_df[live_scored_df['team'] == team]
-        visualizer.plot_trajectory(team_data, team_name=team)
+        # Pass the full df; plot_time_series filters it internally
+        visualizer.plot_time_series(live_scored_df, team_name=team)
         
     # Generate head-to-head comparisons
-    visualizer.plot_comparison(live_scored_df, "Spurs", "Thunder", "Spurs_vs_Thunder_WCF.png")
-    visualizer.plot_comparison(live_scored_df, "Knicks", "Cavaliers", "Knicks_vs_Cavaliers_ECF.png")
+    visualizer.plot_finals_comparison_bar(live_scored_df, "Spurs", "Thunder", "Spurs vs Thunder WCF")
+    visualizer.plot_finals_comparison_bar(live_scored_df, "Knicks", "Cavaliers", "Knicks vs Cavaliers ECF")
     
     logging.info("Phase 3 Complete! Visualizations saved to /output/live_2026/")
-
     # --- Phase 4: Matchup Inference ---
     logging.info("--- Phase 4: Matchup Inference ---")
     predictor = PlayoffPredictor(model_dir="./models/")
