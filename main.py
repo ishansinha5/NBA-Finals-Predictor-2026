@@ -28,7 +28,7 @@ def main():
         return
     
     # Chunking strategy active for the live teams
-    target_team = "Cavaliers"  # Change this to the team you want to focus on for the live chunk
+    target_team = "Knicks"  # Change this to the team you want to focus on for the live chunk
     chunked_video_list = []
     
     for video in video_list:
