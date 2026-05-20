@@ -25,6 +25,8 @@ class EmotionVisualizer:
         team_df = df[df['team'] == team_name]
         
         # Error handling for if we don't have data for the team
+        team_df = team_df[~team_df['stage'].str.contains("Reg Season", na=False)]
+        
         if (team_df.empty == True):
             logging.warning(f"No data found for {team_name}, skipping this graph.")
             return False
