@@ -1,6 +1,6 @@
 # 2026 NBA Finals NLP Prediction Pipeline
 
-**Live Dashboard:** [Insert Streamlit Link Here]
+**Live Dashboard:** [[Insert Streamlit Link Here]](https://nba-finals-predictor-2026-izrjrrysjipdqjlrqbv5z7.streamlit.app/)
 
 ## The Question: Can we mathematically quantify a "Championship Mindset"?
 
