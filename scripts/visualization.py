@@ -40,8 +40,7 @@ class EmotionVisualizer:
         plt.plot(stages, team_df['anxiety'], label='Anxiety', marker='o')
         plt.plot(stages, team_df['surprise'], label='Surprise', marker='o')
         
-        plt.title(f"Emotional Trajectory of the {team_name} (Historical Playoffs)")
-        plt.xlabel("Playoff Stage")
+        plt.title(f"Emotional Trajectory of the {team_name} (2026 Playoffs)")
         plt.ylabel("Emotion Score (from RoBERTa)")
         
         # Tilting the x-axis labels so they don't overlap now that we have 20+ games!
