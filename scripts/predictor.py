@@ -97,6 +97,57 @@ class PlayoffPredictor:
         logging.info("The AI predicts these teams had championship-level press conferences:")
         for team in predicted_champs:
             logging.info(f"- {team}")
+    
+    def predict_matchup(self, team1, team2, live_csv_path, output_dir="./output/predictions/"):
+        import os
+        import pandas as pd
+        import logging
+        
+        os.makedirs(output_dir, exist_ok=True)
+        df = pd.read_csv(live_csv_path)
+        
+        # Extract features for both teams
+        features = ['confidence', 'content', 'neutrality', 'frustration', 'upset', 'anxiety', 'surprise']
+        
+        t1_data = df[df['team'] == team1][features].mean()
+        t2_data = df[df['team'] == team2][features].mean()
+        
+        # Predict using the loaded Random Forest (.predict_proba gives percentages)
+        t1_prob = self.model.predict_proba([t1_data])[0][1] # Probability of Championship Mindset (Class 1)
+        t2_prob = self.model.predict_proba([t2_data])[0][1]
+        
+        # Determine Winner
+        if t1_prob > t2_prob:
+            winner, loser = team1, team2
+            win_prob, lose_prob = t1_prob, t2_prob
+            diffs = t1_data - t2_data
+        else:
+            winner, loser = team2, team1
+            win_prob, lose_prob = t2_prob, t1_prob
+            diffs = t2_data - t1_data
+            
+        # Top 3 Emotional Differentiators
+        top_diffs = diffs.sort_values(ascending=False).head(3)
+        
+        # Generate Text Summary
+        summary = (
+            f"PREDICTED WINNER: {winner}\n"
+            f"CHAMPIONSHIP MINDSET CONFIDENCE: {win_prob * 100:.1f}%\n"
+            f"({loser} scored {lose_prob * 100:.1f}%)\n\n"
+            f"TOP 3 EMOTIONAL DRIVERS:\n"
+        )
+        for emotion, val in top_diffs.items():
+            summary += f"- {emotion.capitalize()} (+{val:.3f} margin over {loser})\n"
+            
+        summary += f"\nANALYSIS: The {winner} project a much stronger championship psychology, driven primarily by elevated {top_diffs.index[0]}."
+        
+        # Save to TXT
+        filepath = os.path.join(output_dir, f"{team1}_vs_{team2}.txt")
+        with open(filepath, "w") as f:
+            f.write(summary)
+            
+        logging.info(f"Prediction saved: {filepath}")
+        return winner
 
 def run_tests():
     logging.info("Running tests for the predictor...")
