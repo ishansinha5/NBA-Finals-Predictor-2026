@@ -1,17 +1,37 @@
 # 2026 NBA Finals NLP Prediction Pipeline
 
-**Live App:** [Insert your Streamlit Cloud link here]
+An end-to-end Natural Language Processing (NLP) and Machine Learning pipeline designed to predict NBA Championship outcomes by analyzing the emotional and psychological state of teams during post-game press conferences. 
 
-## Overview
-An end-to-end Machine Learning pipeline that predicts NBA playoff outcomes by analyzing the emotional state of teams during post-game press conferences. 
+**Live Dashboard:** [Insert Streamlit Link Here]
 
-## Architecture
-- **Data Ingestion (`scripts/data_ingestion.py`):** Automated scraping of YouTube closed captions. Includes a resilient checkpointing system and a Hugging Face `faster-whisper` patch for headless videos.
-- **NLP Scoring (`scripts/sentiment_engine.py`):** Processes transcripts through a local Hugging Face `SamLowe/roberta-base-go_emotions` model to generate feature vectors across 7 emotion categories. 
-- **Visualization (`scripts/visualization.py`):** Matplotlib/Seaborn module mapping emotional trajectories across playoff stages.
-- **ML Prediction (`scripts/predictor.py`):** A Random Forest Classifier trained on 2024/2025 historical data outputs championship probability metrics for the 2026 live run.
-- **Deployment (`streamlit_app/`):** Python-native Streamlit dashboard.
+## Core Architecture
 
-## Next Steps (V2)
-- **Dual-Engine Architecture:** Build an automated pipeline to handle live daily ingestion for ongoing series.
-- **Enhanced ML:** Expand the historical dataset to address the "Confidence Bias" discovered in the 2024/2025 training loop.
+This project operates on a 4-phase pipeline, transitioning unstructured audio/video data into a predictive probability matrix:
+
+1. **Automated Ingestion:** Headless scraping of YouTube closed captions via `youtube-transcript-api` and `faster-whisper`.
+2. **Sentiment Extraction (NLP):** Processing text through a locally hosted Hugging Face transformer (`SamLowe/roberta-base-go_emotions`) to generate 7-dimensional feature vectors.
+3. **Data Visualization:** Generation of chronological emotion-state trajectories using Seaborn and Matplotlib.
+4. **Machine Learning Inference:** A Random Forest Classifier trained on historical 2024/2025 playoff data to identify "Championship Mindsets" and predict series winners.
+
+## System Requirements
+
+- Python 3.10+
+- `ffmpeg` (required for Whisper audio processing)
+- Minimum 8GB RAM (16GB recommended for RoBERTa local execution)
+
+## Setup & Execution
+
+```bash
+# 1. Clone the repository
+git clone [https://github.com/ishansinha5/nba-finals-sentiment-analysis-2026.git](https://github.com/ishansinha5/nba-finals-sentiment-analysis-2026.git)
+cd nba-finals-sentiment-analysis-2026
+
+# 2. Establish Virtual Environment
+python3 -m venv venv
+source venv/bin/activate
+
+# 3. Install Dependencies
+pip install -r requirements.txt
+
+# 4. Execute the Pipeline
+python main.py
