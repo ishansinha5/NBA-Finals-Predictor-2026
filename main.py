@@ -12,53 +12,70 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def main():
     logging.info("Starting the 2026 NBA Finals NLP Pipeline...")
-    #logging.info("PHASE 1: Generating Live 2026 Testing Data")
+    logging.info("PHASE 1: Generating Live 2026 Testing Data")
     
-    # Pointing to the new JSON file we just created
-    #manifest_path = "./data/2025-2026_playoff_vids.json"
-    #video_list = []
+    # Pointing to the new JSON file
+    manifest_path = "./data/2025-2026_playoff_vids.json"
+    video_list = []
     
-    #try:
-    #    json_file = open(manifest_path, 'r')
-    #    video_list = json.load(json_file)
-    #    json_file.close()
-    #    logging.info("Successfully loaded the LIVE video manifest from the data folder!")
-    #except Exception as e:
-    #    logging.error(f"Could not load the json file because of error: {e}")
-    #    return
+    try:
+        with open(manifest_path, 'r') as json_file:
+            video_list = json.load(json_file)
+        logging.info("Successfully loaded the LIVE video manifest from the data folder!")
+    except Exception as e:
+        logging.error(f"Could not load the json file because of error: {e}")
+        return
     
-    # Chunking strategy active for the live teams
-    #target_team = "Knicks"  # Change this to the team you want to focus on for the live chunk
-    #chunked_video_list = []
+    logging.info("--- Phase 1: Data Ingestion (Live) ---")
     
-    #for video in video_list:
-    #    if (video['team'] == target_team):
-    #        chunked_video_list.append(video)
-            
-    #logging.info(f"Chunking strategy active: Only processing {len(chunked_video_list)} videos for the {target_team}.")
+    # Global Run: Pass the entire video_list. Checkpointing will ignore the 211 we already have
+    ingestor = TranscriptIngestor(data_dir="./data/live_2026/")
+    raw_df = ingestor.fetch_transcripts(video_list, save_filename="raw_live_2026.csv")
     
-    #logging.info("--- Phase 1: Data Ingestion (Live) ---")
-    
-    # Saving to a brand new folder and file so we don't overwrite the historical data!
-    #ingestor = TranscriptIngestor(data_dir="./data/live_2026/")
-    #raw_df = ingestor.fetch_transcripts(chunked_video_list, save_filename="raw_live_2026.csv")
-    logging.info("Loading existing raw data from disk...")
-    raw_df = pd.read_csv("./data/live_2026/raw_live_2026.csv")
-    
-    if (raw_df.empty == True):
+    if raw_df.empty:
         logging.error("We didn't get any data! Stopping the pipeline.")
         return
         
-    logging.info("Data loaded. Proceeding to Phase 2 (Sentiment Analysis).") # Override to include all teams for the rest of the pipeline
-    # Phase 2, 3, and 4 are COMMENTED OUT for now
+    logging.info("Data loaded. Proceeding to Phase 2 (Sentiment Analysis).")
+    
+    # --- Phase 2: Sentiment Analysis ---
     engine = SentimentEngine()
     scored_df = engine.process_dataframe(raw_df)
-    scored_csv_path = os.path.join("./data/live_2026/", "scored_live_2026.csv")
+    
+    scored_csv_path = "./data/live_2026/scored_live_2026.csv"
     scored_df.to_csv(scored_csv_path, index=False)
-    predictor = PlayoffPredictor(model_dir="./models/")
-    predictor.train_model(scored_csv_path)
-    predictor.evaluate_model(scored_csv_path)
+    logging.info("Phase 2 Complete! Scored data saved.")
 
+    # --- Phase 3: Visualization Outputs ---
+    logging.info("--- Phase 3: Generating Live Visualizations ---")
+    live_scored_df = pd.read_csv(scored_csv_path)
+    
+    # Initialize your existing visualizer
+    visualizer = EmotionVisualizer(output_dir="./output/live_2026/")
+    
+    # Generate individual team trajectories
+    teams = ["Spurs", "Thunder", "Knicks", "Cavaliers"]
+    for team in teams:
+        team_data = live_scored_df[live_scored_df['team'] == team]
+        visualizer.plot_trajectory(team_data, team_name=team)
+        
+    # Generate head-to-head comparisons
+    visualizer.plot_comparison(live_scored_df, "Spurs", "Thunder", "Spurs_vs_Thunder_WCF.png")
+    visualizer.plot_comparison(live_scored_df, "Knicks", "Cavaliers", "Knicks_vs_Cavaliers_ECF.png")
+    
+    logging.info("Phase 3 Complete! Visualizations saved to /output/live_2026/")
+
+    # --- Phase 4: Matchup Inference ---
+    logging.info("--- Phase 4: Matchup Inference ---")
+    predictor = PlayoffPredictor(model_dir="./models/")
+    
+    # Predict Conference Finals
+    wcf_winner = predictor.predict_matchup("Spurs", "Thunder", scored_csv_path)
+    ecf_winner = predictor.predict_matchup("Knicks", "Cavaliers", scored_csv_path)
+    
+    # Predict NBA Finals
+    champion = predictor.predict_matchup(wcf_winner, ecf_winner, scored_csv_path)
+    logging.info(f"The 2026 Predicted NBA Champion is: {champion}!")
 
 if __name__ == "__main__":
     main()
