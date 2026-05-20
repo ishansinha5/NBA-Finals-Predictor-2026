@@ -16,7 +16,21 @@ with col2:
 
 st.markdown("---")
 
-# Prediction Text (Full width for better reading)
+# Dynamic 50/50 Image Split based on dropdown
+img_col1, img_col2 = st.columns(2)
+with img_col1:
+    # Ensure your images are named 'spurs_image.jpg', 'knicks_image.jpg', etc.
+    t1_img_path = f"streamlit_app/assets/{team1.lower()}_image.jpg"
+    if os.path.exists(t1_img_path):
+        st.image(t1_img_path, use_container_width=True)
+with img_col2:
+    t2_img_path = f"streamlit_app/assets/{team2.lower()}_image.jpg"
+    if os.path.exists(t2_img_path):
+        st.image(t2_img_path, use_container_width=True)
+
+st.markdown("---")
+
+# Prediction Text 
 txt_path_1 = f"streamlit_app/assets/{team1}_vs_{team2}.txt"
 txt_path_2 = f"streamlit_app/assets/{team2}_vs_{team1}.txt"
 
@@ -34,17 +48,14 @@ st.subheader("Aggregate Emotional Profile")
 img_path_1 = f"streamlit_app/assets/{team1}_vs_{team2}_comparison.png"
 img_path_2 = f"streamlit_app/assets/{team2}_vs_{team1}_comparison.png"
 
-try:
-    if os.path.exists(img_path_1):
-        st.image(Image.open(img_path_1), use_container_width=True)
-    elif os.path.exists(img_path_2):
-        st.image(Image.open(img_path_2), use_container_width=True)
-except Exception as e:
-    st.error("Error loading comparison graphic.")
+if os.path.exists(img_path_1):
+    st.image(Image.open(img_path_1), use_container_width=True)
+elif os.path.exists(img_path_2):
+    st.image(Image.open(img_path_2), use_container_width=True)
 
 st.markdown("---")
 
-# Trajectories stacked vertically for maximum size
+# Trajectories stacked vertically
 st.subheader("Chronological Playoff Trajectories")
 t1_traj = f"streamlit_app/assets/{team1}_sentiment_trajectory.png"
 t2_traj = f"streamlit_app/assets/{team2}_sentiment_trajectory.png"
