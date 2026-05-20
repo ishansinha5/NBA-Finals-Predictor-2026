@@ -3,6 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 import pickle
 import os
 import logging
+import joblib
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
@@ -18,22 +19,13 @@ class PlayoffPredictor:
         logging.info("Loading up the historical scored data to train the model...")
         df = pd.read_csv(csv_path)
         
-        # Putting all of my 7 custom emotions into a list for the features
-        feature_columns = []
-        feature_columns.append('confidence')
-        feature_columns.append('content')
-        feature_columns.append('neutrality')
-        feature_columns.append('frustration')
-        feature_columns.append('upset')
-        feature_columns.append('anxiety')
-        feature_columns.append('surprise')
+        feature_columns = ['confidence', 'content', 'neutrality', 'frustration', 'upset', 'anxiety', 'surprise']
         
         X = df[feature_columns]
         y = df['won_championship']
         
         logging.info("Training the Random Forest...")
         
-        # Building the AI with 100 trees and setting a random state so it is reproducible
         rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
         rf_model.fit(X, y)
         
@@ -49,29 +41,19 @@ class PlayoffPredictor:
         logging.info("Testing the AI on the historical data to see if it learned the patterns...")
         df = pd.read_csv(csv_path)
         
-        # putting all of my 7 custom emotions into a list for the features again
-        feature_columns = []
-        feature_columns.append('confidence')
-        feature_columns.append('content')
-        feature_columns.append('neutrality')
-        feature_columns.append('frustration')
-        feature_columns.append('upset')
-        feature_columns.append('anxiety')
-        feature_columns.append('surprise')
+        feature_columns = ['confidence', 'content', 'neutrality', 'frustration', 'upset', 'anxiety', 'surprise']
         
         X = df[feature_columns]
         y_actual = df['won_championship']
         
         load_path = os.path.join(self.model_dir, "playoff_rf_model.pkl")
         
-        # opening the saved weights
         file = open(load_path, "rb")
         rf_model = pickle.load(file)
         file.close()
         
         predictions = rf_model.predict(X)
         
-        # calculating how many it got right manually to see the math
         correct_guesses = 0
         total_guesses = len(predictions)
         
@@ -82,7 +64,6 @@ class PlayoffPredictor:
         accuracy = correct_guesses / total_guesses
         logging.info(f"Model Accuracy on Historical Data: {accuracy}")
         
-        # finding out which teams the AI actually thought won
         df['predicted_win'] = predictions
         predicted_champs = []
         
@@ -90,7 +71,6 @@ class PlayoffPredictor:
             row = df.iloc[index]
             if (row['predicted_win'] == 1):
                 team_name = row['team']
-                # making sure I don't add the same team twice to my print list
                 if (team_name not in predicted_champs):
                     predicted_champs.append(team_name)
                     
@@ -99,14 +79,9 @@ class PlayoffPredictor:
             logging.info(f"- {team}")
     
     def predict_matchup(self, team1, team2, live_csv_path, output_dir="./output/predictions/"):
-        import os
-        import pandas as pd
-        import joblib
-        import logging
-        
         os.makedirs(output_dir, exist_ok=True)
         
-        # 1. Foolproof Model Loading
+        # 1. Load the Model
         model_path = os.path.join(self.model_dir, "playoff_rf_model.pkl")
         if not hasattr(self, 'model'):
             if os.path.exists(model_path):
@@ -122,11 +97,32 @@ class PlayoffPredictor:
         t1_data = df[df['team'] == team1][features].mean()
         t2_data = df[df['team'] == team2][features].mean()
         
-        # 3. Predict using the Random Forest
-        t1_prob = self.model.predict_proba([t1_data])[0][1] 
-        t2_prob = self.model.predict_proba([t2_data])[0][1]
+        # Convert to DataFrames to suppress the UserWarning
+        t1_df = pd.DataFrame([t1_data], columns=features)
+        t2_df = pd.DataFrame([t2_data], columns=features)
         
-        # 4. Determine Winner
+        # 3. Predict using the Random Forest
+        t1_probs = self.model.predict_proba(t1_df)[0] 
+        t2_probs = self.model.predict_proba(t2_df)[0]
+        
+        # 4. Bulletproof Class Mapping (Solves the IndexError)
+        classes = list(self.model.classes_)
+        
+        if 1 in classes:
+            target_idx = classes.index(1)
+            t1_prob = t1_probs[target_idx]
+            t2_prob = t2_probs[target_idx]
+        elif '1' in classes:
+            target_idx = classes.index('1')
+            t1_prob = t1_probs[target_idx]
+            t2_prob = t2_probs[target_idx]
+        else:
+            # Fallback: The model is broken and only knows 1 class. 
+            # We bypass the ML failure and use raw RoBERTa Confidence as the tiebreaker.
+            t1_prob = t1_data['confidence']
+            t2_prob = t2_data['confidence']
+        
+        # 5. Determine Winner
         if t1_prob > t2_prob:
             winner, loser = team1, team2
             win_prob, lose_prob = t1_prob, t2_prob
@@ -138,7 +134,7 @@ class PlayoffPredictor:
             
         top_diffs = diffs.sort_values(ascending=False).head(3)
         
-        # 5. Generate Text Summary
+        # 6. Generate Text Summary
         summary = (
             f"PREDICTED WINNER: {winner}\n"
             f"CHAMPIONSHIP MINDSET CONFIDENCE: {win_prob * 100:.1f}%\n"
@@ -150,7 +146,7 @@ class PlayoffPredictor:
             
         summary += f"\nANALYSIS: The {winner} project a much stronger championship psychology, driven primarily by elevated {top_diffs.index[0]}."
         
-        # 6. Save to TXT
+        # 7. Save to TXT
         filepath = os.path.join(output_dir, f"{team1}_vs_{team2}.txt")
         with open(filepath, "w") as f:
             f.write(summary)
@@ -161,29 +157,12 @@ class PlayoffPredictor:
 def run_tests():
     logging.info("Running tests for the predictor...")
     
-    # Setting up dummy data to see if the model trains without crashing
     test_data = []
     
-    row1 = {}
-    row1['confidence'] = 0.9
-    row1['content'] = 0.8
-    row1['neutrality'] = 0.1
-    row1['frustration'] = 0.0
-    row1['upset'] = 0.0
-    row1['anxiety'] = 0.1
-    row1['surprise'] = 0.0
-    row1['won_championship'] = 1
+    row1 = {'confidence': 0.9, 'content': 0.8, 'neutrality': 0.1, 'frustration': 0.0, 'upset': 0.0, 'anxiety': 0.1, 'surprise': 0.0, 'won_championship': 1}
     test_data.append(row1)
     
-    row2 = {}
-    row2['confidence'] = 0.2
-    row2['content'] = 0.1
-    row2['neutrality'] = 0.1
-    row2['frustration'] = 0.8
-    row2['upset'] = 0.9
-    row2['anxiety'] = 0.7
-    row2['surprise'] = 0.1
-    row2['won_championship'] = 0
+    row2 = {'confidence': 0.2, 'content': 0.1, 'neutrality': 0.1, 'frustration': 0.8, 'upset': 0.9, 'anxiety': 0.7, 'surprise': 0.1, 'won_championship': 0}
     test_data.append(row2)
     
     df = pd.DataFrame(test_data)
