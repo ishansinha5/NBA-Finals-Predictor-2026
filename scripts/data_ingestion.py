@@ -4,130 +4,110 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import logging
 import time
 import random
+import requests
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 class TranscriptIngestor:
-    def __init__(self, data_dir="../data/raw/", min_words=150):
+    def __init__(self, data_dir="./data/raw/", min_words=150):
         self.data_dir = data_dir
         self.min_words = min_words
         
-        if (not os.path.exists(self.data_dir)):
+        if not os.path.exists(self.data_dir):
             os.makedirs(self.data_dir)
+            
+        # The Hugging Face Gradio endpoint for headless transcription
+        self.hf_endpoint = "https://rajesh1729-youtube-video-transcription-with-whisper.hf.space/run/predict"
+
+    def fetch_hf_whisper(self, video_id):
+        """Fallback method: Hits the remote Whisper model if YT captions are disabled."""
+        logging.info(f"  ↳ YT API failed for {video_id}. Routing to Hugging Face Whisper...")
+        url = f"https://www.youtube.com/watch?v={video_id}"
+        try:
+            response = requests.post(
+                self.hf_endpoint,
+                json={"data": [url]},
+                timeout=120
+            )
+            if response.status_code == 200:
+                result = response.json()
+                if "data" in result and len(result["data"]) > 0:
+                    logging.info(f"  ✓ HF Whisper succeeded for {video_id}.")
+                    return True, result["data"][0]
+        except Exception as e:
+            logging.error(f"  ✗ HF Whisper failed: {e}")
+        return False, ""
 
     def evaluate_transcript(self, transcript_list):
         full_text = ""
         for segment in transcript_list:
-            text_part = segment.text
-            full_text = full_text + text_part + " "
+            if isinstance(segment, dict) and 'text' in segment:
+                full_text += segment['text'] + " "
+            else:
+                # Handle cases where segment might be a raw string or different object
+                try:
+                    full_text += segment.text + " "
+                except AttributeError:
+                    full_text += str(segment) + " "
             
         words = full_text.split()
-        word_count = len(words)
-        
-        if (word_count < self.min_words):
+        if len(words) < self.min_words:
             return False, ""
-        else:
-            return True, full_text
+        return True, full_text
 
     def fetch_transcripts(self, video_metadata, save_filename="raw_historical.csv"):
         filepath = os.path.join(self.data_dir, save_filename)
         completed_ids = []
         
-        if (os.path.exists(filepath) == True):
+        # Resilient Checkpointing
+        if os.path.exists(filepath):
             existing_df = pd.read_csv(filepath)
-            for index in range(len(existing_df)):
-                row = existing_df.iloc[index]
-                vid = row['video_id']
-                team = row['team']
-                # FIX: Creating a composite key so overlapping videos don't skip the second team
-                completed_ids.append(f"{vid}_{team}")
-            logging.info("Found a checkpoint file! Skipping the videos we already have.")
-
-        ytt_api = YouTubeTranscriptApi()
-
+            if 'video_id' in existing_df.columns:
+                completed_ids = existing_df['video_id'].tolist()
+                logging.info(f"Found a checkpoint! Skipping the {len(completed_ids)} videos we already have.")
+            
         for video in video_metadata:
             vid_id = video['video_id']
-            team_name = video.get('team', 'Unknown')
             
-            # FIX: Check against the new composite key
-            composite_key = f"{vid_id}_{team_name}"
-            
-            if (composite_key in completed_ids):
-                logging.info(f"Already downloaded {vid_id} for the {team_name}, skipping it.")
+            if vid_id in completed_ids:
                 continue
                 
-            logging.info(f"Checking video: {vid_id} for the {team_name}")
+            logging.info(f"Attempting to pull: {vid_id} ({video['team']} - {video.get('role', 'aggregate')})")
+            
+            # The Architecture Pivot: Tier 1 (YT API) -> Tier 2 (Whisper)
+            success = False
+            full_text = ""
             
             try:
-                raw_transcript_list = ytt_api.fetch(vid_id)
+                # Tier 1: Standard extraction
+                raw_transcript = YouTubeTranscriptApi.get_transcript(vid_id)
+                success, full_text = self.evaluate_transcript(raw_transcript)
+            except Exception:
+                # Tier 2: The Whisper Fallback (The Green AI Hack)
+                success, full_text = self.fetch_hf_whisper(vid_id)
                 
-                start_time = 0.0
-                end_time = 999999.0
+            if success:
+                video_data = {
+                    'video_id': vid_id,
+                    'team': video['team'],
+                    'stage': video['stage'],
+                    'role': video.get('role', 'aggregate'), # Enforcing the new schema
+                    'won_championship': video.get('bracket_result', 0),
+                    'transcript': full_text.replace('\n', ' ')
+                }
                 
-                if ('start_time' in video):
-                    start_time = video['start_time']
-                    
-                if ('end_time' in video):
-                    end_time = video['end_time']
+                single_video_df = pd.DataFrame([video_data])
                 
-                filtered_transcript_list = []
-                for segment in raw_transcript_list:
-                    segment_start = segment.start
-                    if (segment_start >= start_time):
-                        if (segment_start <= end_time):
-                            filtered_transcript_list.append(segment)
-                
-                is_good, full_text = self.evaluate_transcript(filtered_transcript_list)
-                
-                if (is_good == False):
-                    logging.warning("Video too short or sliced too small, skipping it.")
-                    continue
-                
-                video_data = {}
-                video_data['video_id'] = vid_id
-                video_data['team'] = team_name
-                    
-                if ('stage' in video):
-                    video_data['stage'] = video['stage']
-                else:
-                    video_data['stage'] = 'Unknown'
-                    
-                if ('won_championship' in video):
-                    video_data['won_championship'] = video['won_championship']
-                else:
-                    video_data['won_championship'] = 0
-                    
-                clean_text = full_text.replace('\n', ' ')
-                video_data['transcript'] = clean_text
-                
-                video_data_list = []
-                video_data_list.append(video_data)
-                single_video_df = pd.DataFrame(video_data_list)
-                
-                if (os.path.exists(filepath) == True):
+                if os.path.exists(filepath):
                     single_video_df.to_csv(filepath, mode='a', header=False, index=False)
                 else:
                     single_video_df.to_csv(filepath, mode='w', header=True, index=False)
                     
-                logging.info("Successfully got a good transcript and saved it to the checkpoint!")
-                
-                sleep_time = random.uniform(3, 7)
-                logging.info(f"Sleeping for {sleep_time} seconds to avoid IP block...")
-                time.sleep(sleep_time)
+                logging.info(f"Saved {vid_id} to the checkpoint.")
+                time.sleep(random.uniform(2, 5))
+            else:
+                logging.error(f"Total failure for {vid_id}. Transcript too short or API blocked.")
 
-            except Exception as e:
-                logging.error(f"Failed to get video {vid_id} because of error: {e}")
-
-        if (os.path.exists(filepath) == True):
-            final_df = pd.read_csv(filepath)
-            return final_df
-        else:
-            return pd.DataFrame()
-
-    def save_to_csv(self, df, filename="raw_transcripts.csv"):
-        filepath = os.path.join(self.data_dir, filename)
-        df.to_csv(filepath, index=False)
-        logging.info(f"Saved the dataframe to {filepath}")
-
-if (__name__ == "__main__"):
-    pass
+        if os.path.exists(filepath):
+            return pd.read_csv(filepath)
+        return pd.DataFrame()
