@@ -416,7 +416,18 @@
     "video_id": "KwrvwzHiBsw",
     "team": "Heat",
     "stage": "R1G1",
-    "role": "aggregate",
+    "role": "teammate",
+    "start_time": 0,
+    "end_time": 231,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "KwrvwzHiBsw",
+    "team": "Heat",
+    "stage": "R1G1",
+    "role": "star",
+    "start_time": 232,
+    "end_time": 470,
     "bracket_result": 0
   },
   {
@@ -454,27 +465,6 @@
     "role": "teammate",
     "bracket_result": 0
   },
-  {
-    "video_id": "WS7fmv6Msw0",
-    "team": "Heat",
-    "stage": "R1G4",
-    "role": "coach",
-    "bracket_result": 0
-  },
-  {
-    "video_id": "QlJOfeUJtOg",
-    "team": "Heat",
-    "stage": "R1G4",
-    "role": "star",
-    "bracket_result": 0
-  },
-  {
-    "video_id": "RtuLrT9wBJY",
-    "team": "Heat",
-    "stage": "R1G4",
-    "role": "teammate",
-    "bracket_result": 0
-  }, 
   {
     "video_id": "IJU-Op59VYE",
     "team": "Cavaliers",
@@ -563,7 +553,45 @@
     "video_id": "p_fz4zuaebk",
     "team": "Pacers",
     "stage": "R3G1",
-    "role": "aggregate",
+    "role": "coach",
+    "start_time": 0,
+    "end_time": 327,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "p_fz4zuaebk",
+    "team": "Pacers",
+    "stage": "R3G1",
+    "role": "star",
+    "start_time": 328,
+    "end_time": 678,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "p_fz4zuaebk",
+    "team": "Pacers",
+    "stage": "R3G1",
+    "role": "teammate",
+    "start_time": 679,
+    "end_time": 923,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "p_fz4zuaebk",
+    "team": "Pacers",
+    "stage": "R3G1",
+    "role": "teammate",
+    "start_time": 924,
+    "end_time": 1180,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "lr9XK78gEiI",
+    "team": "Pacers",
+    "stage": "R3G2",
+    "role": "coach",
+    "start_time": 0,
+    "end_time": 524,
     "bracket_result": 0
   },
   {
@@ -571,6 +599,26 @@
     "team": "Pacers",
     "stage": "R3G2",
     "role": "aggregate",
+    "start_time": 525,
+    "end_time": 1044,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "lr9XK78gEiI",
+    "team": "Pacers",
+    "stage": "R3G2",
+    "role": "teammate",
+    "start_time": 1045,
+    "end_time": 1316,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "2Zj-VQh15ak",
+    "team": "Pacers",
+    "stage": "R3G3",
+    "role": "coach",
+    "start_time": 0,
+    "end_time": 284,
     "bracket_result": 0
   },
   {
@@ -578,13 +626,53 @@
     "team": "Pacers",
     "stage": "R3G3",
     "role": "aggregate",
+    "start_time": 285,
+    "end_time": 674,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "2Zj-VQh15ak",
+    "team": "Pacers",
+    "stage": "R3G3",
+    "role": "teammate",
+    "start_time": 675,
+    "end_time": 1073,
     "bracket_result": 0
   },
   {
     "video_id": "teEs_Thep1E",
     "team": "Mavericks",
     "stage": "R4G1",
-    "role": "aggregate",
+    "role": "coach",
+    "start_time": 0,
+    "end_time": 393,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "teEs_Thep1E",
+    "team": "Mavericks",
+    "stage": "R4G1",
+    "role": "star",
+    "start_time": 394,
+    "end_time": 689,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "teEs_Thep1E",
+    "team": "Mavericks",
+    "stage": "R4G1",
+    "role": "teammate",
+    "start_time": 690,
+    "end_time": 922,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "teEs_Thep1E",
+    "team": "Mavericks",
+    "stage": "R4G1",
+    "role": "teammate",
+    "start_time": 923,
+    "end_time": 1608,
     "bracket_result": 0
   },
   {
@@ -612,14 +700,54 @@
     "video_id": "SZOzPOUPO9g",
     "team": "Mavericks",
     "stage": "R4G3",
-    "role": "aggregate",
+    "role": "coach",
+    "start_time": 0,
+    "end_time": 479,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "SZOzPOUPO9g",
+    "team": "Mavericks",
+    "stage": "R4G3",
+    "role": "star",
+    "start_time": 798,
+    "end_time": 1152,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "SZOzPOUPO9g",
+    "team": "Mavericks",
+    "stage": "R4G3",
+    "role": "teammate",
+    "start_time": 1153,
+    "end_time": 1705,
     "bracket_result": 0
   },
   {
     "video_id": "lu0i7zdg5V4",
     "team": "Mavericks",
     "stage": "R4G4",
-    "role": "aggregate",
+    "role": "coach",
+    "start_time": 0,
+    "end_time": 507,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "lu0i7zdg5V4",
+    "team": "Mavericks",
+    "stage": "R4G4",
+    "role": "star",
+    "start_time": 508,
+    "end_time": 864,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "lu0i7zdg5V4",
+    "team": "Mavericks",
+    "stage": "R4G4",
+    "role": "teammate",
+    "start_time": 1556,
+    "end_time": 2204,
     "bracket_result": 0
   }
 ]
