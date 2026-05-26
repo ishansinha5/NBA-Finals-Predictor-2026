@@ -34,8 +34,11 @@ class TranscriptIngestor:
                 if "data" in result and len(result["data"]) > 0:
                     logging.info(f"  ✓ HF Whisper succeeded for {video_id}.")
                     return True, result["data"][0]
+            else:
+                # NEW LOGGING: Reveal the silent HTTP error
+                logging.error(f"  ✗ HF Whisper HTTP Error: {response.status_code} - {response.text[:100]}")
         except Exception as e:
-            logging.error(f"  ✗ HF Whisper failed: {e}")
+            logging.error(f"  ✗ HF Whisper Request failed: {e}")
         return False, ""
 
     def evaluate_transcript(self, transcript_list):
@@ -44,7 +47,6 @@ class TranscriptIngestor:
             if isinstance(segment, dict) and 'text' in segment:
                 full_text += segment['text'] + " "
             else:
-                # Handle cases where segment might be a raw string or different object
                 try:
                     full_text += segment.text + " "
                 except AttributeError:
@@ -59,7 +61,6 @@ class TranscriptIngestor:
         filepath = os.path.join(self.data_dir, save_filename)
         completed_ids = []
         
-        # Resilient Checkpointing
         if os.path.exists(filepath):
             existing_df = pd.read_csv(filepath)
             if 'video_id' in existing_df.columns:
@@ -74,16 +75,22 @@ class TranscriptIngestor:
                 
             logging.info(f"Attempting to pull: {vid_id} ({video['team']} - {video.get('role', 'aggregate')})")
             
-            # The Architecture Pivot: Tier 1 (YT API) -> Tier 2 (Whisper)
             success = False
             full_text = ""
             
             try:
-                # Tier 1: Standard extraction
-                raw_transcript = YouTubeTranscriptApi.get_transcript(vid_id)
+                # Tier 1: The V2 Granular Extraction
+                # Bypassing the missing get_transcript attribute by fetching the list object
+                transcript_list = YouTubeTranscriptApi.list_transcripts(vid_id)
+                
+                # Explicitly search for English captions (prioritizes manual, falls back to auto-generated)
+                raw_transcript = transcript_list.find_transcript(['en', 'en-US']).fetch()
+                
                 success, full_text = self.evaluate_transcript(raw_transcript)
-            except Exception:
-                # Tier 2: The Whisper Fallback (The Green AI Hack)
+                
+            except Exception as e:
+                # Exposing the specific YouTube error so we aren't flying blind
+                logging.warning(f"  ! Tier 1 YT API Error for {vid_id}: {str(e)[:150]}")
                 success, full_text = self.fetch_hf_whisper(vid_id)
                 
             if success:
@@ -91,7 +98,7 @@ class TranscriptIngestor:
                     'video_id': vid_id,
                     'team': video['team'],
                     'stage': video['stage'],
-                    'role': video.get('role', 'aggregate'), # Enforcing the new schema
+                    'role': video.get('role', 'aggregate'),
                     'won_championship': video.get('bracket_result', 0),
                     'transcript': full_text.replace('\n', ' ')
                 }

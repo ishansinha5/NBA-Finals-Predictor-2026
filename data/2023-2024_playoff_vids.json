@@ -474,5 +474,152 @@
     "stage": "R1G4",
     "role": "teammate",
     "bracket_result": 0
+  }, 
+  {
+    "video_id": "IJU-Op59VYE",
+    "team": "Cavaliers",
+    "stage": "R2G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "L1AIwm7CD1g",
+    "team": "Cavaliers",
+    "stage": "R2G1",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "vRkWxS7uCc4",
+    "team": "Cavaliers",
+    "stage": "R2G1",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "2_irJPsEvOI",
+    "team": "Cavaliers",
+    "stage": "R2G2",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "6APEN2sIOzA",
+    "team": "Cavaliers",
+    "stage": "R2G2",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "XlVBFYd7RTU",
+    "team": "Cavaliers",
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "s7v-QiXbuEg",
+    "team": "Cavaliers",
+    "stage": "R2G3",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "rl9N_cu0tDo",
+    "team": "Cavaliers",
+    "stage": "R2G3",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "es09syjGAa4",
+    "team": "Cavaliers",
+    "stage": "R2G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "C_IWik5LI5g",
+    "team": "Cavaliers",
+    "stage": "R2G4",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "R4F-xOUSLC8",
+    "team": "Cavaliers",
+    "stage": "R2G4",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "oYufGH3wfyE",
+    "team": "Cavaliers",
+    "stage": "R2G4",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "p_fz4zuaebk",
+    "team": "Pacers",
+    "stage": "R3G1",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "lr9XK78gEiI",
+    "team": "Pacers",
+    "stage": "R3G2",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "2Zj-VQh15ak",
+    "team": "Pacers",
+    "stage": "R3G3",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "teEs_Thep1E",
+    "team": "Mavericks",
+    "stage": "R4G1",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "6RRKvmIwHxE",
+    "team": "Mavericks",
+    "stage": "R4G2",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "HSpgfLP9Pwc",
+    "team": "Mavericks",
+    "stage": "R4G2",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "ul-hkKfsWkU",
+    "team": "Mavericks",
+    "stage": "R4G2",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "SZOzPOUPO9g",
+    "team": "Mavericks",
+    "stage": "R4G3",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "lu0i7zdg5V4",
+    "team": "Mavericks",
+    "stage": "R4G4",
+    "role": "aggregate",
+    "bracket_result": 0
   }
 ]
