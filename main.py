@@ -17,7 +17,7 @@ def run_historical_pipeline(json_path, output_raw_name, output_scored_name):
     logging.info(f"Loaded {len(video_metadata)} videos from {json_path}")
 
     # 2. Ingest Transcripts (Tier 1: YT API, Tier 2: Whisper Fallback)
-    ingestor = TranscriptIngestor(data_dir="./output/historical/")
+    ingestor = TranscriptIngestor(data_dir="./data/historical/")
     raw_df = ingestor.fetch_transcripts(video_metadata, save_filename=output_raw_name)
 
     if raw_df.empty:
@@ -31,7 +31,7 @@ def run_historical_pipeline(json_path, output_raw_name, output_scored_name):
     scored_df = engine.process_dataframe(raw_df)
 
     # 4. Save the final scored dataset
-    output_dir = "./output/historical/"
+    output_dir = "./data/historical/"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 

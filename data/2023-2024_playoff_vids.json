@@ -749,5 +749,321 @@
     "start_time": 1556,
     "end_time": 2204,
     "bracket_result": 0
+  }, 
+  {
+    "video_id": "6V4Rl5f48As",
+    "team": "Mavericks",
+    "stage": "R1G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "Fl_HDdm758c",
+    "team": "Mavericks",
+    "stage": "R1G1",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "04KNP4yNWOQ",
+    "team": "Mavericks",
+    "stage": "R1G1",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "KBST2quk1kc",
+    "team": "Mavericks",
+    "stage": "R1G2",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "BMnFw_iVwP8",
+    "team": "Mavericks",
+    "stage": "R1G2",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "USI0DRP-t9I",
+    "team": "Mavericks",
+    "stage": "R1G2",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "IWdjsUw2RpU",
+    "team": "Mavericks",
+    "stage": "R1G3",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "-MvAheckn38",
+    "team": "Mavericks",
+    "stage": "R1G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "G06eU3RlmwA",
+    "team": "Mavericks",
+    "stage": "R1G3",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "7zpq1ycRfyI",
+    "team": "Mavericks",
+    "stage": "R1G4",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "rrW5VDM9cBc",
+    "team": "Mavericks",
+    "stage": "R1G4",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "nR8Hkl6klvs",
+    "team": "Mavericks",
+    "stage": "R1G4",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "-Qm7t3j_Ot8",
+    "team": "Mavericks",
+    "stage": "R1G5",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "eLbPK8b9WuU",
+    "team": "Mavericks",
+    "stage": "R1G5",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "bFljDyoqpD8",
+    "team": "Mavericks",
+    "stage": "R1G5",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "uSmTUoG8hSA",
+    "team": "Mavericks",
+    "stage": "R2G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "S1pl8MTPebM",
+    "team": "Mavericks",
+    "stage": "R2G1",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "vNkU5jgK2y4",
+    "team": "Mavericks",
+    "stage": "R2G1",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "niqJaAKxLB8",
+    "team": "Mavericks",
+    "stage": "R2G2",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "UgaC0AKyDJA",
+    "team": "Mavericks",
+    "stage": "R2G2",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "N3btNowuyHc",
+    "team": "Mavericks",
+    "stage": "R2G2",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "NHBWPe1fWbE",
+    "team": "Mavericks",
+    "stage": "R2G2",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "1mElkjpkHQE",
+    "team": "Mavericks",
+    "stage": "R2G3",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "f6QDL3Anlc0",
+    "team": "Mavericks",
+    "stage": "R2G3",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "GA_mQR9mIqM",
+    "team": "Mavericks",
+    "stage": "R2G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "jltv1E4BolQ",
+    "team": "Mavericks",
+    "stage": "R2G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "9Ez_VZ04L_Y",
+    "team": "Mavericks",
+    "stage": "R2G4",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "kHPvN_vTBY8",
+    "team": "Mavericks",
+    "stage": "R2G4",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "GOn1MC30l5E",
+    "team": "Mavericks",
+    "stage": "R2G4",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "klBBGWp5rL0",
+    "team": "Mavericks",
+    "stage": "R2G4",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "z71huQ3TDao",
+    "team": "Mavericks",
+    "stage": "R2G5",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "rJ2J54yhovA",
+    "team": "Mavericks",
+    "stage": "R2G5",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "mLPkn6O5tAE",
+    "team": "Mavericks",
+    "stage": "R2G5",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "MJMSrnoVdD4",
+    "team": "Mavericks",
+    "stage": "R3G1",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "796CCeZBVYc",
+    "team": "Mavericks",
+    "stage": "R3G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "Dr2VszEjNNo",
+    "team": "Mavericks",
+    "stage": "R3G1",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "SmFlFIsvBD4",
+    "team": "Mavericks",
+    "stage": "R3G2",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "1mvVEW8JB0U",
+    "team": "Mavericks",
+    "stage": "R3G2",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "TggmPatB73U",
+    "team": "Mavericks",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "E7Ydj4ys-hI",
+    "team": "Mavericks",
+    "stage": "R3G3",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "FWuoLJkzw7E",
+    "team": "Mavericks",
+    "stage": "R3G3",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "BQU9nNNsI6k",
+    "team": "Mavericks",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "k1704a0LGdU",
+    "team": "Mavericks",
+    "stage": "R3G4",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "CpvsiFcIGRU",
+    "team": "Mavericks",
+    "stage": "R3G4",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "qnN2DSk597M",
+    "team": "Mavericks",
+    "stage": "R3G4",
+    "role": "teammate",
+    "bracket_result": 0
   }
 ]
+
