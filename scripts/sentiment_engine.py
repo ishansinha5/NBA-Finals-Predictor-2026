@@ -11,72 +11,73 @@ class SentimentEngine:
         self.classifier = pipeline("text-classification", model=model_name, top_k=None)
         
     # Scoring function that expands 28 go_emotions into our 7 portfolio categories
+    # Scoring function that expands 28 go_emotions into our 7 portfolio categories
+    # V2 UPGRADE: Implements 400-word chunking to process 100% of the transcript
     def score_text(self, text):
-        short_text = text[:512] 
-        results = self.classifier(short_text) 
-        emotions = results[0]
+        words = text.split()
+        max_words_per_chunk = 400 
         
-        confidence_score = 0.0
-        content_score = 0.0
-        neutral_score = 0.0
-        frustrated_score = 0.0
-        upset_score = 0.0
-        anxiety_score = 0.0
-        surprise_score = 0.0
-        
-        # Looping through all 28 scores from the AI
-        for emotion in emotions:
-            label = emotion['label']
-            score = emotion['score']
+        # Defensive check: if the transcript is empty, return zeros
+        if not words:
+            return 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
             
-            # Confidence
-            if (label == 'optimism'):
-                confidence_score = confidence_score + score
-            elif (label == 'pride'):
-                confidence_score = confidence_score + score
-            elif (label == 'approval'):
-                confidence_score = confidence_score + score
+        # Generator to split the text into 400-word chunks
+        chunks = [' '.join(words[i:i + max_words_per_chunk]) for i in range(0, len(words), max_words_per_chunk)]
+        
+        # Accumulators for the whole video
+        total_confidence = 0.0
+        total_content = 0.0
+        total_neutral = 0.0
+        total_frustrated = 0.0
+        total_upset = 0.0
+        total_anxiety = 0.0
+        total_surprise = 0.0
+        
+        num_chunks = len(chunks)
+        
+        for chunk in chunks:
+            # Pass the chunk to RoBERTa. We truncate at 2500 chars just as a hard safety net 
+            # against massive unspaced strings, but the 400-word limit protects the 512 token ceiling.
+            results = self.classifier(chunk[:2500]) 
+            emotions = results[0]
+            
+            # Looping through all 28 scores from the AI for THIS specific chunk
+            for emotion in emotions:
+                label = emotion['label']
+                score = emotion['score']
                 
-            # Contentment
-            elif (label == 'joy'):
-                content_score = content_score + score
-            elif (label == 'relief'):
-                content_score = content_score + score
-            elif (label == 'gratitude'):
-                content_score = content_score + score
-                
-            # Neutral
-            elif (label == 'neutral'):
-                neutral_score = neutral_score + score
-                
-            # Frustration
-            elif (label == 'annoyance'):
-                frustrated_score = frustrated_score + score
-            elif (label == 'disapproval'):
-                frustrated_score = frustrated_score + score
-                
-            # Upset
-            elif (label == 'anger'):
-                upset_score = upset_score + score
-            elif (label == 'sadness'):
-                upset_score = upset_score + score
-            elif (label == 'disappointment'):
-                upset_score = upset_score + score
-                
-            # Anxiety
-            elif (label == 'nervousness'):
-                anxiety_score = anxiety_score + score
-            elif (label == 'fear'):
-                anxiety_score = anxiety_score + score
-                
-            # Surprise
-            elif (label == 'surprise'):
-                surprise_score = surprise_score + score
-            elif (label == 'confusion'):
-                surprise_score = surprise_score + score
-                
-        return confidence_score, content_score, neutral_score, frustrated_score, upset_score, anxiety_score, surprise_score
-
+                # Confidence
+                if label in ['optimism', 'pride', 'approval']:
+                    total_confidence += score
+                # Contentment
+                elif label in ['joy', 'relief', 'gratitude']:
+                    total_content += score
+                # Neutral
+                elif label == 'neutral':
+                    total_neutral += score
+                # Frustration
+                elif label in ['annoyance', 'disapproval']:
+                    total_frustrated += score
+                # Upset
+                elif label in ['anger', 'sadness', 'disappointment']:
+                    total_upset += score
+                # Anxiety
+                elif label in ['nervousness', 'fear']:
+                    total_anxiety += score
+                # Surprise
+                elif label in ['surprise', 'confusion']:
+                    total_surprise += score
+                    
+        # Return the mathematical average across all chunks in the video
+        return (
+            total_confidence / num_chunks,
+            total_content / num_chunks,
+            total_neutral / num_chunks,
+            total_frustrated / num_chunks,
+            total_upset / num_chunks,
+            total_anxiety / num_chunks,
+            total_surprise / num_chunks
+        )
     # Iterating through the dataframe to score every single row
     def process_dataframe(self, df):
         confidence_list = []
