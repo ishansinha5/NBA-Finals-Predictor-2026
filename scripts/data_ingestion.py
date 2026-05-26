@@ -9,7 +9,7 @@ import requests
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 class TranscriptIngestor:
-    def __init__(self, data_dir="./data/raw/", min_words=150):
+    def __init__(self, data_dir="./output/historical/", min_words=150):
         self.data_dir = data_dir
         self.min_words = min_words
         
@@ -21,7 +21,7 @@ class TranscriptIngestor:
 
     def fetch_hf_whisper(self, video_id):
         """Fallback method: Hits the remote Whisper model if YT captions are disabled."""
-        logging.info(f"  ↳ YT API failed for {video_id}. Routing to Hugging Face Whisper...")
+        logging.info(f"  ↳ Routing to Hugging Face Whisper...")
         url = f"https://www.youtube.com/watch?v={video_id}"
         try:
             response = requests.post(
@@ -35,22 +35,28 @@ class TranscriptIngestor:
                     logging.info(f"  ✓ HF Whisper succeeded for {video_id}.")
                     return True, result["data"][0]
             else:
-                # NEW LOGGING: Reveal the silent HTTP error
                 logging.error(f"  ✗ HF Whisper HTTP Error: {response.status_code} - {response.text[:100]}")
         except Exception as e:
             logging.error(f"  ✗ HF Whisper Request failed: {e}")
         return False, ""
 
-    def evaluate_transcript(self, transcript_list):
+    def evaluate_transcript(self, transcript_list, start_time=None, end_time=None):
         full_text = ""
         for segment in transcript_list:
-            if isinstance(segment, dict) and 'text' in segment:
-                full_text += segment['text'] + " "
+            if isinstance(segment, dict):
+                text = segment.get('text', '')
+                start = segment.get('start', 0)
             else:
-                try:
-                    full_text += segment.text + " "
-                except AttributeError:
-                    full_text += str(segment) + " "
+                text = getattr(segment, 'text', str(segment))
+                start = getattr(segment, 'start', 0)
+                
+            # Skip the text chunk if it falls outside our defined timestamps
+            if start_time is not None and start < start_time:
+                continue
+            if end_time is not None and start > end_time:
+                continue
+                
+            full_text += text + " "
             
         words = full_text.split()
         if len(words) < self.min_words:
@@ -79,26 +85,33 @@ class TranscriptIngestor:
             full_text = ""
             
             try:
-                # Tier 1: The V2 Granular Extraction
-                # Bypassing the missing get_transcript attribute by fetching the list object
-                transcript_list = YouTubeTranscriptApi.list_transcripts(vid_id)
+                # Tier 1: The Working Object-Instantiation Syntax
+                api = YouTubeTranscriptApi()
+                fetched_snippets = api.fetch(vid_id, languages=['en', 'en-US'])
                 
-                # Explicitly search for English captions (prioritizes manual, falls back to auto-generated)
-                raw_transcript = transcript_list.find_transcript(['en', 'en-US']).fetch()
+                # UPDATE: We now extract the timestamp ('start') from the YouTube snippet
+                raw_transcript = [
+                    {
+                        'text': getattr(snip, 'text', str(snip)), 
+                        'start': getattr(snip, 'start', 0)
+                    } 
+                    for snip in fetched_snippets
+                ]
                 
-                success, full_text = self.evaluate_transcript(raw_transcript)
+                # Pass the JSON time boundaries into the evaluator
+                start_bounds = video.get('start_time')
+                end_bounds = video.get('end_time')
+                success, full_text = self.evaluate_transcript(raw_transcript, start_bounds, end_bounds)
                 
             except Exception as e:
-                # Exposing the specific YouTube error so we aren't flying blind
                 logging.warning(f"  ! Tier 1 YT API Error for {vid_id}: {str(e)[:150]}")
                 success, full_text = self.fetch_hf_whisper(vid_id)
-                
             if success:
                 video_data = {
                     'video_id': vid_id,
                     'team': video['team'],
                     'stage': video['stage'],
-                    'role': video.get('role', 'aggregate'),
+                    'role': video.get('role', 'aggregate'), # V2 schema enforcement
                     'won_championship': video.get('bracket_result', 0),
                     'transcript': full_text.replace('\n', ' ')
                 }
