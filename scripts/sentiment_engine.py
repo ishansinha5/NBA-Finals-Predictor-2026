@@ -38,7 +38,7 @@ class SentimentEngine:
         for chunk in chunks:
             # Pass the chunk to RoBERTa. We truncate at 2500 chars just as a hard safety net 
             # against massive unspaced strings, but the 400-word limit protects the 512 token ceiling.
-            results = self.classifier(chunk[:2500]) 
+            results = self.classifier(chunk, truncation=True, max_length=512)
             emotions = results[0]
             
             # Looping through all 28 scores from the AI for THIS specific chunk
