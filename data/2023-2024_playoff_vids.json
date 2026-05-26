@@ -1,0 +1,478 @@
+[
+  {
+    "video_id": "-0-cX7BB6HE",
+    "team": "Celtics",
+    "stage": "R1G1",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "w0MIt0xm1FI",
+    "team": "Celtics",
+    "stage": "R1G1",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "EzCeXMtSajw",
+    "team": "Celtics",
+    "stage": "R1G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "iQIhTOwAa84",
+    "team": "Celtics",
+    "stage": "R1G2",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "C68n2dzV1Mc",
+    "team": "Celtics",
+    "stage": "R1G2",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "fHrRy6SWeFo",
+    "team": "Celtics",
+    "stage": "R1G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "o6Zreg31N8I",
+    "team": "Celtics",
+    "stage": "R1G3",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "41vfUYuZi80",
+    "team": "Celtics",
+    "stage": "R1G3",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "-qWwewRfhuE",
+    "team": "Celtics",
+    "stage": "R1G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "ctco1Ui3fOU",
+    "team": "Celtics",
+    "stage": "R1G4",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "AidJw28YCiQ",
+    "team": "Celtics",
+    "stage": "R1G4",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "aY8op4mgj7k",
+    "team": "Celtics",
+    "stage": "R1G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "VgV8aawoZiQ",
+    "team": "Celtics",
+    "stage": "R1G5",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "ICyseQIF0mI",
+    "team": "Celtics",
+    "stage": "R1G5",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "TKU-ZWqXUzc",
+    "team": "Celtics",
+    "stage": "R1G5",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "5xNDL6oPZVI",
+    "team": "Celtics",
+    "stage": "R2G1",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "iA5uNwJ_PwA",
+    "team": "Celtics",
+    "stage": "R2G1",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "RVdntBgvgVo",
+    "team": "Celtics",
+    "stage": "R2G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "dJSE1-E72Uc",
+    "team": "Celtics",
+    "stage": "R2G2",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "wmnsR_wNuWk",
+    "team": "Celtics",
+    "stage": "R2G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "tC8kUwrp06w",
+    "team": "Celtics",
+    "stage": "R2G2",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "gfdjYLlT7zY",
+    "team": "Celtics",
+    "stage": "R2G3",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "gRdL8y_omhY",
+    "team": "Celtics",
+    "stage": "R2G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "dPGsNO1NNgA",
+    "team": "Celtics",
+    "stage": "R2G4",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "HY-4gWeVcOo",
+    "team": "Celtics",
+    "stage": "R2G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "ai7cK0Tk260",
+    "team": "Celtics",
+    "stage": "R2G4",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "iSYEBhKykaw",
+    "team": "Celtics",
+    "stage": "R2G5",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "QI1dI5z7qB4",
+    "team": "Celtics",
+    "stage": "R2G5",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "tGcm-cC7MrI",
+    "team": "Celtics",
+    "stage": "R2G5",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "JWlldi545W4",
+    "team": "Celtics",
+    "stage": "R3G1",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "3wG-00AaQZ0",
+    "team": "Celtics",
+    "stage": "R3G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "jn1rT3W6BoE",
+    "team": "Celtics",
+    "stage": "R3G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "xn8kSoNAJAI",
+    "team": "Celtics",
+    "stage": "R3G1",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "7vw73RqXEtI",
+    "team": "Celtics",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "LvXMEf7N1vk",
+    "team": "Celtics",
+    "stage": "R3G2",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "P7BmcG5ibco",
+    "team": "Celtics",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "cnT4amS9MJo",
+    "team": "Celtics",
+    "stage": "R3G2",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "UG-1VQVspq8",
+    "team": "Celtics",
+    "stage": "R3G3",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "C9n9tnfuwMM",
+    "team": "Celtics",
+    "stage": "R3G3",
+    "role": "aggregate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "fOMvTHm3pAU",
+    "team": "Celtics",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "tRAGilUcgDk",
+    "team": "Celtics",
+    "stage": "R3G4",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "8wy0NFPQ2n4",
+    "team": "Celtics",
+    "stage": "R3G4",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "g_JGuPGruNQ",
+    "team": "Celtics",
+    "stage": "R3G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "83_RPSgxzkI",
+    "team": "Celtics",
+    "stage": "R4G1",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "Olr4RzbwWN4",
+    "team": "Celtics",
+    "stage": "R4G1",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "V4s4teOsqpk",
+    "team": "Celtics",
+    "stage": "R4G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "qX3U-NiNpA8",
+    "team": "Celtics",
+    "stage": "R4G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "NuMHQXiFvos",
+    "team": "Celtics",
+    "stage": "R4G2",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "q5wUfAgpV5M",
+    "team": "Celtics",
+    "stage": "R4G2",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "5cvHdCUppF4",
+    "team": "Celtics",
+    "stage": "R4G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "JkCOzFgqBSI",
+    "team": "Celtics",
+    "stage": "R4G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "fEUqlR3fSU4",
+    "team": "Celtics",
+    "stage": "R4G3",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "eGNwFg4BUg8",
+    "team": "Celtics",
+    "stage": "R4G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "crzioRp-N3o",
+    "team": "Celtics",
+    "stage": "R4G3",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "UQsntnYMOEk",
+    "team": "Celtics",
+    "stage": "R4G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "HacNLjtPyKE",
+    "team": "Celtics",
+    "stage": "R4G4",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "K3veNZNGzNM",
+    "team": "Celtics",
+    "stage": "R4G4",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "LsCyDksolAs",
+    "team": "Celtics",
+    "stage": "R4G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "8vYLxS6-Eik",
+    "team": "Celtics",
+    "stage": "R4G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "KwrvwzHiBsw",
+    "team": "Heat",
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "47LlXoppbMU",
+    "team": "Heat",
+    "stage": "R1G1",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "3ZKLmuXVfuo",
+    "team": "Heat",
+    "stage": "R1G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "RvJgbehlIZ0",
+    "team": "Heat",
+    "stage": "R1G3",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "CnlywYUfwQo",
+    "team": "Heat",
+    "stage": "R1G3",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "KQ5PBy1SF1U",
+    "team": "Heat",
+    "stage": "R1G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "WS7fmv6Msw0",
+    "team": "Heat",
+    "stage": "R1G4",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "QlJOfeUJtOg",
+    "team": "Heat",
+    "stage": "R1G4",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "RtuLrT9wBJY",
+    "team": "Heat",
+    "stage": "R1G4",
+    "role": "teammate",
+    "bracket_result": 0
+  }
+]

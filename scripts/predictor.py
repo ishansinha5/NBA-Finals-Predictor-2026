@@ -13,7 +13,9 @@ class PlayoffPredictor:
             os.makedirs(self.model_dir)
             
         self.features = ['confidence', 'content', 'neutrality', 'frustration', 'upset', 'anxiety', 'surprise']
-        self.roles = ['coach', 'star', 'role_player', 'aggregate']
+        
+        # SCHEMA UPDATE: Switched 'role_player' to 'teammate'
+        self.roles = ['coach', 'star', 'teammate', 'aggregate']
 
     def _flatten_team_data(self, df):
         """
@@ -41,7 +43,7 @@ class PlayoffPredictor:
                     role_means = agg_means
                     
                 for feature in self.features:
-                    # Creates columns like: 'coach_confidence', 'star_frustration', etc.
+                    # Creates columns like: 'coach_confidence', 'star_frustration', 'teammate_upset'
                     col_name = f"{role}_{feature}"
                     team_row[col_name] = role_means[feature]
                     
@@ -78,11 +80,9 @@ class PlayoffPredictor:
             logging.info(f"{col}: {val:.4f}")
 
     def evaluate_model(self, csv_path):
-        # We will build this out in the next phase
         pass
 
     def predict_matchup(self, team1, team2, live_csv_path, output_dir="./output/predictions/"):
-        # We will build this out in the next phase
         pass
 
 def run_tests():
@@ -90,12 +90,13 @@ def run_tests():
     
     test_data = []
     
-    # We must provide the 'role' and 'team' tags now for the V2 test to pass
+    # Updated test data to reflect the teammate schema
     row1 = {'team': 'TestTeamA', 'role': 'star', 'confidence': 0.9, 'content': 0.8, 'neutrality': 0.1, 'frustration': 0.0, 'upset': 0.0, 'anxiety': 0.1, 'surprise': 0.0, 'won_championship': 1}
     row2 = {'team': 'TestTeamA', 'role': 'coach', 'confidence': 0.8, 'content': 0.7, 'neutrality': 0.2, 'frustration': 0.0, 'upset': 0.0, 'anxiety': 0.1, 'surprise': 0.0, 'won_championship': 1}
-    row3 = {'team': 'TestTeamB', 'role': 'aggregate', 'confidence': 0.2, 'content': 0.1, 'neutrality': 0.1, 'frustration': 0.8, 'upset': 0.9, 'anxiety': 0.7, 'surprise': 0.1, 'won_championship': 0}
+    row3 = {'team': 'TestTeamA', 'role': 'teammate', 'confidence': 0.8, 'content': 0.8, 'neutrality': 0.1, 'frustration': 0.0, 'upset': 0.0, 'anxiety': 0.1, 'surprise': 0.0, 'won_championship': 1}
+    row4 = {'team': 'TestTeamB', 'role': 'aggregate', 'confidence': 0.2, 'content': 0.1, 'neutrality': 0.1, 'frustration': 0.8, 'upset': 0.9, 'anxiety': 0.7, 'surprise': 0.1, 'won_championship': 0}
     
-    test_data.extend([row1, row2, row3])
+    test_data.extend([row1, row2, row3, row4])
     df = pd.DataFrame(test_data)
     
     if not os.path.exists("./models/"):
