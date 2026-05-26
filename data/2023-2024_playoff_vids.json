@@ -640,39 +640,24 @@
     "bracket_result": 0
   },
   {
-    "video_id": "teEs_Thep1E",
-    "team": "Mavericks",
-    "stage": "R4G1",
-    "role": "coach",
-    "start_time": 0,
-    "end_time": 393,
-    "bracket_result": 0
-  },
-  {
-    "video_id": "teEs_Thep1E",
+    "video_id": "kUWu0pF6xKY",
     "team": "Mavericks",
     "stage": "R4G1",
     "role": "star",
-    "start_time": 394,
-    "end_time": 689,
     "bracket_result": 0
   },
   {
-    "video_id": "teEs_Thep1E",
+    "video_id": "jV0Cp6xQui8",
     "team": "Mavericks",
     "stage": "R4G1",
-    "role": "teammate",
-    "start_time": 690,
-    "end_time": 922,
+    "role": "coach",
     "bracket_result": 0
   },
   {
-    "video_id": "teEs_Thep1E",
+    "video_id": "FCnyMDxfqnI",
     "team": "Mavericks",
     "stage": "R4G1",
     "role": "teammate",
-    "start_time": 923,
-    "end_time": 1608,
     "bracket_result": 0
   },
   {
@@ -697,59 +682,50 @@
     "bracket_result": 0
   },
   {
-    "video_id": "SZOzPOUPO9g",
-    "team": "Mavericks",
-    "stage": "R4G3",
-    "role": "coach",
-    "start_time": 0,
-    "end_time": 479,
-    "bracket_result": 0
-  },
-  {
-    "video_id": "SZOzPOUPO9g",
+    "video_id": "60I7OdQ2Y1s",
     "team": "Mavericks",
     "stage": "R4G3",
     "role": "star",
-    "start_time": 798,
-    "end_time": 1152,
+    "start_time": 0,
+    "end_time": 355,
     "bracket_result": 0
   },
   {
-    "video_id": "SZOzPOUPO9g",
+    "video_id": "60I7OdQ2Y1s",
     "team": "Mavericks",
     "stage": "R4G3",
     "role": "teammate",
-    "start_time": 1153,
-    "end_time": 1705,
+    "start_time": 356,
+    "end_time": 906,
     "bracket_result": 0
   },
   {
-    "video_id": "lu0i7zdg5V4",
+    "video_id": "60I7OdQ2Y1s",
     "team": "Mavericks",
-    "stage": "R4G4",
+    "stage": "R4G3",
     "role": "coach",
-    "start_time": 0,
-    "end_time": 507,
+    "start_time": 1232,
+    "end_time": 1712,
     "bracket_result": 0
   },
   {
-    "video_id": "lu0i7zdg5V4",
-    "team": "Mavericks",
-    "stage": "R4G4",
-    "role": "star",
-    "start_time": 508,
-    "end_time": 864,
-    "bracket_result": 0
-  },
-  {
-    "video_id": "lu0i7zdg5V4",
+    "video_id": "e55Jpz2FRKo",
     "team": "Mavericks",
     "stage": "R4G4",
     "role": "teammate",
-    "start_time": 1556,
-    "end_time": 2204,
+    "start_time": 1013,
+    "end_time": 1400,
     "bracket_result": 0
-  }, 
+  },
+  {
+    "video_id": "e55Jpz2FRKo",
+    "team": "Mavericks",
+    "stage": "R4G4",
+    "role": "coach",
+    "start_time": 1704,
+    "end_time": 2189,
+    "bracket_result": 0
+  },
   {
     "video_id": "6V4Rl5f48As",
     "team": "Mavericks",
@@ -1064,6 +1040,226 @@
     "stage": "R3G4",
     "role": "teammate",
     "bracket_result": 0
+  },
+  {
+    "video_id": "lVlqy6tZUm4",
+    "team": "Clippers",
+    "stage": "R1G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "esYgrrLLHkE",
+    "team": "Clippers",
+    "stage": "R1G1",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "otSIultIGUg",
+    "team": "Clippers",
+    "stage": "R1G1",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "qYVaXIi0S7s",
+    "team": "Clippers",
+    "stage": "R1G4",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "X3ks1UfR3w8",
+    "team": "Clippers",
+    "stage": "R1G4",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "EkPieuP9fF0",
+    "team": "Thunder",
+    "stage": "R2G1",
+    "role": "star",
+    "start_time": 725,
+    "end_time": 1269,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "EkPieuP9fF0",
+    "team": "Thunder",
+    "stage": "R2G1",
+    "role": "teammate",
+    "start_time": 1270,
+    "end_time": 1916,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "EkPieuP9fF0",
+    "team": "Thunder",
+    "stage": "R2G1",
+    "role": "coach",
+    "start_time": 1917,
+    "end_time": 2455,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "eZ6mtokPNb4",
+    "team": "Thunder",
+    "stage": "R2G2",
+    "role": "star",
+    "start_time": 0,
+    "end_time": 369,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "eZ6mtokPNb4",
+    "team": "Thunder",
+    "stage": "R2G2",
+    "role": "teammate",
+    "start_time": 370,
+    "end_time": 805,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "eZ6mtokPNb4",
+    "team": "Thunder",
+    "stage": "R2G2",
+    "role": "coach",
+    "start_time": 806,
+    "end_time": 1363,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "uOahH0aMY6U",
+    "team": "Thunder",
+    "stage": "R2G3",
+    "role": "teammate",
+    "start_time": 0,
+    "end_time": 620,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "uOahH0aMY6U",
+    "team": "Thunder",
+    "stage": "R2G3",
+    "role": "aggregate",
+    "start_time": 621,
+    "end_time": 1134,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "uOahH0aMY6U",
+    "team": "Thunder",
+    "stage": "R2G3",
+    "role": "coach",
+    "start_time": 1135,
+    "end_time": 1698,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "ly5NZCT_tdA",
+    "team": "Thunder",
+    "stage": "R2G4",
+    "role": "teammate",
+    "start_time": 0,
+    "end_time": 465,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "ly5NZCT_tdA",
+    "team": "Thunder",
+    "stage": "R2G4",
+    "role": "aggregate",
+    "start_time": 465,
+    "end_time": 1069,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "ly5NZCT_tdA",
+    "team": "Thunder",
+    "stage": "R2G4",
+    "role": "coach",
+    "start_time": 1070,
+    "end_time": 1818,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "XcO-m8F8Nu8",
+    "team": "Thunder",
+    "stage": "R2G4",
+    "role": "star",
+    "start_time": 0,
+    "end_time": 326,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "XcO-m8F8Nu8",
+    "team": "Thunder",
+    "stage": "R2G4",
+    "role": "teammate",
+    "start_time": 327,
+    "end_time": 516,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "XcO-m8F8Nu8",
+    "team": "Thunder",
+    "stage": "R2G4",
+    "role": "teammate",
+    "start_time": 517,
+    "end_time": 969,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "XcO-m8F8Nu8",
+    "team": "Thunder",
+    "stage": "R2G4",
+    "role": "coach",
+    "start_time": 970,
+    "end_time": 1550,
+    "bracket_result": 0
+  },
+  {
+    "video_id": "ZcPrUQ4GVPA",
+    "team": "Timberwolves",
+    "stage": "R3G1",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "iDkokAQmhBs",
+    "team": "Timberwolves",
+    "stage": "R3G1",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "3Sc50-myIcM",
+    "team": "Timberwolves",
+    "stage": "R3G2",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "XI7V7CYpyVg",
+    "team": "Timberwolves",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "1bhPgkHef1w",
+    "team": "Timberwolves",
+    "stage": "R3G3",
+    "role": "aggregate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "cG56_dEAGIQ",
+    "team": "Timberwolves",
+    "stage": "R3G4",
+    "role": "aggregate",
+    "bracket_result": 0
   }
 ]
-
