@@ -20,7 +20,7 @@ def run_historical_pipeline(json_path, output_raw_name, output_scored_name):
     ingestor = TranscriptIngestor(data_dir="./data/historical/")
     raw_df = ingestor.fetch_transcripts(video_metadata, save_filename=output_raw_name)
 
-    if raw_df.empty:
+    if (raw_df.empty):
         logging.error("No transcripts were fetched. Pipeline stopped.")
         return
 
@@ -32,7 +32,7 @@ def run_historical_pipeline(json_path, output_raw_name, output_scored_name):
 
     # 4. Save the final scored dataset
     output_dir = "./data/historical/"
-    if not os.path.exists(output_dir):
+    if (not os.path.exists(output_dir)):
         os.makedirs(output_dir)
 
     final_path = os.path.join(output_dir, output_scored_name)
@@ -41,8 +41,8 @@ def run_historical_pipeline(json_path, output_raw_name, output_scored_name):
     logging.info(f"Pipeline Complete! Scored data successfully saved to {final_path}")
 
 if __name__ == "__main__":
-    # Target the specific JSON you just uploaded
-    manifest_path = "./data/2023-2024_playoff_vids.json"
+    # Updated to the new 2024-2025 manifest
+    manifest_path = "./data/2024-2025_playoff_vids.json"
     
     run_historical_pipeline(
         json_path=manifest_path,

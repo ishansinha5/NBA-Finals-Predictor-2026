@@ -20,7 +20,7 @@ class TranscriptIngestor:
         self.min_words = min_words
         self.whisper_cache = {} # V4 UPGRADE: In-memory cache to prevent duplicate transcriptions
         
-        if not os.path.exists(self.data_dir):
+        if (not os.path.exists(self.data_dir)):
             os.makedirs(self.data_dir)
             
         logging.info(f"Initializing local faster-whisper model ({whisper_model_size})...")
@@ -41,7 +41,7 @@ class TranscriptIngestor:
         }
         
         cookie_path = os.path.join(os.getcwd(), "cookies.txt")
-        if os.path.exists(cookie_path):
+        if (os.path.exists(cookie_path)):
             ydl_opts['cookiefile'] = cookie_path
             
         try:
@@ -49,36 +49,36 @@ class TranscriptIngestor:
                 info = ydl.extract_info(f"https://www.youtube.com/watch?v={video_id}", download=True)
                 
                 ext = info.get('ext', 'webm')
-                if 'requested_downloads' in info:
+                if ('requested_downloads' in info):
                     ext = info['requested_downloads'][0].get('ext', ext)
                     
                 downloaded_file = os.path.join(temp_dir, f"{video_id}.{ext}")
                 
-                if os.path.exists(downloaded_file):
+                if (os.path.exists(downloaded_file)):
                     return downloaded_file
                 else:
-                    logging.error(f"  ✗ yt-dlp reported success, but file {downloaded_file} is missing.")
+                    logging.error(f"  ! yt-dlp reported success, but file {downloaded_file} is missing.")
                     return None
                     
         except Exception as e:
-            logging.error(f"  ✗ yt-dlp failed to download audio for {video_id}: {e}")
+            logging.error(f"  ! yt-dlp failed to download audio for {video_id}: {e}")
             return None
 
     def fetch_local_whisper(self, video_id, start_time=None, end_time=None):
         """Fallback method: Transcribes audio locally using faster-whisper."""
-        logging.info(f"  ↳ Routing to Local Whisper...")
+        logging.info(f"  ! Routing to Local Whisper...")
         
         # V4 CACHE CHECK: Did we already transcribe this video for another role?
-        if video_id in self.whisper_cache:
-            logging.info(f"  ⚡ Cache Hit! Instantly loading pre-transcribed audio for {video_id}...")
+        if (video_id in self.whisper_cache):
+            logging.info(f"  ! Cache Hit! Instantly loading pre-transcribed audio for {video_id}...")
             segments = self.whisper_cache[video_id]
         else:
             audio_path = self.download_audio_temp(video_id)
-            if not audio_path:
+            if (not audio_path):
                 return False, ""
                 
             try:
-                logging.info(f"  ⚙️ Transcribing {video_id} on CPU... this takes a few minutes. Grab a coffee!")
+                logging.info(f"  ! Transcribing {video_id} on CPU... this takes a few minutes. Grab a coffee!")
                 segments_generator, info = self.whisper_model.transcribe(audio_path, beam_size=5)
                 
                 # Cast the generator to a list so it can be safely stored and reused by other roles!
@@ -89,48 +89,48 @@ class TranscriptIngestor:
                 os.remove(audio_path)
                 
             except Exception as e:
-                logging.error(f"  ✗ Local Whisper transcription failed: {e}")
-                if os.path.exists(audio_path):
+                logging.error(f"  ! Local Whisper transcription failed: {e}")
+                if (os.path.exists(audio_path)):
                     os.remove(audio_path)
                 return False, ""
                 
         full_text = ""
         for segment in segments:
             # Apply the JSON timestamp filters if they exist
-            if start_time is not None and segment.start < start_time:
+            if ((start_time is not None) and (segment.start < start_time)):
                 continue
-            if end_time is not None and segment.start > end_time:
+            elif ((end_time is not None) and (segment.start > end_time)):
                 continue
                 
             full_text += segment.text + " "
             
         words = full_text.split()
-        if len(words) < self.min_words:
+        if (len(words) < self.min_words):
             logging.warning(f"  ! Local Whisper transcript too short ({len(words)} words).")
             return False, ""
             
-        logging.info(f"  ✓ Local Whisper succeeded for {video_id}.")
+        logging.info(f"Local Whisper succeeded for {video_id}.")
         return True, full_text
 
     def evaluate_transcript(self, transcript_list, start_time=None, end_time=None):
         full_text = ""
         for segment in transcript_list:
-            if isinstance(segment, dict):
+            if (isinstance(segment, dict)):
                 text = segment.get('text', '')
                 start = segment.get('start', 0)
             else:
                 text = getattr(segment, 'text', str(segment))
                 start = getattr(segment, 'start', 0)
                 
-            if start_time is not None and start < start_time:
+            if ((start_time is not None) and (start < start_time)):
                 continue
-            if end_time is not None and start > end_time:
+            elif ((end_time is not None) and (start > end_time)):
                 continue
                 
             full_text += text + " "
             
         words = full_text.split()
-        if len(words) < self.min_words:
+        if (len(words) < self.min_words):
             return False, ""
         return True, full_text
 
@@ -139,9 +139,9 @@ class TranscriptIngestor:
         
         # V4 BUG FIX: Create a composite key (video_id + role) so resuming doesn't skip roles!
         completed_keys = []
-        if os.path.exists(filepath):
+        if (os.path.exists(filepath)):
             existing_df = pd.read_csv(filepath)
-            if 'video_id' in existing_df.columns and 'role' in existing_df.columns:
+            if (('video_id' in existing_df.columns) and ('role' in existing_df.columns)):
                 completed_keys = (existing_df['video_id'] + "_" + existing_df['role']).tolist()
                 logging.info(f"Found a checkpoint! Skipping the {len(completed_keys)} roles we already have.")
             
@@ -150,7 +150,7 @@ class TranscriptIngestor:
             role = video.get('role', 'aggregate')
             composite_key = f"{vid_id}_{role}"
             
-            if composite_key in completed_keys:
+            if (composite_key in completed_keys):
                 continue
                 
             logging.info(f"Attempting to pull: {vid_id} ({video['team']} - {role})")
@@ -178,7 +178,7 @@ class TranscriptIngestor:
                 # Route to local Whisper, passing timestamps
                 success, full_text = self.fetch_local_whisper(vid_id, start_bounds, end_bounds)
                 
-            if success:
+            if (success):
                 video_data = {
                     'video_id': vid_id,
                     'team': video['team'],
@@ -190,7 +190,7 @@ class TranscriptIngestor:
                 
                 single_video_df = pd.DataFrame([video_data])
                 
-                if os.path.exists(filepath):
+                if (os.path.exists(filepath)):
                     single_video_df.to_csv(filepath, mode='a', header=False, index=False)
                 else:
                     single_video_df.to_csv(filepath, mode='w', header=True, index=False)
@@ -200,6 +200,6 @@ class TranscriptIngestor:
             else:
                 logging.error(f"Total failure for {vid_id} ({role}). Transcript too short or API blocked.")
 
-        if os.path.exists(filepath):
+        if (os.path.exists(filepath)):
             return pd.read_csv(filepath)
         return pd.DataFrame()
