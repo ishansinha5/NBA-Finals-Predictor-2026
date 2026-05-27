@@ -46,6 +46,6 @@ if __name__ == "__main__":
     
     run_historical_pipeline(
         json_path=manifest_path,
-        output_raw_name="raw_2023_2024.csv",
-        output_scored_name="scored_2023_2024.csv"
+        output_raw_name="raw_2024_2025.csv",
+        output_scored_name="scored_2024_2025.csv"
     )
