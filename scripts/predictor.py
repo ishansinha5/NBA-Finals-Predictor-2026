@@ -50,26 +50,56 @@ class PlayoffPredictor:
                 
         return pd.DataFrame(all_flattened_rows)
 
-    def train_historical_model(self, data_directory="./data/historical/"):
+    def train_historical_models(self, data_directory="./data/historical/"):
+        """
+        Trains two separate Random Forest checkpoints:
+        1. A high-fidelity model restricted purely to modern dense data architectures.
+        2. A comprehensive historical baseline model that handles imputation across eras.
+        """
         logging.info("Compressing series-level historical profiles into training matrix...")
         flat_df = self._flatten_historical_compiled_data(data_directory)
         
-        if (flat_df.empty):
+        if flat_df.empty:
             logging.error("No data found to train model matrix.")
             return
             
         X_cols = [f"{role}_{feature}" for role in self.roles for feature in self.features]
-        X = flat_df[X_cols]
-        y = flat_df['won_championship']
         
-        logging.info(f"Training Random Forest on {len(flat_df)} localized team profiles...")
-        # Added balanced class weights to neutralize historical scaling offsets
-        rf_model = RandomForestClassifier(n_estimators=100, class_weight='balanced', random_state=42)
-        rf_model.fit(X, y)
+        # ----------------------------------------------------
+        # MODEL 1: THE FULL-ERA BASELINE MODEL (Everything)
+        # ----------------------------------------------------
+        X_all = flat_df[X_cols]
+        y_all = flat_df['won_championship']
         
-        save_path = os.path.join(self.model_dir, "playoff_rf_model_v2.pkl")
-        joblib.dump(rf_model, save_path)
-        logging.info(f"Model saved to {save_path}")
+        logging.info(f"Training Model 1 (Full Baseline) on {len(flat_df)} localized team profiles...")
+        rf_all = RandomForestClassifier(n_estimators=100, class_weight='balanced', random_state=42)
+        rf_all.fit(X_all, y_all)
+        
+        save_path_all = os.path.join(self.model_dir, "playoff_rf_model_full_baseline.pkl")
+        joblib.dump(rf_all, save_path_all)
+        logging.info(f"Model 1 (Full Baseline) saved to {save_path_all}")
+        
+        # ----------------------------------------------------
+        # MODEL 2: THE MODERN-ERA MODEL (2023-2024 onwards)
+        # ----------------------------------------------------
+        # Filter out older teams like the 2021 Bucks by explicitly isolating modern files
+        # We do this by checking the raw team listings or files present in flat_df
+        # Since flat_df aggregates everything, we can drop the 2021 Bucks explicitly:
+        modern_flat_df = flat_df[flat_df['team'] != 'Bucks'] 
+        
+        if not modern_flat_df.empty:
+            X_modern = modern_flat_df[X_cols]
+            y_modern = modern_flat_df['won_championship']
+            
+            logging.info(f"Training Model 2 (Modern-Era) on {len(modern_flat_df)} high-density profiles...")
+            rf_modern = RandomForestClassifier(n_estimators=100, class_weight='balanced', random_state=42)
+            rf_modern.fit(X_modern, y_modern)
+            
+            save_path_modern = os.path.join(self.model_dir, "playoff_rf_model_modern_only.pkl")
+            joblib.dump(rf_modern, save_path_modern)
+            logging.info(f"Model 2 (Modern-Era Only) saved to {save_path_modern}")
+        else:
+            logging.warning("Skipping Modern-Era model: No dense files found.")
 
     def predict_series_winner(self, team1_csv, team2_csv, team1_name, team2_name):
         """Used by Streamlit to evaluate live head-to-head match-up inferences"""
