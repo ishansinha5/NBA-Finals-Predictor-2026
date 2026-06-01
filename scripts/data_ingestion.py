@@ -79,7 +79,7 @@ class TranscriptIngestor:
                 return False, ""
                 
             try:
-                logging.info(f"  ! Transcribing {video_id} on CPU... this takes a few minutes. Grab a coffee!")
+                logging.info(f"  ! Transcribing {video_id} on CPU... this can take a few minutes. Standby!")
                 segments_generator, info = self.whisper_model.transcribe(audio_path, beam_size=5)
                 
                 # Cast the generator to a list so it can be safely stored and reused
