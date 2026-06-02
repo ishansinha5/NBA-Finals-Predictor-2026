@@ -41,10 +41,10 @@ if __name__ == "__main__":
     # Example execution sequence for your weekend run
     os.makedirs("./data/historical/", exist_ok=True)
     
-    # Run the newly compiled 2020-2021 Bucks manifest
-    if (os.path.exists("./data/2020-2021_playoff_vids.json")):
+    # Run the newly compiled manifests
+    if (os.path.exists("./data/2021-2022_playoff_vids.json")):
         run_historical_pipeline(
-            json_path="./data/2020-2021_playoff_vids.json",
-            output_raw_name="raw_2020_2021.csv",
-            output_scored_name="scored_2020_2021.csv"
+            json_path="./data/2021-2022_playoff_vids.json",
+            output_raw_name="raw_2021_2022.csv",
+            output_scored_name="scored_2021_2022.csv"
         )

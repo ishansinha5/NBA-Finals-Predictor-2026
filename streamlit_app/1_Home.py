@@ -1,25 +1,25 @@
 import streamlit as st
 
-st.set_page_config(page_title="2026 NBA Finals Predictor", page_icon="🏀", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="2026 NBA Finals Predictor", page_icon="🏀", layout="wide", initial_sidebar_state="expanded")
 
-# Clean, dynamic basketball banner
+# Basketball banner
 st.image("https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2000&auto=format&fit=crop", use_container_width=True)
 
-st.title("2026 NBA Finals NLP Predictor")
-st.subheader("Predicting the Larry O'Brien Trophy through Press Conference NLP")
+st.title("2026 NBA Finals NLP Predictor (V2)")
+st.subheader("Quantifying Championship Readiness Through Press Conference Emotion Vectors")
 
 st.markdown("""
-### The Question: Can we mathematically quantify a "Championship Mindset"?
+### The Question: Can we mathematically isolate a "Championship Mindset"?
+While standard box scores, true shooting metrics, and defensive ratings tell you *what* happened on the court, this project captures the *human element* of a deep playoff run. By tracking how players and coaches handle intense post-game media scrutiny, this application converts text patterns into psychological markers of a title-winning team.
 
-I love basketball, and I love predicting who takes home the championship. I’ve run the traditional statistical models—box scores, true shooting percentages, plus-minus ratings—but I wanted to build something different. Something that captures the *human* element of a playoff run. 
+### What's New in the V2 Framework
+*   **Dual-Model Track Architecture:** Separates an era-robust full baseline model from an optimized, ultra-rich modern-era predictive model.
+*   **Multi-Role Feature Isolation:** Extracts standalone metrics across unique team roles (**Coach, Star, Teammate**) to map team-wide emotional alignments.
+*   **Generative Transcript RAG Engine:** Houses a local semantic database containing thousands of chunked media paragraphs for context retrieval.
+*   **Asymmetric Bracket Tracking:** Unlocks detailed runner-up bracket profiles for modern high-density data cohorts while safely tracking older scarcity eras.
 
-I built this Natural Language Processing (NLP) pipeline to branch out from traditional data science. I wanted to see if the emotional language used in post-game press conferences could reveal a team's psychological readiness to win a ring.
+### Architectural Priority: Sustainable, Lean Computing
+A core priority for this build is computational efficiency. Instead of brute-forcing text scripts through heavy cloud APIs or massive, energy-intensive LLMs, this architecture relies entirely on locally executed, highly specialized small-parameter layers (like `roberta-base-go_emotions` and localized text-embedding models). It delivers deep predictive intelligence with a clean, low-overhead hardware footprint.
 
-### The Constraint: Sustainable, Lean Computing
-A massive priority for this build was architectural efficiency. Instead of brute-forcing transcripts through expensive cloud APIs or massive, energy-intensive LLMs, this pipeline runs entirely on sustainable, locally executed small-parameter models (like `roberta-base-go_emotions`). It is computationally lean without sacrificing predictive power.
-
-### How it Works
-This project scrapes YouTube closed captions of the 2026 Final Four (Knicks, Cavaliers, Spurs, Thunder), scores the transcripts across 7 distinct emotions using RoBERTa, and maps those feature vectors against a historical Random Forest model trained on the 2024 and 2025 NBA Finals.
-
-**(Use the sidebar `>` on the top left to navigate the dashboard.)**
+**(Expand the sidebar on the top left to navigate through the data pipeline stages.)**
 """)
