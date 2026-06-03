@@ -16,15 +16,15 @@ def run_live_2026_pipeline(json_path, output_raw_name, output_scored_name):
     # Expanded logic for filtering metadata
     filtered_metadata = []
     for video in video_metadata:
-        if (video['team'] == 'Thunder'):
+        if (video['team'] == 'Spurs'):
             filtered_metadata.append(video)
             
     video_metadata = filtered_metadata
 
-    logging.info(f"Loaded {len(video_metadata)} active tracking profiles for the Thunder from {json_path}")
+    logging.info(f"Loaded {len(video_metadata)} active tracking profiles for the Spurs from {json_path}")
 
     if (len(video_metadata) == 0):
-        logging.warning("No Thunder matching entries found in the target manifest file.")
+        logging.warning("No Spurs matching entries found in the target manifest file.")
         return
 
     # Initialize data director using live tracking paths
@@ -56,7 +56,7 @@ if (__name__ == "__main__"):
     manifest_source = "./data/2025-2026_playoff_vids.json"
     
     if (os.path.exists(manifest_source)):
-        logging.info("Initiating isolated 2026 pipeline execution targeting: Thunder.")
+        logging.info("Initiating isolated 2026 pipeline execution targeting: Spurs.")
         run_live_2026_pipeline(
             json_path=manifest_source,
             output_raw_name="raw_2025_2026.csv",
