@@ -1,4 +1,6 @@
 import streamlit as st
+import base64
+import os
 
 # Configure the page layout and strictly collapse the vertical sidebar navigation
 st.set_page_config(
@@ -8,74 +10,135 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS to inject to further clean up the default sidebar elements if necessary
-st.markdown("""
-    <style>
-        [data-testid="stSidebar"] {
-            display: none;
-        }
-    </style>
-""", unsafe_allow_html=True)
+def get_base64_bg(img_path):
+    """Helper function to convert local image to base64 for background injection."""
+    if (os.path.exists(img_path)):
+        with open(img_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode()
+        return f"data:image/jpg;base64,{encoded_string}"
+    return ""
+
+# Target the uploaded NBA silk background asset
+bg_base64 = get_base64_bg("image_04fa1b.jpg")
+
+# Inject custom background styling using your exact provided image layer
+if (bg_base64):
+    st.markdown(f"""
+        <style>
+            /* Hide the default Streamlit sidebar */
+            [data-testid="stSidebar"] {{
+                display: none;
+            }}
+            
+            /* Apply the full silk background image with a dark overlay for text scannability */
+            [data-testid="stAppViewContainer"] {{
+                background: linear-gradient(rgba(11, 26, 48, 0.85), rgba(11, 26, 48, 0.95)), url("{bg_base64}");
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }}
+            
+            /* Make the header background transparent so it blends perfectly */
+            [data-testid="stHeader"] {{
+                background-color: transparent;
+            }}
+        </style>
+    """, unsafe_allow_html=True)
+else:
+    # Fallback to standard theme color if the asset file is missing temporarily
+    st.markdown("""
+        <style>
+            [data-testid="stSidebar"] { display: none; }
+            [data-testid="stAppViewContainer"] { background-color: #0b1a30; }
+            [data-testid="stHeader"] { background-color: transparent; }
+        </style>
+    """, unsafe_allow_html=True)
 
 # Main Header Banner
 st.title("🏀 NBA Post-Game NLP Engine: Decoding Championship Psychology")
 st.markdown("---")
 
-# Horizontal Navigation Bar matching image_aa0064.png
-# Since the application spans multiple functional modules, this central hub guides the user.
+# Comprehensive 7-page horizontal navigation bar
 nav_tabs = st.tabs([
-    "🏠 Introduction & Overview", 
-    "👔 Multi-Role Analytics", 
-    "🧠 Interactive RAG Engine", 
-    "🔮 2026 Finals Live Predictor",
-    "📝 Engineering Journey"
+    "Introduction", 
+    "Historical Baselines", 
+    "Modern Era Analytics", 
+    "RAG Engine", 
+    "Live Predictor", 
+    "Finals Matchup", 
+    "Engineering Journey"
 ])
 
-# Render the Home/Introduction content within the primary horizontal viewport slot
+# Render the primary introduction content
 with nav_tabs[0]:
     
-    # Hero Visual Section
-    st.image("https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2000&auto=format&fit=crop", use_container_width=True)
+    # Hero Visual Section updated with correct 2026 stretch width parameter
+    st.image("https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2000&auto=format&fit=crop", width="stretch")
     
     st.markdown("## Project Motivation")
     st.markdown("""
-    Traditional sports analytics relies heavily on box-score tracking—field goal percentages, defensive ratings, and true shooting efficiency metrics. While these data columns reveal *what* happened on the hardwood, they fail to track the underlying cognitive and psychological vectors governing an active locker room under championship pressure. 
+    Standard basketball analytics usually focus on box score statistics like field goal rates, defensive metrics, and true shooting efficiency. While those numbers do a great job of showing *what* happened on the court, they cannot quite capture the mental mindset and emotional state of a locker room dealing with playoff intensity. 
     
-    This platform maps text data harvested straight from podium media sessions into high-dimensional emotional signatures, discovering whether the linguistic composure of key stakeholders serves as a leading indicator for winning the Larry O'Brien trophy.
+    I wanted to see if we could find a new angle by looking at text data from post-game podium press conferences. This project converts those transcripts into clear emotional scores. My goal was to discover whether steady linguistic composure can actually act as a helpful indicator for tracking championship runs.
     """)
     
     st.markdown("---")
     
-    st.markdown("## Comprehensive Project Core Architecture")
+    st.markdown("## Core Project Steps")
     st.markdown("""
-    The system processes language data across two major core phases to build a unified sports intelligence repository:
+    The overall architecture processes language data across two straightforward layers to build our sports intelligence backend:
     
-    ### 📊 Phase 1: High-Fidelity Tabular Predictive Modeling
-    *   **Automated Audio Ingestion:** An automated pipeline maps game markers to YouTube video keys, pulling official closed captions or proxying headless media streams into a localized speech-to-text instance.
-    *   **Emotional Vector Mapping:** Chunks and parses post-game scripts across a transformer model trained to track nuanced vocal dynamics, establishing scalar readings for: *Confidence, Contentment, Neutrality, Frustration, Upset, Anxiety, and Surprise*.
-    *   **Dual-Track Classification:** Feeds downstream machine learning layers, optimizing a robust Full Historical Baseline Model paired with an isolated, high-density Modern-Era Track to track how performance mindsets shift across varying media settings.
-    *   **Inter-Role Behavioral Isolation:** Flattens metrics independently across core organizational layers—maintaining explicit data pipelines for the **Head Coach**, the **Marquee Star**, and the **Supporting Teammates**.
+    ### Phase 1: Tabular Sentiment and Predictive Analysis
+    *   **Transcript Ingestion:** The pipeline maps game indexes to video tags, pulling available text tracks or sending media audio streams directly into a local speech-to-text model when requests face network limits.
+    *   **Linguistic Feature Extraction:** The system breaks down post-game statements across a specialized language model to measure precise readings for specific emotions, including *confidence, contentment, neutrality, frustration, upset, anxiety, and surprise*.
+    *   **The Scoring Filter Boundary:** To protect the models from data corruption, we explicitly stop collecting transcript data exactly one game before any series is decided. This prevents the highly celebratory, anomalous emotional spikes of a clinching game from poisoning our regular series indicators.
+    *   **Roster Layer Classification:** The data is flattened independently across coaches, franchise stars, and supporting teammates to see how closely aligned a group stays during a series.
     
-    ### 🧠 Phase 2: Generative Context & Retrieval Augmentation (RAG)
-    *   **Semantic Vector Matrix:** Slices raw media transcript files into sliding token windows to preserve the continuity of deep analytical statements.
-    *   **ChromaDB Vector Store Embedding:** Maps text sequences into a high-density, multi-thousand-node semantic index cache, enabling instant localized vector lookup by team, player type, or playoff series context.
-    *   **Recruiter Query Hub:** Supplies a dialogue terminal that isolates exactly what tactical or psychological shifts occurred following high-stakes wins or road losses without manual document reviewing.
+    ### Phase 2: Search Index and Retrieval Augmentation (RAG)
+    *   **Text Partitioning:** The engine divides long interview documents into small paragraphs to make sure text strings do not get clipped by processing thresholds.
+    *   **Semantic Local Storage:** Passages are saved into a localized search database, allowing us to query exact quotes by team filters or specific game scenarios.
+    *   **Query Interface:** A simple terminal lets users query real context directly from historical playoff files, making it easy to see exactly what players said without reading through hours of text manually.
     """)
     
     st.markdown("---")
     
-    st.markdown("## Architectural Priority: Sustainable, Hardware-Aware Computing")
+    st.markdown("## Computing Priorities and Resource Mindfulness")
     st.markdown("""
-    A foundational design pillar of this infrastructure is **Green AI**—maximizing structural, local prediction capability while intentionally minimizing environmental resource consumption. 
+    A major personal goal while designing this tool was keeping things computationally lightweight and runnable on standard hardware. Instead of relying on heavy cloud servers or paid online interfaces that require massive computing steps, this tracking pipeline handles everything locally to keep a small processing footprint.
     
-    Instead of passing heavy processing calls to massive, multi-billion parameter third-party APIs or running expensive cloud data scripts that inflate computing overhead, this pipeline utilizes a hardware-aware profiling pipeline engineered for a lean VRAM footprint and strict carbon reduction.
-    
-    *   **Edge Transformers:** Core parsing is executed through small-parameter local layers (like `roberta-base-go_emotions` and localized embedding matrices), compressing massive language sequences down to deterministic floating-point feature records at zero network toll.
-    *   **Compute Footprint Minimization:** The preprocessing loops use optimized sliding context generators to stay safely within memory boundaries, extracting deep semantic structures directly on consumer-grade CPU and GPU rigs.
-    *   **Optimized Local DB Architecture:** Utilizing file-mapped binary indices ensures retrieval latency drops to a fraction of a millisecond, completely bypassing heavy background infrastructure requirements.
+    *   **Compact Models:** All text parsing is done using localized transformer architectures. This lets us compute complex language shapes on consumer-grade hardware with zero network dependencies.
+    *   **Smart Memory Boundaries:** The ingestion system processes data using a custom context generator to stay safely inside system memory layout limits.
+    *   **Fast Binary Indexing:** Storing data coordinates in local database tables keeps lookup speeds under a millisecond while entirely skipping heavy software overhead.
     """)
 
-# Render empty or redirect notices for the remaining tabs to help users click through the header row
-for i, tab_title in enumerate(["Multi-Role Analytics", "Interactive RAG Engine", "2026 Finals Live Predictor", "Engineering Journey"], start=1):
-    with nav_tabs[i]:
-        st.info(f"Navigate to the **{tab_title}** page using your application workspace settings or custom link matrices to access the full system sub-modules.")
+# Render empty redirection containers for remaining tabs
+# Render functional page routing buttons for the remaining tabs
+with nav_tabs[1]:
+    st.info("Explore the legacy data constraints and historical baselines.")
+    if (os.path.exists("pages/3_Historical_Baselines.py")):
+        st.page_link("pages/3_Historical_Baselines.py", label="Load Historical Baselines", icon="🏀")
+
+with nav_tabs[2]:
+    st.info("Compare emotional matrices between champions and runner-ups.")
+    if (os.path.exists("pages/4_Modern_Era_Analytics.py")):
+        st.page_link("pages/4_Modern_Era_Analytics.py", label="Load Modern Era Analytics", icon="🏀")
+
+with nav_tabs[3]:
+    st.info("Query the vector database for exact context.")
+    if (os.path.exists("pages/5_AI_Intelligence_Engine.py")):
+        st.page_link("pages/5_AI_Intelligence_Engine.py", label="Load RAG Engine", icon="🏀")
+
+with nav_tabs[4]:
+    st.info("Track the live emotional trajectory of the active bracket.")
+    if (os.path.exists("pages/6_2026_Finals_Predictor.py")):
+        st.page_link("pages/6_2026_Finals_Predictor.py", label="Load Live Predictor", icon="🏀")
+
+with nav_tabs[5]:
+    st.info("View the final algorithmic verdict for the championship.")
+    if (os.path.exists("pages/7_Finals_Matchup.py")):
+        st.page_link("pages/7_Finals_Matchup.py", label="Load Finals Matchup", icon="🏀")
+
+with nav_tabs[6]:
+    st.info("Review the architectural pivot from V1 to V2.")
+    if (os.path.exists("pages/2_Methodology.py")):
+        st.page_link("pages/2_Methodology.py", label="Load Engineering Journey", icon="🏀")

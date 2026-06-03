@@ -13,7 +13,19 @@ def run_live_2026_pipeline(json_path, output_raw_name, output_scored_name):
     with open(json_path, 'r') as f:
         video_metadata = json.load(f)
 
-    logging.info(f"Loaded {len(video_metadata)} active tracking profiles from {json_path}")
+    # Expanded logic for filtering metadata
+    filtered_metadata = []
+    for video in video_metadata:
+        if (video['team'] == 'Knicks'):
+            filtered_metadata.append(video)
+            
+    video_metadata = filtered_metadata
+
+    logging.info(f"Loaded {len(video_metadata)} active tracking profiles for the Knicks from {json_path}")
+
+    if (len(video_metadata) == 0):
+        logging.warning("No Knicks matching entries found in the target manifest file.")
+        return
 
     # Initialize data director using live tracking paths
     ingestor = TranscriptIngestor(data_dir="./data/live_2026/")
@@ -44,7 +56,7 @@ if (__name__ == "__main__"):
     manifest_source = "./data/2025-2026_playoff_vids.json"
     
     if (os.path.exists(manifest_source)):
-        logging.info("Initiating sequential 2026 pipeline execution: Cavaliers -> Knicks -> Thunder -> Spurs.")
+        logging.info("Initiating isolated 2026 pipeline execution targeting: Knicks.")
         run_live_2026_pipeline(
             json_path=manifest_source,
             output_raw_name="raw_2025_2026.csv",
