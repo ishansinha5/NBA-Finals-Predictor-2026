@@ -42,9 +42,9 @@ if __name__ == "__main__":
     os.makedirs("./data/historical/", exist_ok=True)
     
     # Run the newly compiled manifests
-    if (os.path.exists("./data/2021-2022_playoff_vids.json")):
+    if (os.path.exists("./data/2019-2020_playoff_vids.json")):
         run_historical_pipeline(
-            json_path="./data/2021-2022_playoff_vids.json",
-            output_raw_name="raw_2021_2022.csv",
-            output_scored_name="scored_2021_2022.csv"
+            json_path="./data/2019-2020_playoff_vids.json",
+            output_raw_name="raw_2019_2020.csv",
+            output_scored_name="scored_2019_2020.csv"
         )

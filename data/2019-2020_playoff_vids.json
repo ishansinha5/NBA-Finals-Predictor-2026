@@ -1,0 +1,527 @@
+[
+  {
+    "video_id": "6YuzmlPvaAI",
+    "team": "Lakers",
+    "stage": "R1G1",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "PUXErKHPn3w",
+    "team": "Lakers",
+    "stage": "R1G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "eIaOSkkbOk0",
+    "team": "Lakers",
+    "stage": "R1G1",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "4m2LdWPRM1w",
+    "team": "Lakers",
+    "stage": "R1G2",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "FKosYrB8vBU",
+    "team": "Lakers",
+    "stage": "R1G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "JPdbcIrVwzU",
+    "team": "Lakers",
+    "stage": "R1G2",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "-Myw49kI3lY",
+    "team": "Lakers",
+    "stage": "R1G3",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "b5Uy5xs1BsA",
+    "team": "Lakers",
+    "stage": "R1G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "LejNvWUhpr8",
+    "team": "Lakers",
+    "stage": "R1G3",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "lXDIiQyATUE",
+    "team": "Lakers",
+    "stage": "R1G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "T9_pfSftoSE",
+    "team": "Lakers",
+    "stage": "R1G4",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "TulOiT15H-w",
+    "team": "Lakers",
+    "stage": "R1G4",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "P6RHgoCD17c",
+    "team": "Lakers",
+    "stage": "R2G1",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "kefp83Zs0hA",
+    "team": "Lakers",
+    "stage": "R2G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "6S8RGbpkIDk",
+    "team": "Lakers",
+    "stage": "R2G1",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "90lCJ3CaX6Y",
+    "team": "Lakers",
+    "stage": "R2G2",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "CbUaVSwMBio",
+    "team": "Lakers",
+    "stage": "R2G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "Ar6hXyLlorA",
+    "team": "Lakers",
+    "stage": "R2G2",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "h9nLnR38GKI",
+    "team": "Lakers",
+    "stage": "R2G3",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "877Oj7McJzM",
+    "team": "Lakers",
+    "stage": "R2G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "a-R1wBVXR3Q",
+    "team": "Lakers",
+    "stage": "R2G3",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "l0cjjaYLdcQ",
+    "team": "Lakers",
+    "stage": "R2G4",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "apUUZu6oUFw",
+    "team": "Lakers",
+    "stage": "R2G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "awrCdqFR294",
+    "team": "Lakers",
+    "stage": "R2G4",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "NHguGw7DL7A",
+    "team": "Lakers",
+    "stage": "R3G1",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "qC6aObQNZNA",
+    "team": "Lakers",
+    "stage": "R3G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "15LQkzcBmbU",
+    "team": "Lakers",
+    "stage": "R3G1",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "0CSyWXsmo0Q",
+    "team": "Lakers",
+    "stage": "R3G2",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "M6Da0fh3Trw",
+    "team": "Lakers",
+    "stage": "R3G2",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "WVuNr4BuD74",
+    "team": "Lakers",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "aZ2qZMFqBWE",
+    "team": "Lakers",
+    "stage": "R3G3",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "a_DaWvANyn0",
+    "team": "Lakers",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "YnjbgkPKgzA",
+    "team": "Lakers",
+    "stage": "R3G3",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "QbNT4r_5C18",
+    "team": "Lakers",
+    "stage": "R3G4",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "kIIS6_lOZsk",
+    "team": "Lakers",
+    "stage": "R3G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "AXIKzwwS8W8",
+    "team": "Lakers",
+    "stage": "R3G4",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "7-n_0bkg9Ow",
+    "team": "Lakers",
+    "stage": "R4G1",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "eFprgcJ6ruQ",
+    "team": "Lakers",
+    "stage": "R4G1",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "Kzpu2tWl5TY",
+    "team": "Lakers",
+    "stage": "R4G1",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "LgEiRBdjyPs",
+    "team": "Lakers",
+    "stage": "R4G2",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "hyGUsvrjGxI",
+    "team": "Lakers",
+    "stage": "R4G3",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "WSthc15LL08",
+    "team": "Lakers",
+    "stage": "R4G3",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "0FKxnmU-bKg",
+    "team": "Lakers",
+    "stage": "R4G3",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "TQh8cyfEaJk",
+    "team": "Lakers",
+    "stage": "R4G4",
+    "role": "coach",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "1BNl3M7SUZk",
+    "team": "Lakers",
+    "stage": "R4G4",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "JU41vtF3t_c",
+    "team": "Lakers",
+    "stage": "R4G4",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "XN0hdDJEmqg",
+    "team": "Lakers",
+    "stage": "R4G5",
+    "role": "star",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "edDh09nhW3Y",
+    "team": "Lakers",
+    "stage": "R4G5",
+    "role": "teammate",
+    "bracket_result": 1
+  },
+  {
+    "video_id": "7h53OQrNLNQ",
+    "team": "Trailblazers",
+    "stage": "R1G1",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "PV1-vX1OsIg",
+    "team": "Trailblazers",
+    "stage": "R1G1",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "0DEqCPR3cGA",
+    "team": "Trailblazers",
+    "stage": "R1G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "b_xjKi6bWP0",
+    "team": "Trailblazers",
+    "stage": "R1G2",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "96fq8gC7r50",
+    "team": "Trailblazers",
+    "stage": "R1G2",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "QHGv9830zj4",
+    "team": "Trailblazers",
+    "stage": "R1G3",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "DwteXHSFKTU",
+    "team": "Trailblazers",
+    "stage": "R1G3",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "y6hEEio-jEs",
+    "team": "Trailblazers",
+    "stage": "R1G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "5RxRr8O56VI",
+    "team": "Trailblazers",
+    "stage": "R1G4",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "zorGgfoT9lY",
+    "team": "Trailblazers",
+    "stage": "R1G4",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "n7Xd8-XZMU0",
+    "team": "Rockets",
+    "stage": "R2G1",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "23NFLgnyoqY",
+    "team": "Rockets",
+    "stage": "R2G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "7QpffNqj1ZM",
+    "team": "Rockets",
+    "stage": "R2G2",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "DWYjOfLq8LE",
+    "team": "Rockets",
+    "stage": "R2G3",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "XAg7MJwQvg4",
+    "team": "Rockets",
+    "stage": "R2G4",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "bgP_2wdQYww",
+    "team": "Nuggets",
+    "stage": "R3G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "u71-ft-LAG8",
+    "team": "Nuggets",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "xajoNsgeiLE",
+    "team": "Nuggets",
+    "stage": "R3G4",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "rvYJ-d50ToA",
+    "team": "Heat",
+    "stage": "R4G1",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "LRxYAtmR1-w",
+    "team": "Heat",
+    "stage": "R4G1",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "iXDkm62WMrw",
+    "team": "Heat",
+    "stage": "R4G2",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "lWvnRUiz1EA",
+    "team": "Heat",
+    "stage": "R4G2",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "c-NZIYcAom0",
+    "team": "Heat",
+    "stage": "R4G3",
+    "role": "teammate",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "K7LhY0kAE10",
+    "team": "Heat",
+    "stage": "R4G3",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "kZ6ewefCVIM",
+    "team": "Heat",
+    "stage": "R4G4",
+    "role": "coach",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "tKEdDN8OMyQ",
+    "team": "Heat",
+    "stage": "R4G4",
+    "role": "star",
+    "bracket_result": 0
+  },
+  {
+    "video_id": "q5_PFp3LL8o",
+    "team": "Heat",
+    "stage": "R4G5",
+    "role": "teammate",
+    "bracket_result": 0
+  }
+]
