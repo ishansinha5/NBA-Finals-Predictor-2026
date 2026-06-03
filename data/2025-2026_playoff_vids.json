@@ -1130,5 +1130,456 @@
     "video_id": "saXO2VtvvPU",
     "team": "Knicks",
     "stage": "R3G1"
+  }, 
+  {
+    "video_id": "Zcy4j2Kmkh8",
+    "team": "Spurs",
+    "stage": "R3G1",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "NHErxWb-Tv4",
+    "team": "Spurs",
+    "stage": "R3G1",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "NHErxWb-Tv4",
+    "team": "Spurs",
+    "stage": "R3G1",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "PlVkQVQW_Ew",
+    "team": "Spurs",
+    "stage": "R3G2",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "WQE2PM0pgTo",
+    "team": "Spurs",
+    "stage": "R3G2",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "kDoIx2GV3Bc",
+    "team": "Spurs",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "THfA_6Ue1IY",
+    "team": "Spurs",
+    "stage": "R3G3",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "Cklvytv4BTA",
+    "team": "Spurs",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "tuGre5nhQrs",
+    "team": "Spurs",
+    "stage": "R3G3",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "jpC0zspAg4U",
+    "team": "Spurs",
+    "stage": "R3G4",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "tRP_DYbuhjE",
+    "team": "Spurs",
+    "stage": "R3G4",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "lcW-E2CEpFk",
+    "team": "Spurs",
+    "stage": "R3G4",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "FRllKBth-9k",
+    "team": "Spurs",
+    "stage": "R3G5",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "3qOfAVWHKCQ",
+    "team": "Spurs",
+    "stage": "R3G5",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "K5pkGulPP7Y",
+    "team": "Spurs",
+    "stage": "R3G5",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "rD7G0ArM6ig",
+    "team": "Spurs",
+    "stage": "R3G6",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "xBSPIjtT4cU",
+    "team": "Spurs",
+    "stage": "R3G6",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "4djWoPofmUg",
+    "team": "Spurs",
+    "stage": "R3G6",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "scdOPzbgojI",
+    "team": "Knicks",
+    "stage": "R3G1",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "TSkyMMcKTdc",
+    "team": "Knicks",
+    "stage": "R3G1",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "saXO2VtvvPU",
+    "team": "Knicks",
+    "stage": "R3G1",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "ABHH9I6qans",
+    "team": "Knicks",
+    "stage": "R3G2",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "F__f9YGWx54",
+    "team": "Knicks",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "F__f9YGWx54",
+    "team": "Knicks",
+    "stage": "R3G2",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "N3xSDo4n96c",
+    "team": "Knicks",
+    "stage": "R3G3",
+    "role": "coach",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "cK_zIJ5ACmY",
+    "team": "Knicks",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "DA2m0qRsjO0",
+    "team": "Knicks",
+    "stage": "R3G3",
+    "role": "star",
+    "bracket_tier": 3,
+    "is_opponent": 0
+  }, 
+  {
+    "video_id": "yd-cBxcAU9A",
+    "team": "Thunder",
+    "stage": "R3G1",
+    "role": "coach",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "8-ab37jkwXw",
+    "team": "Thunder",
+    "stage": "R3G1",
+    "role": "star",
+    "start_time": 0,
+    "end_time": 347,
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "8-ab37jkwXw",
+    "team": "Thunder",
+    "stage": "R3G1",
+    "role": "teammate",
+    "start_time": 348,
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "t5FHgmDaDT8",
+    "team": "Thunder",
+    "stage": "R3G2",
+    "role": "coach",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "sagjZey8OkU",
+    "team": "Thunder",
+    "stage": "R3G2",
+    "role": "star",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "oOJlG8lu_8U",
+    "team": "Thunder",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "6az1hfQgYHU",
+    "team": "Thunder",
+    "stage": "R3G3",
+    "role": "coach",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "5uCA9wIGko0",
+    "team": "Thunder",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "Cklvytv4BTA",
+    "team": "Thunder",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "IXNx1KFUJpc",
+    "team": "Thunder",
+    "stage": "R3G3",
+    "role": "star",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "CRxk3U6bzeY",
+    "team": "Thunder",
+    "stage": "R3G4",
+    "role": "coach",
+    "start_time": 0,
+    "end_time": 371,
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "CRxk3U6bzeY",
+    "team": "Thunder",
+    "stage": "R3G4",
+    "role": "star",
+    "start_time": 372,
+    "end_time": 865,
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "CRxk3U6bzeY",
+    "team": "Thunder",
+    "stage": "R3G4",
+    "role": "teammate",
+    "start_time": 866,
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "VNBABe7dexU",
+    "team": "Thunder",
+    "stage": "R3G5",
+    "role": "coach",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "5D3Zqug3TTM",
+    "team": "Thunder",
+    "stage": "R3G5",
+    "role": "star",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "d3cdzaFhqik",
+    "team": "Thunder",
+    "stage": "R3G5",
+    "role": "teammate",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "sJIxvfTq5Y0",
+    "team": "Thunder",
+    "stage": "R3G6",
+    "role": "coach",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "7qoLmZhEHbE",
+    "team": "Thunder",
+    "stage": "R3G6",
+    "role": "star",
+    "start_time": 0,
+    "end_time": 277,
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "7qoLmZhEHbE",
+    "team": "Thunder",
+    "stage": "R3G6",
+    "role": "teammate",
+    "start_time": 278,
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "j4fAF65DaOE",
+    "team": "Cavaliers",
+    "stage": "R3G1",
+    "role": "coach",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "kSJCITqhjS0",
+    "team": "Cavaliers",
+    "stage": "R3G1",
+    "role": "star",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "kG9ZGq1yZ-A",
+    "team": "Cavaliers",
+    "stage": "R3G1",
+    "role": "teammate",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "8Ph4vJP7Rw8",
+    "team": "Cavaliers",
+    "stage": "R3G2",
+    "role": "coach",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "Z3xzprU2fPg",
+    "team": "Cavaliers",
+    "stage": "R3G2",
+    "role": "star",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "1nih_HjwkCI",
+    "team": "Cavaliers",
+    "stage": "R3G2",
+    "role": "teammate",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "YoNgY4tVWpk",
+    "team": "Cavaliers",
+    "stage": "R3G3",
+    "role": "coach",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "qVqON0njxqI",
+    "team": "Cavaliers",
+    "stage": "R3G3",
+    "role": "star",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "HLzvBJO3dng",
+    "team": "Cavaliers",
+    "stage": "R3G3",
+    "role": "teammate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   }
 ]
