@@ -16,3 +16,5 @@ models/
 
 # Ignore YouTube authentication cookies
 *cookies.txt
+
+data/vector_store/
