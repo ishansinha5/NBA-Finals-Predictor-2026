@@ -49,6 +49,12 @@ custom_css = """
     li[data-baseweb="menu-item"]:hover {
         background-color: #1f3a5f !important;
     }
+
+    /* Disable typing in the selectbox */
+    div[data-baseweb="select"] input {
+        caret-color: transparent !important;
+        pointer-events: none !important;
+    }
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
