@@ -1,82 +1,83 @@
 import streamlit as st
-import base64
+import sys
 import os
+
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if (ROOT_DIR not in sys.path):
+    sys.path.append(ROOT_DIR)
+
+from utils.navigation import apply_global_styles, render_navigation
 
 st.set_page_config(
     page_title="Design Journey", 
     page_icon="🏀", 
-    layout="wide", 
-    initial_sidebar_state="collapsed"
+    layout="wide"
 )
 
-def get_base64_bg(img_name):
-    # Step up one directory from pages/ to find the image in streamlit_app/
-    img_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), img_name)
-    if (os.path.exists(img_path)):
-        with open(img_path, "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read()).decode()
-        return f"data:image/jpg;base64,{encoded_string}"
-    return ""
+apply_global_styles()
+render_navigation()
 
-bg_base64 = get_base64_bg("image_04fa1b.jpg")
-
-if (bg_base64):
-    st.markdown(f"""
-        <style>
-            [data-testid="stSidebar"] {{ display: none; }}
-            [data-testid="stAppViewContainer"] {{
-                background: linear-gradient(rgba(11, 26, 48, 0.85), rgba(11, 26, 48, 0.95)), url("{bg_base64}");
-                background-size: cover; background-position: center; background-attachment: fixed;
-            }}
-            [data-testid="stHeader"] {{ background-color: transparent; }}
-            html, body, [class*="st-"], h1, h2, h3, h4, p, span, div, li {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }}
-        </style>
-    """, unsafe_allow_html=True)
-else:
-    st.markdown("<style>[data-testid='stSidebar'] { display: none; } [data-testid='stAppViewContainer'] { background-color: #0b1a30; } [data-testid='stHeader'] { background-color: transparent; }</style>", unsafe_allow_html=True)
-
-st.title("🏀 NBA Post-Game NLP Engine: Decoding Championship Psychology")
+st.title("🏀 Engineering Journey: Decoding Championship Psychology")
+st.markdown("### The Architectural Evolution: V1 vs. V2")
 st.markdown("---")
 
-nav_tabs = st.tabs([
-    "Introduction", "Historical Baselines", "Modern Era Analytics", 
-    "RAG Engine", "Live Predictor", "Finals Matchup", "Engineering Journey"
-])
+col1, col2 = st.columns(2)
 
-# Engineering content belongs in the 7th tab (index 6)
-with nav_tabs[6]:
-    st.header("The Architectural Evolution: V1 vs. V2")
-    col1, col2 = st.columns(2)
+with col1:
+    st.markdown("### Legacy V1 Paradigm: Proof of Concept")
+    st.write(
+        "Our original prototype laid down the foundation for language-aware basketball analytics, "
+        "but it operated under sharp structural limitations that masked true roster psychology."
+    )
+    
+    st.markdown("""
+    * **Restricted Data Matrix:** Evaluated only a narrow, two-year footprint of data.
+    * **Linguistic Truncation:** Used hard token clipping, which dropped critical context mid-sentence.
+    * **Tabular Blind Spot:** Lacked granular multi-role separation, averaging out all voices into one number.
+    * **Survival Bias:** Only trained on deep Finals runs, completely missing early-exit locker room panic.
+    """)
 
-    with col1:
-        st.markdown("### Legacy V1 Paradigm: Proof of Concept")
-        st.markdown("""
-        * **Restricted Data:** Evaluated only two years of data.
-        * **Linguistic Truncation:** Used hard truncation, which missed context.
-        * **Tabular Blind Spot:** Lacked granular multi-role separation.
-        * **Survival Bias:** Only trained on Finals teams, missing early exit dynamics.
-        """)
+with col2:
+    st.markdown("### Upgraded V2 Framework: Production Pipeline")
+    st.write(
+        "The current production version refines our feature extraction pipeline, expanding "
+        "our computational footprints to model complete organizational stability."
+    )
+    
+    st.markdown("""
+    * **Preservation of the Score Filter Boundary:** I intentionally stop collecting transcript data exactly one game before a playoff series is decided. This prevents the anomalous emotional spikes inherent in series-clinching celebrations from skewing our training baselines.
+    * **Tri-Tier Role Isolation:** The feature matrix cleanly isolates roster sub-dynamics across three separate perspectives: head coaches, franchise stars, and supporting teammates.
+    * **Multi-Season Scaling:** The data pipeline steps backwards into historical playoff arcs to broaden our classification profiles.
+    * **Dual Hybrid Processing Layer:** Integrates a localized retrieval store (RAG) alongside our machine learning prediction classifiers to track exact press room context on demand.
+    """)
 
-    with col2:
-        st.markdown("### Upgraded V2 Framework: Production Pipeline")
-        st.markdown("""
-        * **Preservation of the Score Filter:** I intentionally stop collecting transcript data exactly one game before a playoff series is decided. This prevents the anomalous emotional spikes inherent in series-clinching celebrations from skewing our training baselines.
-        * **Tri-Tier Role Isolation:** The matrix separates team dynamics across three roles: coaches, star players, and role players.
-        * **Multi-Season Scaling:** The pipeline includes older seasons to broaden baselines.
-        * **Dual Hybrid Processing:** Integrated a generative RAG pipeline alongside a dedicated opponent model.
-        """)
+st.markdown("---")
 
-# Map out routing for the other tabs back to their source pages
-page_routes = [
-    (0, "../1_Home.py", "Introduction"),
-    (1, "3_Historical_Analysis.py", "Historical Baselines"),
-    (2, "4_Modern_Era_Analytics.py", "Modern Era Analytics"),
-    (3, "5_AI_Intelligence_Engine.py", "RAG Engine"),
-    (4, "6_2026_Finals_Predictor.py", "Live Predictor"),
-    (5, "7_Finals_Matchup.py", "Finals Matchup")
-]
+st.markdown("### Dual Classifier Modeling Optimization")
+st.write(
+    "To provide deeper comparative resolution, the system evaluates live series inputs through two distinct "
+    "Random Forest classifier architectures trained on different historical contexts:"
+)
 
-for idx, page_path, tab_title in page_routes:
-    with nav_tabs[idx]:
-        st.info(f"Explore the {tab_title} module.")
-        st.page_link(page_path, label=f"Open {tab_title}", icon="🏀")
+col3, col4 = st.columns(2)
+with col3:
+    st.markdown("#### Model 1: Full Baseline Engine")
+    st.write(
+        "Trained on our complete multi-era repository spanning older playoff arcs back to 2020. "
+        "This model evaluates macro trends over a broader historical footprint, establishing conservative "
+        "weights that account for structural shifts across different eras of post-game media management."
+    )
+
+with col4:
+    st.markdown("#### Model 2: Modern Era Optimized Engine")
+    st.write(
+        "Trained exclusively on high-density data sheets from the recent 2024 and 2025 seasons. By evaluating "
+        "environments where every conference final team and corresponding opponent tracking arrays were entirely populated, "
+        "this model picks up on modern player-media dynamics and sharp confidence deltas."
+    )
+
+st.markdown("---")
+st.write(
+    "Note: For an atomic, line-by-line breakdown of the underlying data-scraping parameters, "
+    "tokenization algorithms, and random forest tuning weights, please refer to the primary repository documentation."
+)

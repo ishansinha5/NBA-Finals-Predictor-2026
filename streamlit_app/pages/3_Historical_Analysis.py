@@ -1,115 +1,132 @@
 import streamlit as st
-import pandas as pd
-import base64
+import sys
 import os
+
+# --- BULLETPROOF ROUTING CORRECTION ---
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if (ROOT_DIR not in sys.path):
+    sys.path.append(ROOT_DIR)
+
+from utils.navigation import apply_global_styles, render_navigation
 
 st.set_page_config(
     page_title="Historical Baselines", 
     page_icon="🏀", 
-    layout="wide", 
-    initial_sidebar_state="collapsed"
+    layout="wide"
 )
 
-def get_base64_bg(img_name):
-    # Step up one directory from pages/ to find the image in streamlit_app/
-    img_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), img_name)
-    if (os.path.exists(img_path)):
-        with open(img_path, "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read()).decode()
-        return f"data:image/jpg;base64,{encoded_string}"
-    return ""
+apply_global_styles()
+render_navigation()
 
-bg_base64 = get_base64_bg("image_04fa1b.jpg")
+# --- CUSTOM WIDGET CSS INJECTION ---
+custom_css = """
+<style>
+    .stSelectbox label {
+        display: flex !important;
+        justify-content: center !important;
+        font-size: 1.1rem !important;
+        padding-bottom: 8px !important;
+    }
+    div[data-baseweb="select"] > div {
+        background-color: rgba(11, 26, 48, 0.95) !important;
+        border: 1px solid #1f3a5f !important;
+        color: white !important;
+        border-radius: 6px;
+    }
+    div[data-baseweb="select"] > div > div > div {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    ul[data-baseweb="menu"] {
+        background-color: rgba(11, 26, 48, 0.95) !important;
+        border: 1px solid #1f3a5f !important;
+    }
+    li[data-baseweb="menu-item"] {
+        color: white !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    li[data-baseweb="menu-item"]:hover {
+        background-color: #1f3a5f !important;
+    }
+</style>
+"""
+st.markdown(custom_css, unsafe_allow_html=True)
 
-if (bg_base64):
-    st.markdown(f"""
-        <style>
-            [data-testid="stSidebar"] {{ display: none; }}
-            [data-testid="stAppViewContainer"] {{
-                background: linear-gradient(rgba(11, 26, 48, 0.85), rgba(11, 26, 48, 0.95)), url("{bg_base64}");
-                background-size: cover; background-position: center; background-attachment: fixed;
-            }}
-            [data-testid="stHeader"] {{ background-color: transparent; }}
-            html, body, [class*="st-"], h1, h2, h3, h4, p, span, div, li {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }}
-        </style>
-    """, unsafe_allow_html=True)
-else:
-    st.markdown("<style>[data-testid='stSidebar'] { display: none; } [data-testid='stAppViewContainer'] { background-color: #0b1a30; } [data-testid='stHeader'] { background-color: transparent; }</style>", unsafe_allow_html=True)
+# --- HARDCODED ASSET PATHS ---
+ASSETS = os.path.join(ROOT_DIR, "assets")
+HIST   = os.path.join(ASSETS, "historical")
 
-st.title("🏀 NBA Post-Game NLP Engine: Decoding Championship Psychology")
+# --- MAIN PAGE CONTENT ---
+st.title("Historical Championship Baselines")
+
+st.write(
+    "To figure out what a championship team actually sounds like, I scraped the post-game press conferences "
+    "of the 2020, 2021, and 2022 NBA Champions. The older transcripts were a bit sparse and full of gaps, "
+    "so I used linear imputation to fill out the timeline and keep the visual trajectories continuous. "
+    "It's not a perfect dataset, but it gives us a really solid psychological baseline of how a team "
+    "communicates when they are on a deep title run."
+)
 st.markdown("---")
 
-nav_tabs = st.tabs([
-    "Introduction", "Historical Baselines", "Modern Era Analytics", 
-    "RAG Engine", "Live Predictor", "Finals Matchup", "Engineering Journey"
-])
-
-with nav_tabs[1]:
-    st.header("Historical Championship Baselines")
-    
-    season_map = {
-        "2019-2020 Playoff Archive": ("scored_2019_2020.csv", "Lakers"),
-        "2021-2022 Playoff Archive": ("scored_2021_2022.csv", "Warriors")
+# --- DATA DICTIONARY ---
+teams_data = {
+    "2019-2020 Los Angeles Lakers": {
+        "analysis": "The 2020 Lakers operated with a heavy, veteran, business-like demeanor inside the Orlando bubble. Their aggregate mindset remained remarkably flat and content, showing almost zero panic even after dropping early series games. Frank Vogel's coach trajectory reflects a steady, unwavering trust in his game plan without letting frustration spike. LeBron James, as the star, commanded the media room with intense neutrality and confidence, absorbing all the external pressure. The teammates followed suit, mirroring that flat emotional line and completely suppressing anxiety to close out the championship run."
+    },
+    "2020-2021 Milwaukee Bucks": {
+        "analysis": "The 2021 Bucks played with a resilient, blue-collar joy that helped them bounce back from deep series deficits. Their aggregate momentum reveals a team that absorbed early frustration but channeled it directly into rising confidence. Mike Budenholzer kept his emotional profile completely steady, anchoring the team when the media doubted their half-court execution. Giannis Antetokounmpo was the absolute emotional battery, displaying massive spikes of contentment and zero anxiety as the stakes got higher. The supporting teammates matched this energy, steadily growing more confident as they learned how to win on the biggest stage."
+    },
+    "2021-2022 Golden State Warriors": {
+        "analysis": "The 2022 Warriors brought a youthful, loose, and incredibly confident swagger to their redemption tour. Looking at their aggregate lines, they maintained an exceptionally high baseline of contentment and neutrality, completely brushing off the ghosts of past injuries. Steve Kerr's podium presence was masterful, showing minimal frustration and massive trust in his system. Stephen Curry's star trajectory is a clinic in emotional stability, showing pure confidence while letting the noise slide right off him. The teammates, a mix of the old core and new blood, bought in entirely, keeping anxiety flatlined and letting their championship pedigree take over."
     }
-    
-    selected_season = st.selectbox("Select Historical Data Archive", list(season_map.keys()))
-    file_name, champ_team = season_map[selected_season]
-    
-    st.markdown(f"### The {champ_team} Championship Profile")
-    st.markdown(f"The {champ_team} conquered their respective NBA Finals run by establishing a rigid, emotionally flat baseline that proved entirely resistant to external media narratives. Their ability to regulate internal frustration and project unwavering collective confidence allowed them to dictate the pace of the postseason from start to finish.")
-    
-    # Pathing up 3 levels: pages -> streamlit_app -> root -> data -> historical
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    data_path = os.path.join(base_dir, "data", "historical", file_name)
+}
 
-    if (not os.path.exists(data_path)):
-        st.warning("Data file not found. Please run the ingestion pipeline.")
-    else:
-        df = pd.read_csv(data_path)
-        sentiment_cols = ['confidence', 'content', 'neutrality', 'frustration', 'upset', 'anxiety', 'surprise']
-        
-        st.markdown("---")
-        st.subheader("Team Aggregates")
-        df_agg = df[(df['team'] == champ_team)]
-        if (not df_agg.empty):
-            stage_progression = df_agg.groupby('stage')[sentiment_cols].mean()
-            st.dataframe(stage_progression.style.highlight_max(axis=1, color='lightgreen'))
-            st.bar_chart(df_agg[sentiment_cols].mean(), height=300)
-        else:
-            st.info("No aggregate data available.")
-            
-        st.markdown("---")
-        col_c, col_s, col_t = st.columns(3)
-        
-        with col_c:
-            st.markdown("#### Coach Podiums")
-            df_coach = df[(df['team'] == champ_team) & (df['role'] == 'coach')]
-            if (not df_coach.empty):
-                st.bar_chart(df_coach[sentiment_cols].mean(), height=250)
-                
-        with col_s:
-            st.markdown("#### Star Dynamics")
-            df_star = df[(df['team'] == champ_team) & (df['role'] == 'star')]
-            if (not df_star.empty):
-                st.bar_chart(df_star[sentiment_cols].mean(), height=250)
-                
-        with col_t:
-            st.markdown("#### Teammate Chemistry")
-            df_team = df[(df['team'] == champ_team) & (df['role'] == 'teammate')]
-            if (not df_team.empty):
-                st.bar_chart(df_team[sentiment_cols].mean(), height=250)
+col_empty1, col_dropdown, col_empty2 = st.columns([1, 2, 1])
+with col_dropdown:
+    selected_team = st.selectbox("Select Championship Roster", list(teams_data.keys()), index=0)
 
-# Map out routing for the other tabs back to their source pages
-page_routes = [
-    (0, "../1_Home.py", "Introduction"),
-    (2, "4_Modern_Era_Analytics.py", "Modern Era Analytics"),
-    (3, "5_AI_Intelligence_Engine.py", "RAG Engine"),
-    (4, "6_2026_Finals_Predictor.py", "Live Predictor"),
-    (5, "7_Finals_Matchup.py", "Finals Matchup"),
-    (6, "2_Methodology.py", "Engineering Journey")
-]
+st.markdown("<br>", unsafe_allow_html=True)
 
-for idx, page_path, tab_title in page_routes:
-    with nav_tabs[idx]:
-        st.info(f"Explore the {tab_title} module.")
-        st.page_link(page_path, label=f"Open {tab_title}", icon="🏀")
+# --- LOGO & ANALYSIS LAYOUT ---
+col_logo, col_text = st.columns([1, 5])
+
+with col_logo:
+    if selected_team == "2019-2020 Los Angeles Lakers":
+        st.image(os.path.join(ASSETS, "Los_Angeles_Lakers_logo.png"), width=140)
+    elif selected_team == "2020-2021 Milwaukee Bucks":
+        st.image(os.path.join(ASSETS, "Milwaukee_Bucks_logo.png"), width=140)
+    elif selected_team == "2021-2022 Golden State Warriors":
+        st.image(os.path.join(ASSETS, "Golden-State-Warriors-logo.png"), width=140)
+
+with col_text:
+    st.write(teams_data[selected_team]["analysis"])
+
+st.markdown("---")
+st.markdown("### Series Emotional Trajectories")
+
+col1, col2 = st.columns(2)
+
+if selected_team == "2019-2020 Los Angeles Lakers":
+    with col1:
+        st.image(os.path.join(HIST, "lakers_aggregate_trajectory.png"), caption="Team Aggregate Momentum")
+        st.image(os.path.join(HIST, "lakers_coach_trajectory.png"),     caption="Head Coach Momentum")
+    with col2:
+        st.image(os.path.join(HIST, "lakers_star_trajectory.png"),      caption="Franchise Star Momentum")
+        st.image(os.path.join(HIST, "lakers_teammate_trajectory.png"),  caption="Supporting Teammates Momentum")
+
+elif selected_team == "2020-2021 Milwaukee Bucks":
+    with col1:
+        st.image(os.path.join(HIST, "bucks_aggregate_trajectory.png"), caption="Team Aggregate Momentum")
+        st.image(os.path.join(HIST, "bucks_coach_trajectory.png"),     caption="Head Coach Momentum")
+    with col2:
+        st.image(os.path.join(HIST, "bucks_star_trajectory.png"),      caption="Franchise Star Momentum")
+        st.image(os.path.join(HIST, "bucks_teammate_trajectory.png"),  caption="Supporting Teammates Momentum")
+
+elif selected_team == "2021-2022 Golden State Warriors":
+    with col1:
+        st.image(os.path.join(HIST, "warriors_aggregate_trajectory.png"), caption="Team Aggregate Momentum")
+        st.image(os.path.join(HIST, "warriors_coach_trajectory.png"),     caption="Head Coach Momentum")
+    with col2:
+        st.image(os.path.join(HIST, "warriors_star_trajectory.png"),      caption="Franchise Star Momentum")
+        st.image(os.path.join(HIST, "warriors_teammate_trajectory.png"),  caption="Supporting Teammates Momentum")
