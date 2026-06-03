@@ -1,1135 +1,1901 @@
 [
   {
     "video_id": "vxrNx038z2Q",
-    "team": "Thunder",
-    "stage": "Reg Season - Spurs (Opponent)",
+    "team": "Spurs",
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1,
     "end_time": 1000.0
   },
   {
     "video_id": "vxrNx038z2Q",
     "team": "Spurs",
     "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0,
     "start_time": 1000.0
   },
   {
     "video_id": "lMYLWaCPSnc",
     "team": "Spurs",
-    "stage": "Reg Season - Thunder"
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "pazr3gYheas",
     "team": "Spurs",
-    "stage": "Reg Season - Thunder"
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "SdgW62nxPx8",
-    "team": "Thunder",
-    "stage": "Reg Season - Spurs (Opponent)"
+    "team": "Spurs",
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
   },
   {
     "video_id": "RJ8vLCuH4Eo",
     "team": "Spurs",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "A7sQJ8KzmcY",
     "team": "Spurs",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "OIa8MXbdhEo",
     "team": "Spurs",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "azP8VukLYeA",
     "team": "Spurs",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "UcwemfW0acY",
     "team": "Spurs",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "SOk1VmU5koM",
-    "team": "Wizards",
-    "stage": "Reg Season - Spurs (Opponent)"
+    "team": "Spurs",
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
   },
   {
     "video_id": "5kkeOuEGuqk",
     "team": "Spurs",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "EoNXslyQPJY",
     "team": "Spurs",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "1StOCywEDtI",
-    "team": "Bulls",
-    "stage": "Reg Season - Spurs (Opponent)"
+    "team": "Spurs",
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
   },
   {
     "video_id": "5RLdy6WBfWA",
     "team": "Spurs",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "K-BwHFg_NFs",
     "team": "Spurs",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "tfNlsUpz4G0",
     "team": "Spurs",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "fetLjJiZBRM",
     "team": "Spurs",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "s2BSWOHXhTA",
     "team": "Spurs",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "pd-ETCd7BQY",
     "team": "Spurs",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "eIk2dPVx1V4",
     "team": "Spurs",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "UTXer867ejg",
     "team": "Spurs",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "gBH09GsCP6U",
     "team": "Spurs",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "OTLDCp3MTN8",
     "team": "Spurs",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "bz0n0zxoowc",
     "team": "Spurs",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "qgENVYQG8bY",
     "team": "Spurs",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "LasFgRzjGqo",
     "team": "Spurs",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "8WhC9AaEW-A",
     "team": "Spurs",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "jFvug4JWJag",
     "team": "Spurs",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "SGxAlLrT-v4",
     "team": "Spurs",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "eDRUuCGYjRw",
     "team": "Spurs",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "FW4VwazujnA",
     "team": "Spurs",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "_-4FRzYsO0I",
     "team": "Spurs",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "G9xCCLFnWE0",
     "team": "Spurs",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "YOu9OvdV1lo",
     "team": "Spurs",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "rl-BKORzs9o",
     "team": "Spurs",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "MTSCKsuKub0",
     "team": "Spurs",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "eab3ZIjkx6M",
     "team": "Spurs",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "s2sARr0qzig",
     "team": "Spurs",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "HMnKgzgb4P8",
     "team": "Spurs",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "msCAesIecV0",
     "team": "Spurs",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "H0GSOjChMZg",
     "team": "Spurs",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "wOU735Aq-AM",
     "team": "Spurs",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "Wlo1zEJ5eUU",
     "team": "Spurs",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "DYDpO2y4oTU",
     "team": "Spurs",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "tgVTcYVID1w",
     "team": "Spurs",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "zYsicr-kqx8",
     "team": "Spurs",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "Qmgl2-DvBSk",
     "team": "Spurs",
-    "stage": "R2G5"
+    "stage": "R2G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "c_egiiZClX8",
     "team": "Spurs",
-    "stage": "R2G5"
+    "stage": "R2G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "KCbVv0J5To8",
     "team": "Spurs",
-    "stage": "R2G5"
+    "stage": "R2G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "kpzEnnJRU64",
     "team": "Spurs",
-    "stage": "R2G5"
+    "stage": "R2G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "_QkJK-2_n_8",
     "team": "Spurs",
-    "stage": "R2G6"
+    "stage": "R2G6",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "3_ddyc8EVZI",
     "team": "Spurs",
-    "stage": "R2G6"
+    "stage": "R2G6",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "GHXfVm_nrZY",
     "team": "Spurs",
-    "stage": "R2G6"
+    "stage": "R2G6",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "ZfcFEDS9CYU",
     "team": "Thunder",
-    "stage": "Reg Season - Spurs"
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "c_JIGcWyRl0",
     "team": "Thunder",
-    "stage": "Reg Season - Spurs"
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "pazr3gYheas",
-    "team": "Spurs",
-    "stage": "Reg Season - Thunder (Opponent)"
+    "team": "Thunder",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "yx6pcv_na0c",
-    "team": "Knicks",
-    "stage": "Reg Season - Thunder (Opponent)"
+    "team": "Thunder",
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "DdbVQoAgoTQ",
-    "team": "Knicks",
-    "stage": "Reg Season - Thunder (Opponent)"
+    "team": "Thunder",
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "6cUokfudSNo",
     "team": "Thunder",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "kypF26Ktr6o",
     "team": "Thunder",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "pr1dF6NXBwY",
     "team": "Thunder",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "gozOuZ_arng",
-    "team": "Cavaliers",
-    "stage": "Reg Season - Thunder (Opponent)"
+    "team": "Thunder",
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "Ms7wFCFRBD0",
-    "team": "Cavaliers",
-    "stage": "Reg Season - Thunder (Opponent)"
+    "team": "Thunder",
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "uKF1mBol-1E",
     "team": "Thunder",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "QI9uY1sKCNI",
     "team": "Thunder",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "UmWgxrK1A7M",
     "team": "Thunder",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "6qvx7l9efY4",
     "team": "Thunder",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "pOO4hkrMIE8",
-    "team": "Magic",
-    "stage": "Reg Season - Thunder (Opponent)"
+    "team": "Thunder",
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "M6LQ2hjjhLY",
-    "team": "Magic",
-    "stage": "Reg Season - Thunder (Opponent)"
+    "team": "Thunder",
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "4z3yuw96Zc8",
     "team": "Thunder",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "XGbTfZEJ8Xc",
     "team": "Thunder",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Fyjnkx5t_UI",
     "team": "Thunder",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "efBbWQna58o",
     "team": "Thunder",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "BhbgKK_rFGM",
     "team": "Thunder",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "z7j_O3P2vXA",
-    "team": "Bulls",
-    "stage": "Reg Season - Thunder (Opponent)"
+    "team": "Thunder",
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "nxZUQbvWYqI",
     "team": "Thunder",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "gDxXNNUxHno",
     "team": "Thunder",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "r9bLvlH5CyA",
     "team": "Thunder",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "K7lQcpYOMpQ",
     "team": "Thunder",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "1pjQZcLRhnI",
     "team": "Thunder",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "XsPXu2KHWbY",
     "team": "Thunder",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "hm9FDKcX_2o",
     "team": "Thunder",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Od3mTSt76MU",
     "team": "Thunder",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "uV2WacK4NFM",
     "team": "Thunder",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "yr0Bw_bbpcA",
     "team": "Thunder",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "pJbDEnBaGYg",
     "team": "Thunder",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "uIH3f3TRSJ4",
     "team": "Thunder",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "zc6nxdPQtXc",
     "team": "Thunder",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "mrMnHEDFIHY",
     "team": "Thunder",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "lFPyolCPa4I",
     "team": "Thunder",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "DOz-v5EdYzg",
     "team": "Thunder",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Zsxp5ulXqwo",
     "team": "Thunder",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "1Lk5_RQ5WSE",
     "team": "Thunder",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "vcgm3t0UN7g",
     "team": "Thunder",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "UP2ACymMn5M",
     "team": "Thunder",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "lPuz37P76kI",
     "team": "Thunder",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "AnUmgcgTAP4",
     "team": "Thunder",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "fZeHug8pCVQ",
     "team": "Thunder",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "6qzXBEuMUTw",
     "team": "Thunder",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "09rv4SNB74g",
     "team": "Thunder",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "i89CBifspOg",
     "team": "Thunder",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
-    "video_id": "Zcy4j2Kmkh8",
-    "team": "Spurs",
-    "stage": "R3G1"
+    "video_id": "s2BSWOHXhTA",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
-    "video_id": "NHErxWb-Tv4",
-    "team": "Spurs",
-    "stage": "R3G1"
+    "video_id": "pd-ETCd7BQY",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
-    "video_id": "NHErxWb-Tv4",
-    "team": "Spurs",
-    "stage": "R3G1"
-  },
-  {
-    "video_id": "yd-cBxcAU9A",
-    "team": "Thunder",
-    "stage": "R3G1"
-  },
-  {
-    "video_id": "8-ab37jkwXw",
-    "team": "Thunder",
-    "stage": "R3G1"
+    "video_id": "eIk2dPVx1V4",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
   },
   {
     "video_id": "UTXer867ejg",
     "team": "Cavaliers",
-    "stage": "Reg Season - Spurs"
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "uKF1mBol-1E",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "QI9uY1sKCNI",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "UmWgxrK1A7M",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "UTXer867ejg",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "WDqx9sq1kk8",
     "team": "Cavaliers",
-    "stage": "Reg Season - Spurs"
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "UmOpEr7GtN8",
     "team": "Cavaliers",
-    "stage": "Reg Season - Spurs"
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "gozOuZ_arng",
     "team": "Cavaliers",
-    "stage": "Reg Season - Thunder"
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "MCipufhaSWk",
     "team": "Cavaliers",
-    "stage": "Reg Season - Thunder"
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Ms7wFCFRBD0",
     "team": "Cavaliers",
-    "stage": "Reg Season - Thunder"
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "RIGcqqHHeDE",
     "team": "Cavaliers",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "bsrEhliYA_Y",
     "team": "Cavaliers",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "dMmf_n3g7SQ",
     "team": "Cavaliers",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "99pNaOxnGJA",
     "team": "Cavaliers",
-    "stage": "Reg Season - Knicks"
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "0LHKGnd1yu8",
     "team": "Cavaliers",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "ppeQhdx02LA",
     "team": "Cavaliers",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "bcbxrtqBvTM",
     "team": "Cavaliers",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "tDLNq7xzdFc",
     "team": "Cavaliers",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "utyThEM8AmI",
     "team": "Cavaliers",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "QWYObVDHSFQ",
     "team": "Cavaliers",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "d5bOYn5svYQ",
     "team": "Cavaliers",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "YnabhEYTarg",
     "team": "Cavaliers",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "fSCi6IC2khg",
     "team": "Cavaliers",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "9LrVhnlNZhE",
     "team": "Cavaliers",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "6aDYyyA5ZTU",
     "team": "Cavaliers",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "N1qZ2bzwV_4",
     "team": "Cavaliers",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "-J-EC_3VFZA",
     "team": "Cavaliers",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "rtOoE3b3dBk",
     "team": "Cavaliers",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "S13Yihi-RbQ",
     "team": "Cavaliers",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "2oJ6fwi1RsA",
     "team": "Cavaliers",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "E3_xvYZwE2w",
     "team": "Cavaliers",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Ptm5jIHgSEQ",
     "team": "Cavaliers",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "QDgzNgKrEes",
     "team": "Cavaliers",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "EcLfgYOY5zI",
     "team": "Cavaliers",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "htLKZmF3xfo",
     "team": "Cavaliers",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "nNAIjbYOM_k",
     "team": "Cavaliers",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "i9GfQLeDL2A",
     "team": "Cavaliers",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Tyv1pPBFFxE",
     "team": "Cavaliers",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "7zbd6wyuwno",
     "team": "Cavaliers",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "nC1bMN9Oj2s",
     "team": "Cavaliers",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "w_8gkkMGbzg",
     "team": "Cavaliers",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "0_xWA8ndEKw",
     "team": "Cavaliers",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "WbHmC8L6mZE",
     "team": "Cavaliers",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "syofbqiHEVQ",
     "team": "Cavaliers",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "03EFVwytPn0",
     "team": "Cavaliers",
-    "stage": "R1G6"
+    "stage": "R1G6",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "u7odOcLdHt4",
     "team": "Cavaliers",
-    "stage": "R1G6"
+    "stage": "R1G6",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "6FCmf7fzhfA",
     "team": "Cavaliers",
-    "stage": "R1G6"
+    "stage": "R1G6",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "VMMpOcs36sQ",
     "team": "Cavaliers",
-    "stage": "R1G7"
+    "stage": "R1G7",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "hHUpIFUjmco",
     "team": "Cavaliers",
-    "stage": "R1G7"
+    "stage": "R1G7",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "JkXC4ym_Ruc",
     "team": "Cavaliers",
-    "stage": "R1G7"
+    "stage": "R1G7",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "MSbiO0JnBCE",
     "team": "Cavaliers",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "9eUsn4S98hQ",
     "team": "Cavaliers",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "8PBpCaJJNwQ",
     "team": "Cavaliers",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "jux0eMyfrnk",
     "team": "Cavaliers",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "mqv1j65JdnI",
     "team": "Cavaliers",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "bkGn3288_tI",
     "team": "Cavaliers",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "1N7hBi7l5fU",
     "team": "Cavaliers",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Bbzpdf0_c6E",
     "team": "Cavaliers",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Bbzpdf0_c6E",
     "team": "Cavaliers",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "BYWJStH8WEw",
     "team": "Cavaliers",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "MFOk4KY1nSo",
     "team": "Cavaliers",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "IEAFW9Igbt8",
     "team": "Cavaliers",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "85kwqzQlqNU",
     "team": "Cavaliers",
-    "stage": "R2G5"
+    "stage": "R2G5",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "Qru_8g28zJI",
     "team": "Cavaliers",
-    "stage": "R2G5"
+    "stage": "R2G5",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "GQ8ajLRcsgc",
     "team": "Cavaliers",
-    "stage": "R2G5"
+    "stage": "R2G5",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "qPCB9QAZ8-k",
     "team": "Cavaliers",
-    "stage": "R2G6"
+    "stage": "R2G6",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "mjbe4ltSOh8",
     "team": "Cavaliers",
-    "stage": "R2G6"
+    "stage": "R2G6",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "v1dfvI7XOMw",
     "team": "Cavaliers",
-    "stage": "R2G6"
+    "stage": "R2G6",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "F2HY2e6Zdqk",
     "team": "Cavaliers",
-    "stage": "R2G7"
+    "stage": "R2G7",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "iPi1A6hsMws",
     "team": "Cavaliers",
-    "stage": "R2G7"
+    "stage": "R2G7",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
   },
   {
     "video_id": "xcmA6mutsEM",
     "team": "Cavaliers",
-    "stage": "R2G7"
+    "stage": "R2G7",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 0
+  },
+  {
+    "video_id": "G0lEBZXNpjg",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "SaJjWAXdHbc",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "4shbozi0IgY",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "fohxBeasQCM",
+    "team": "Cavaliers",
+    "stage": "Reg Season - Knicks",
+    "role": "aggregate",
+    "bracket_tier": 2,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "K-BwHFg_NFs",
+    "team": "Knicks",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "tfNlsUpz4G0",
+    "team": "Knicks",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "tfNlsUpz4G0",
+    "team": "Knicks",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "fetLjJiZBRM",
+    "team": "Knicks",
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "6cUokfudSNo",
+    "team": "Knicks",
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "kypF26Ktr6o",
+    "team": "Knicks",
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "pr1dF6NXBwY",
+    "team": "Knicks",
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "RIGcqqHHeDE",
+    "team": "Knicks",
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "bsrEhliYA_Y",
+    "team": "Knicks",
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "dMmf_n3g7SQ",
+    "team": "Knicks",
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
+  },
+  {
+    "video_id": "99pNaOxnGJA",
+    "team": "Knicks",
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 1
   },
   {
     "video_id": "wr7scgxYZLo",
     "team": "Knicks",
-    "stage": "Reg Season - Spurs"
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "oA4jjs3rbRk",
     "team": "Knicks",
-    "stage": "Reg Season - Spurs"
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "OqQBXMmLGEY",
     "team": "Knicks",
-    "stage": "Reg Season - Spurs"
+    "stage": "Reg Season - Spurs",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "-kGUzpu_kZw",
     "team": "Knicks",
-    "stage": "Reg Season - Thunder"
+    "stage": "Reg Season - Thunder",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "G0lEBZXNpjg",
     "team": "Knicks",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "SaJjWAXdHbc",
     "team": "Knicks",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "4shbozi0IgY",
     "team": "Knicks",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "fohxBeasQCM",
     "team": "Knicks",
-    "stage": "Reg Season - Cavaliers"
+    "stage": "Reg Season - Cavaliers",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "8ebwzNe8r8M",
     "team": "Knicks",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "w3QlFESWGkk",
     "team": "Knicks",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "0_2YP2gfmK8",
     "team": "Knicks",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "n7C_XhUPGj4",
     "team": "Knicks",
-    "stage": "Reg Season - Magic"
+    "stage": "Reg Season - Magic",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "-s9wWjk6D0A",
     "team": "Knicks",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "IhRnfQzVWJA",
     "team": "Knicks",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "nyHqpcdGYLw",
     "team": "Knicks",
-    "stage": "Reg Season - Wizards"
+    "stage": "Reg Season - Wizards",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "ocOuqaKIenI",
     "team": "Knicks",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "mWzQQouw0f8",
     "team": "Knicks",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "OwsW4ow_TbQ",
     "team": "Knicks",
-    "stage": "Reg Season - Bulls"
+    "stage": "Reg Season - Bulls",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "hHZJcCQvW5w",
     "team": "Knicks",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "x-KhCEieprA",
     "team": "Knicks",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "ur5DR2rSTxA",
     "team": "Knicks",
-    "stage": "R1G1"
+    "stage": "R1G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "58rfPfzY9jg",
     "team": "Knicks",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "-6pYTiI8fxg",
     "team": "Knicks",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "wtu04Q0UktI",
     "team": "Knicks",
-    "stage": "R1G2"
+    "stage": "R1G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "kW9KLB7nXmw",
     "team": "Knicks",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "_NTp0b5AEio",
     "team": "Knicks",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "8N3lC0Nl5c4",
     "team": "Knicks",
-    "stage": "R1G3"
+    "stage": "R1G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "Imog4cU4cZA",
     "team": "Knicks",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "6gBVYqlt3lY",
     "team": "Knicks",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "cylbMkGO1Pc",
     "team": "Knicks",
-    "stage": "R1G4"
+    "stage": "R1G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "9UoX0drzrIc",
     "team": "Knicks",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "q-0ptYkN4s0",
     "team": "Knicks",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "i6aSFzDpL2Q",
     "team": "Knicks",
-    "stage": "R1G5"
+    "stage": "R1G5",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "jBtsEHVlh78",
     "team": "Knicks",
-    "stage": "R1G6"
+    "stage": "R1G6",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "rywgLpyiQzQ",
     "team": "Knicks",
-    "stage": "R1G6"
+    "stage": "R1G6",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "7JfCpXsfQQw",
     "team": "Knicks",
-    "stage": "R1G6"
+    "stage": "R1G6",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "3XJ_kRBHc_4",
     "team": "Knicks",
-    "stage": "R2G1"
+    "stage": "R2G1",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "qGiLNZfLN10",
     "team": "Knicks",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "KTeTBELMZL4",
     "team": "Knicks",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "8vLTtC-fIzA",
     "team": "Knicks",
-    "stage": "R2G2"
+    "stage": "R2G2",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "ecV3VZ2i_Ec",
     "team": "Knicks",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "mH-QPgcmM7Y",
     "team": "Knicks",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "iWqVOGosC6Q",
     "team": "Knicks",
-    "stage": "R2G3"
+    "stage": "R2G3",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "M1DmBMKxhFg",
     "team": "Knicks",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "orwY1hdaRyo",
     "team": "Knicks",
-    "stage": "R2G4"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   },
   {
     "video_id": "O5sEPKZsqD8",
     "team": "Knicks",
-    "stage": "R2G4"
-  }, 
-  {
-    "video_id": "j4fAF65DaOE",
-    "team": "Cavaliers",
-    "stage": "R3G1"
-  },
-  {
-    "video_id": "kSJCITqhjS0",
-    "team": "Cavaliers",
-    "stage": "R3G1"
-  },
-  {
-    "video_id": "kG9ZGq1yZ-A",
-    "team": "Cavaliers",
-    "stage": "R3G1"
-  },
-  {
-    "video_id": "scdOPzbgojI",
-    "team": "Knicks",
-    "stage": "R3G1"
-  },
-  {
-    "video_id": "TSkyMMcKTdc",
-    "team": "Knicks",
-    "stage": "R3G1"
-  },
-  {
-    "video_id": "saXO2VtvvPU",
-    "team": "Knicks",
-    "stage": "R3G1"
+    "stage": "R2G4",
+    "role": "aggregate",
+    "bracket_tier": 3,
+    "is_opponent": 0
   }, 
   {
     "video_id": "Zcy4j2Kmkh8",
