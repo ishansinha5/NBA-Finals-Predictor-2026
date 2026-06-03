@@ -3,14 +3,10 @@ import base64
 import os
 
 def get_base64_bg(img_name):
-    # Safely find the image whether we are in the root or the pages/ directory
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     img_path = os.path.join(base_dir, img_name)
-    
-    # Fallback to current working directory just in case
     if not os.path.exists(img_path):
         img_path = os.path.join(os.getcwd(), img_name)
-
     if os.path.exists(img_path):
         with open(img_path, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode()
@@ -19,14 +15,11 @@ def get_base64_bg(img_name):
 
 def apply_global_styles():
     bg_base64 = get_base64_bg("image_04fa1b.jpg")
-    
-    # If the image loads, use it with the dark gradient. If not, fallback to the deep blue.
     if bg_base64:
         bg_css = f'background: linear-gradient(rgba(11, 26, 48, 0.85), rgba(11, 26, 48, 0.95)), url("data:image/jpg;base64,{bg_base64}"); background-size: cover; background-position: center; background-attachment: fixed;'
     else:
         bg_css = 'background-color: #0b1a30;'
 
-    # Bulletproof CSS forcing Helvetica, white text, and the background
     css = f"""
     <style>
         [data-testid="stSidebar"] {{ display: none !important; }}
@@ -37,20 +30,23 @@ def apply_global_styles():
             color: #ffffff !important;
         }}
         
+        /* Hide those ugly chain link icons next to headers */
+        h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .st-emotion-cache-1629p8f a {{
+            display: none !important;
+            pointer-events: none !important;
+        }}
+        
         [data-testid="stAppViewContainer"] {{
             {bg_css}
         }}
         
         [data-testid="stHeader"] {{ background-color: transparent !important; }}
-        
-        /* Ensure links look good in dark mode */
-        a {{ color: #4DA8DA !important; }}
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
 
 def render_navigation():
-    # Explicit columns for the navigation header
+    # This row of buttons IS your navigation menu now. No more st.tabs.
     col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
     with col1: st.page_link("1_Home.py", label="Introduction", icon="🏀")
     with col2: st.page_link("pages/3_Historical_Analysis.py", label="Historical", icon="🏀")
