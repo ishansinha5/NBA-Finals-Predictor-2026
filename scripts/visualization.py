@@ -26,6 +26,7 @@ class EmotionVisualizer:
     def _get_opponent_meta(self, team, stage_str):
         round_prefix = stage_str[:2]
         
+        # 2023-2024 Era
         celtics_opps = {
             "R1": {"coach": "E. Spoe.", "star": "B. Adeb.", "team": "MIA Heat"},
             "R2": {"coach": "J. Bice.", "star": "D. Mitc.", "team": "CLE Cavs"},
@@ -40,6 +41,22 @@ class EmotionVisualizer:
             "R4": {"coach": "J. Mazz.", "star": "J. Tayt.", "team": "BOS Celt."}
         }
         
+        # 2024-2025 Era (Thunder Paths & Pacers Paths)
+        thunder_opps = {
+            "R1": {"coach": "T. Jenk.", "star": "J. Mora.", "team": "MEM Griz."},
+            "R2": {"coach": "M. Malo.", "star": "N. Joki.", "team": "DEN Nugg."},
+            "R3": {"coach": "C. Finch", "star": "A. Edwa.", "team": "MIN Timb."},
+            "R4": {"coach": "R. Carl.", "star": "T. Hali.", "team": "IND Pacers"}
+        }
+        
+        pacers_opps = {
+            "R1": {"coach": "D. Ham.",  "star": "G. Ante.", "team": "MIL Bucks"},
+            "R2": {"coach": "J. Bice.", "star": "D. Mitc.", "team": "CLE Cavs"},
+            "R3": {"coach": "T. Thib.", "star": "J. Brun.", "team": "NY Knicks"},
+            "R4": {"coach": "M. Daig.", "star": "S. Gilg.", "team": "OKC Thun"}
+        }
+        
+        # Historical Eras
         lakers_opps = {
             "R1": {"coach": "T. Stot.", "star": "D. Lill.", "team": "POR Trail."},
             "R2": {"coach": "M. DAnt.", "star": "J. Hard.", "team": "HOU Rock."},
@@ -63,16 +80,16 @@ class EmotionVisualizer:
         
         if (team == "Celtics"):
             return celtics_opps.get(round_prefix, {"coach": "OPP", "star": "OPP", "team": "OPP"})
-            
         elif (team == "Mavericks"):
             return mavericks_opps.get(round_prefix, {"coach": "OPP", "star": "OPP", "team": "OPP"})
-            
+        elif (team == "Thunder"):
+            return thunder_opps.get(round_prefix, {"coach": "OPP", "star": "OPP", "team": "OPP"})
+        elif (team == "Pacers"):
+            return pacers_opps.get(round_prefix, {"coach": "OPP", "star": "OPP", "team": "OPP"})
         elif (team == "Lakers"):
             return lakers_opps.get(round_prefix, {"coach": "OPP", "star": "OPP", "team": "OPP"})
-            
         elif (team == "Bucks"):
             return bucks_opps.get(round_prefix, {"coach": "OPP", "star": "OPP", "team": "OPP"})
-            
         elif (team == "Warriors"):
             return warriors_opps.get(round_prefix, {"coach": "OPP", "star": "OPP", "team": "OPP"})
             
@@ -99,6 +116,7 @@ class EmotionVisualizer:
     def plot_concise_trajectories(self, df, team_name, season_label="2023-2024"):
         logging.info(f"Extracting specific visual segments for the {team_name}...")
         
+        # This matches our target architecture paths safely
         out_dir, asset_dir = self._ensure_directories("historical")
         
         roles = ["aggregate", "coach", "star", "teammate"]
@@ -112,8 +130,6 @@ class EmotionVisualizer:
             logging.warning(f"No available dataframe indexes for {team_name}, skipping metrics track.")
             return
 
-        # I am extracting the master chronological game path for this team's complete playoff run
-        # This will act as our timeline grid so we can spot missing games and fill the holes
         sorted_timeline_df = team_data.sort_values(by=['stage'])
         master_stages = sorted_timeline_df['stage'].drop_duplicates().tolist()
 
@@ -122,19 +138,16 @@ class EmotionVisualizer:
                 working_df = team_data.copy()
             else:
                 working_df = team_data[team_data['role'] == role].copy()
+                
+                if (working_df.empty == True):
+                    continue
             
             working_df = working_df.sort_values(by=['stage'])
             
-            # Grouping the available games first to find our raw mathematical averages
             raw_grouped = working_df.groupby('stage', sort=False)[emotions].mean()
-            
-            # Reindexing our grouped data to the master playoff timeline to introduce NaNs for missing slots
             interp_df = raw_grouped.reindex(master_stages)
-            
-            # Applying data interpolation linearly across the timeline gaps to avoid broken line charts
             interp_df = interp_df.interpolate(method='linear', limit_direction='both')
             
-            # Generating the final custom role-based x-axis labels on our filled dataframe
             final_labels = []
             for stage_idx in interp_df.index:
                 formatted_label = self.format_stage_label(stage_idx, team_name, role)
@@ -162,8 +175,11 @@ class EmotionVisualizer:
             plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', title="Emotions")
             plt.tight_layout()
             
-            filename = f"{team_name.lower()}_{role}_trajectory.png"
+            # Incorporating short year tag so 2023 and 2024 profiles never overwrite each other
+            short_year = season_label[:4]
+            filename = f"{team_name.lower()}_{short_year}_{role}_trajectory.png"
             
+            # Explicitly routing out copies to both system pipelines
             plt.savefig(os.path.join(out_dir, filename), dpi=300, bbox_inches='tight')
             plt.savefig(os.path.join(asset_dir, filename), dpi=300, bbox_inches='tight')
             plt.close()
