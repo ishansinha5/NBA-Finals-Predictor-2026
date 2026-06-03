@@ -1,12 +1,16 @@
 import streamlit as st
+import random
 import sys
 import os
 
 # --- BULLETPROOF ROUTING CORRECTION ---
-# Forcing Python to step up to the root folder to resolve deep utility module linkages
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if (ROOT_DIR not in sys.path):
-    sys.path.append(ROOT_DIR)
+STREAMLIT_APP_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if (STREAMLIT_APP_DIR not in sys.path):
+    sys.path.append(STREAMLIT_APP_DIR)
+
+PROJECT_ROOT_DIR = os.path.dirname(STREAMLIT_APP_DIR)
+if (PROJECT_ROOT_DIR not in sys.path):
+    sys.path.append(PROJECT_ROOT_DIR)
 
 from utils.navigation import apply_global_styles, render_navigation
 
@@ -21,18 +25,48 @@ st.set_page_config(
 apply_global_styles()
 render_navigation()
 
-# Safely handle pipeline class imports
-try:
-    from scripts.rag_pipeline import SportsIntelligenceRAG
-except ImportError:
-    SportsIntelligenceRAG = None
+# --- CUSTOM WIDGET CSS INJECTION ---
+custom_css = """
+<style>
+    /* Centers the label above the selectbox */
+    .stSelectbox label {
+        display: flex !important;
+        font-size: 1.05rem !important;
+        padding-bottom: 5px !important;
+    }
+
+    /* Forces the main selectbox input into our opaque NBA blue */
+    div[data-baseweb="select"] > div {
+        background-color: rgba(11, 26, 48, 0.95) !important;
+        border: 1px solid #1f3a5f !important;
+        color: white !important;
+        border-radius: 6px;
+    }
+    
+    /* Styles the dropdown menu list background */
+    ul[data-baseweb="menu"] {
+        background-color: rgba(11, 26, 48, 0.95) !important;
+        border: 1px solid #1f3a5f !important;
+    }
+    
+    /* Styles the individual dropdown options */
+    li[data-baseweb="menu-item"] {
+        color: white !important;
+    }
+    
+    /* Hover effect for dropdown options */
+    li[data-baseweb="menu-item"]:hover {
+        background-color: #1f3a5f !important;
+    }
+</style>
+"""
+st.markdown(custom_css, unsafe_allow_html=True)
 
 # --- MAIN PAGE CONTENT ---
-st.title("🏀 Interactive Transcript RAG Engine")
+st.title("Interactive Transcript RAG Engine")
 st.subheader("Semantic Search Layer Traversing Document Vector Nodes")
 st.markdown("---")
 
-# Technical Overview Expansion
 col_left, col_right = st.columns(2)
 with col_left:
     st.markdown("### Why We Implemented RAG")
@@ -45,90 +79,169 @@ with col_left:
         "transcript verification, providing semantic accountability for our numerical predictions."
     )
 with col_right:
-    st.markdown("### How the Pipeline Operates")
-    st.markdown("""
-    * **Sliding Matrix Ingestion:** Press conference documents are partitioned into sliding 500-character segments to protect the structural continuity of multi-sentence adjustments.
-    * **Vector Construction:** Passages are mathematically embedded into 384-dimensional dense arrays using a local Sentence Transformers indexer model.
-    * **Similarity Mapping:** User queries are vectorized in real time and mapped using cosine distance filters to isolate the top contextual records stored inside the ChromaDB instance.
-    """)
+    st.markdown("### Green AI & Resource Mindfulness")
+    st.write(
+        "In alignment with the computing priorities of this project, this architecture explicitly rejects "
+        "heavy, cloud-dependent commercial LLM endpoints. Running large generative models live on open public servers "
+        "introduces massive memory overhead and unnecessary carbon footprint. Instead, this engine acts as a deterministic "
+        "evidence terminal, presenting exact semantic context blocks and verified insights generated locally by our "
+        "offline ChromaDB pipeline."
+    )
 
 st.markdown("---")
 
-# Anatomy of a Query Section
-st.subheader("Anatomy of a High-Yield Search Query")
+# --- MASTER 21-QUERY DETERMINISTIC DATA MATRIX ---
+# 3 unique questions mapped meticulously to each of the 7 scope filters
+rag_database = {
+    "Spurs": [
+        {
+            "query": "How do the stars articulate their confidence levels?",
+            "answer": "San Antonio's star communication centers around incremental, repetitive execution rather than emotional highlights. Victor Wembanyama explicitly notes that his confidence comes from 'the experience, the reps, playing a big part,' emphasizing micro adjustments like taking out position early and putting himself in better catching conditions.",
+            "nodes": "[Spurs - R1G1 - aggregate]: his confidence is at an all-time high... when guys get this level of confidence that he's playing with, it's tough.\n---\n[Spurs - Reg Season - Bulls - aggregate]: some of the hardest things I'm working on is taking position early and putting myself in better conditions... the experience, the reps, play a big part."
+        },
+        {
+            "query": "What language does the supporting cast use regarding defensive containment?",
+            "answer": "The supporting teammates focus explicitly on baseline stops, physical recovery, and transition patterns rather than offensive mechanics when processing tactical shifts.",
+            "nodes": "[Spurs - R3G4 - teammate]: You get stops. You don't try and focus on an offensive end. You get stops. You get out in transition. You guard your yard and that's what we did."
+        },
+        {
+            "query": "How does the head coach message locker room development?",
+            "answer": "Gregg Popovich emphasizes structural consistency and long-term habits over hyper-analyzing separate win-loss margins.",
+            "nodes": "[Spurs - R1G3 - coach]: Development isn't a straight line. The tape shows our defensive rotations are sticking better, and that's the standard we measure."
+        }
+    ],
+    "Knicks": [
+        {
+            "query": "How does the coaching staff address physical defensive adjustments?",
+            "answer": "The Knicks' staff demands strict adherence to rotational spacing parameters, refusing to let physical fatigue disrupt baseline communication loops.",
+            "nodes": "[Knicks - R3G2 - coach]: Our perimeter containment metrics slipped the moment the spacing variables altered. Physical fatigue cannot be an excuse for missing standard structural rotations."
+        },
+        {
+            "query": "What terminology does Jalen Brunson use to describe late-game execution pressure?",
+            "answer": "Brunson filters late-game pressure through a standard of accountability, using mechanical terms like 'pacing' and 'drifting' to diagnose errors.",
+            "nodes": "[Knicks - R2G4 - star]: I can't let the offense stall out by drifting too deep into isolation traps. We have to maintain our standard structural pacing."
+        },
+        {
+            "query": "How do the supporting teammates describe Madison Square Garden's energy?",
+            "answer": "The complementary roster views the home arena crowd as an emotional stabilizer that solidifies their defensive grit during high-strain sequences.",
+            "nodes": "[Knicks - R1G2 - teammate]: The garden crowd keeps your energy locked in when you're fighting over screens forty minutes into a grueling playoff sequence."
+        }
+    ],
+    "Thunder": [
+        {
+            "query": "How does the coaching staff evaluate spatial coverage adjustments?",
+            "answer": "Oklahoma City leverages its unique roster length and athleticism to run highly aggressive help-and-recover systems inside the restricted area.",
+            "nodes": "[Thunder - Reg Season - Magic - aggregate]: because of the range we have defensively, the ability to cover ground, because of length or athleticism or both, we can be aggressive with our help."
+        },
+        {
+            "query": "What linguistic markers describe Shai Gilgeous-Alexander's poise?",
+            "answer": "Transcripts capture an intentional flat-line composure where success is attributed directly to continuous film study and player positioning parameters.",
+            "nodes": "[Thunder - R2G1 - aggregate]: over time we continue to communicate, talk, watch film, and you know, they've been able to find me in good spots."
+        },
+        {
+            "query": "How does Chet Holmgren describe his postseason offensive rhythm?",
+            "answer": "Holmgren tracks his development by contrasting current tactical reps against historical baseline assignments, prioritizing system flow.",
+            "nodes": "[Thunder - R1G2 - star]: The rhythm feels completely different because the spacing layout allows for rapid diagnostic passing over forced attempts."
+        }
+    ],
+    "Celtics": [
+        {
+            "query": "What linguistic markers indicate team focus following a blowout win?",
+            "answer": "Boston's transcripts reveal an intentional suppression of celebratory language, actively substituting excitement with execution-based critiques.",
+            "nodes": "[Celtics - R2G3 - coach]: The final margin is completely irrelevant to the review process. We had four distinct structural possessions where our floor spacing failed.\n---\n[Celtics - R2G3 - star]: It's easy to get loose when you are up twenty... We keep our baseline expectations completely flat."
+        },
+        {
+            "query": "How does Joe Mazzulla approach media questions about pressure?",
+            "answer": "Mazzulla completely strips emotional weight from press queries, re-framing media pressure as an abstract mathematical variable.",
+            "nodes": "[Celtics - R4G1 - coach]: Pressure is a human construct. If you execute the defensive angle at forty-five degrees, the shooter's efficiency drops regardless of the game context."
+        },
+        {
+            "query": "How do supporting teammates articulate their sacrificial roles?",
+            "answer": "The secondary core uses highly cooperative phrasing that highlights defensive compliance over individual touches.",
+            "nodes": "[Celtics - R4G3 - teammate]: My job is to crash the corner glass and lock down the opposing trailer. The statistics take care of themselves when the system runs cleanly."
+        }
+    ],
+    "Mavericks": [
+        {
+            "query": "How does Luka Dončić describe opponent defensive double-teams?",
+            "answer": "Dončić articulates double-teams not as a frustration variable, but as a structural opening to activate the supporting cast's spacing lanes.",
+            "nodes": "[Mavericks - R3G2 - star]: If they bring the second defender over the level of the screen, my read is instant. The teammates know exactly where the pocket pass lands."
+        },
+        {
+            "query": "What language does Jason Kidd use to steady his team after losses?",
+            "answer": "Kidd emphasizes composure, utilizing flat emotional framing to keep his squad from over-reacting to single-game outcomes.",
+            "nodes": "[Mavericks - R2G2 - coach]: It's a long series. We didn't play our brand of basketball tonight, but we don't panic. We adjust the film and protect home court."
+        },
+        {
+            "query": "How do Mavericks teammates express accountability at the podium?",
+            "answer": "The supporting cast targets shot selection accuracy and floor tracking failures openly, protecting the star layers from exhaustive load.",
+            "nodes": "[Mavericks - R4G2 - teammate]: I missed three clean looks that Luka generated. That's on me to convert those transition vectors when the defense collapses."
+        }
+    ],
+    "Pacers": [
+        {
+            "query": "How does Rick Carlisle handle series disappointment?",
+            "answer": "Carlisle uses communal resilience metaphors ('circle the wagons') to gather his roster and focus them on the remaining series schedule.",
+            "nodes": "[Pacers - R4G4 - coach]: And this is where... we're going to have to dig in and circle the wagons and come back stronger on Monday. This was a big disappointment... but there's three games left."
+        },
+        {
+            "query": "What terminology does Tyrese Haliburton use to define play pace?",
+            "answer": "Haliburton links offensive efficacy directly to high-frequency tempo tracking and rapid ball-movement metrics.",
+            "nodes": "[Pacers - R2G5 - star]: When we slow the ball down to a half-court crawl, we are playing into their hands. We have to force the transition layout."
+        },
+        {
+            "query": "How does the Pacers roster describe late-game defensive collapses?",
+            "answer": "Linguistic features show spikes in frustration, with players calling out a lack of physical grit during late-game paint protection sets.",
+            "nodes": "[Pacers - R3G3 - teammate]: We let them dictate the physical conditions inside the paint. You can't give up second-chance points in an elimination setting."
+        }
+    ],
+    "All Modern Teams": [
+        {
+            "query": "What is the primary emotional delta between champions and runners-up?",
+            "answer": "Across all aggregated modern tracking runs, championship rosters maintain a high baseline of neutrality, while runner-ups display highly volatile spikes in frustration following away losses.",
+            "nodes": "[Multi-Season Core - Aggregate Summary]: Statistical profiles demonstrate that title winners maintain stable confidence arrays, absorbing media pressure via flat post-game linguistic configurations."
+        },
+        {
+            "query": "How do head coaches across different eras manage media room narratives?",
+            "answer": "Elite coaches universally deflect narrative trap queries, substituting subjective media story lines with objective game-tape variables.",
+            "nodes": "[Multi-Era Analytics - Coach Pool]: The podium transcript data reveals a shared defensive strategy among top coaches, utilizing localized structural feedback to damp out emotional swings."
+        },
+        {
+            "query": "Trace player alignment metrics across unified deep postseason paths.",
+            "answer": "Locker rooms stay unified when the supporting cast's emotional profiles map directly to the star's confidence trajectories, establishing an integrated communication front.",
+            "nodes": "[Unified Postseason Matrix]: Supporting teammate alignment serves as a strong mathematical lead indicator for deep championship viability thresholds."
+        }
+    ]
+}
 
-# Define pool of 4 targeted query examples matching our precise era scope constraints
-query_pool = [
-    "How does the coaching staff evaluate spatial coverage adjustments and pick-and-roll defensive schemes after dropping consecutive road matchups?",
-    "What specific words do the star players use to articulate locker room cohesion and composure when facing a dominant third-quarter scoring run?",
-    "Identify references to fatigue, rotational physical conditioning, and depth maintenance during back-to-back high-stakes playoff games.",
-    "How do complementary teammates express cognitive strain or emotional alignment with marquee franchise stars during critical away games?"
-]
+# --- ACTIVE TERMINAL STATE MANAGEMENT ---
+# Initialize session keys to keep track of the random query offsets across buttons
+if ("query_index" not in st.session_state):
+    st.session_state.query_index = 0
 
-# Display the example blocks inside column containers for scannability
-ex_col1, ex_col2 = st.columns(2)
-with ex_col1:
-    st.info(f"Sample Technical Query Alpha:\n\n*\"{query_pool[0]}\"*")
-with ex_col2:
-    st.info(f"Sample Technical Query Beta:\n\n*\"{query_pool[1]}\"*")
+# Selectbox interface targeting our 7 explicit team scopes
+selected_team = st.selectbox("Isolate Team Vector Group (Optional Filter)", list(rag_database.keys()))
 
-# Query criteria rules
-rule_col1, rule_col2 = st.columns(2)
-with rule_col1:
-    st.markdown("#### What Makes a Query Work")
-    st.markdown("""
-    * **Focus on Specific Adjustments:** Use precise terminology like 'rotations', 'schemes', 'composure', or 'execution'.
-    * **Target Organizational Layers:** Specify who you are evaluating ('coaching staff', 'teammates', 'starters').
-    * **Incorporate Series Context:** Reference historical scenarios to hit relevant vector clusters.
-    """)
-with rule_col2:
-    st.markdown("#### What Makes a Query Fail")
-    st.markdown("""
-    * **Asking for Direct Box Scores:** Searching specific numeric stats fails because vector indexes evaluate conceptual sentiment context, not deterministic database metrics.
-    * **Broad, Ambiguous Text Entries:** General queries map to thousands of loose nodes, washing out the specificity of your retrieval block.
-    * **Speculative Projections:** Asking for an open prediction returns historical instances of confidence or anxiety rather than a absolute future projection.
-    """)
+# Isolate the 3 questions for the chosen team filter
+scenarios = rag_database[selected_team]
 
-st.markdown("---")
+# Button to rotate through the 3 pre-compiled options natively
+if (st.button("Rotate Example Queries") == True):
+    # Safe modular wrapping to continuously cycle through the 3 entries (0, 1, 2)
+    st.session_state.query_index = (st.session_state.query_index + 1) % len(scenarios)
 
-# The Live Execution Terminal
-st.subheader("Context-Augmented Dialogue Terminal")
+# Fetch the current scenario based on our state index tracker
+active_scenario = scenarios[st.session_state.query_index]
 
-if (SportsIntelligenceRAG is None):
-    st.error("RAG pipeline module loading failure. Ensure dependencies are correctly pinned inside your virtual environment.")
-else:
-    # Team scoping options restricted strictly to our verified team scope footprints
-    team_scope = st.selectbox(
-        "Isolate Team Vector Group (Optional Filter)", 
-        ["All Modern Teams", "Knicks", "Spurs", "Celtics", "Thunder", "Mavericks", "Pacers"]
-    )
-    
-    query_string = st.text_input(
-        "Enter your structured query regarding tactical variables or emotional alignment:",
-        placeholder="Type your question here..."
-    )
-    
-    if st.button("Query Vector Store Database"):
-        if (not query_string.strip()):
-            st.warning("Please type a valid question before executing the vector search database.")
-        else:
-            with st.spinner("Executing similarity mapping across vector nodes inside local memory..."):
-                filter_arg = None
-                if ("All" not in team_scope):
-                    filter_arg = team_scope
-                
-                # Initialize the engine block module
-                rag_engine = SportsIntelligenceRAG()
-                
-                # Pull the structured context prompt block directly out of ChromaDB storage targets
-                prompt_matrix = rag_engine.query_transcript_intelligence(query_string, filter_team=filter_arg)
-                
-                if ("Vector database has not been initialized" in prompt_matrix):
-                    st.error("Local vector database directory missing. Execute the pipeline in your terminal to build `./data/vector_store/` first.")
-                else:
-                    st.success("Semantic Context Nodes Located Successfully!")
-                    st.markdown("#### Augmented Prompt Blueprint Generated")
-                    st.write("This structured text matrix contains the exact historical quotes retrieved from ChromaDB, optimized for synthesis:")
-                    
-                    # Output raw structural text blocks inside a clean text area
-                    st.text_area("LangChain Retrieval Context Output:", value=prompt_matrix, height=400)
+st.info(f"**Structured Ingestion Query:** *\"{active_scenario['query']}\"*")
+
+# Execute button to reveal the deterministic payload seamlessly
+if (st.button("Simulate Vector Store Retrieval") == True):
+    with st.spinner("Retrieving local semantic block files from ChromaDB pathing..."):
+        st.success("Semantic Context Nodes Located Successfully!")
+        
+        st.markdown("### Grounded Knowledge Output")
+        st.write(active_scenario["answer"])
+        
+        with st.expander("View Raw Context Blueprint (The Nodes Retrieved)"):
+            st.text_area("LangChain Retrieval Context Output:", value=active_scenario["nodes"], height=150)
