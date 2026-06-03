@@ -18,6 +18,12 @@ MODERN_FILES = [
     }
 ]
 
+# Custom file prefixes for named Finals comparison charts
+FINALS_PREFIXES = {
+    "2023-2024": "CeltMavs",
+    "2024-2025": "ThunPac"
+}
+
 if (__name__ == "__main__"):
     visualizer = EmotionVisualizer(primary_output_dir="./output", streamlit_asset_dir="./streamlit_app/assets")
     
@@ -29,8 +35,15 @@ if (__name__ == "__main__"):
             visualizer.plot_concise_trajectories(df, team_name=era["champ"], season_label=era["season_label"])
             visualizer.plot_concise_trajectories(df, team_name=era["runner_up"], season_label=era["season_label"])
             
-            # Generating comparative side-by-side post-season average arrays
-            visualizer.plot_finals_comparison_bar(df, champ_name=era["champ"], runner_name=era["runner_up"], season_label=era["season_label"])
+            # Generating comparative side-by-side post-season average arrays with named prefix
+            prefix = FINALS_PREFIXES.get(era["season_label"], "combined")
+            visualizer.plot_finals_comparison_bar(
+                df,
+                champ_name=era["champ"],
+                runner_name=era["runner_up"],
+                season_label=era["season_label"],
+                file_prefix=prefix
+            )
             
         else:
             logging.error(f"⚠️ Missing scored modern era asset vector target: {era['filepath']}")

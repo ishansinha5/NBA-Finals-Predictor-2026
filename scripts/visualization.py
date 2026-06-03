@@ -152,9 +152,14 @@ class EmotionVisualizer:
         width = 0.35
 
         for role in roles:
-            c_slice = df[(df['team'] == champ_name) & ((df['role'] == role) | (df['role'] == 'aggregate'))]
-            r_slice = df[(df['team'] == runner_name) & ((df['role'] == role) | (df['role'] == 'aggregate'))]
-                
+            # Mandate true mathematical mean for aggregate bar charts to prevent sparse data edge cases
+            if (role == 'aggregate'):
+                c_slice = df[df['team'] == champ_name]
+                r_slice = df[df['team'] == runner_name]
+            else:
+                c_slice = df[(df['team'] == champ_name) & (df['role'] == role)]
+                r_slice = df[(df['team'] == runner_name) & (df['role'] == role)]
+
             if (c_slice.empty == True) or (r_slice.empty == True):
                 continue
                 
