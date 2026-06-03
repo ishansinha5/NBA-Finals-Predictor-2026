@@ -3,7 +3,7 @@ import base64
 import os
 
 def get_base64_bg(img_path):
-    if (os.path.exists(img_path)):
+    if os.path.exists(img_path):
         with open(img_path, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode()
         return f"data:image/jpg;base64,{encoded_string}"
@@ -16,7 +16,7 @@ def apply_global_styles():
         [data-testid="stSidebar"] {{ display: none; }}
         body {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }}
         [data-testid="stAppViewContainer"] {{
-            background: linear-gradient(rgba(11, 26, 48, 0.85), rgba(11, 26, 48, 0.95)), url("{bg_base64}");
+            background: linear-gradient(rgba(11, 26, 48, 0.85), rgba(11, 26, 48, 0.95)), url("data:image/jpg;base64,{bg_base64}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -27,6 +27,7 @@ def apply_global_styles():
     st.markdown(css, unsafe_allow_html=True)
 
 def render_navigation():
+    # Explicit columns for the navigation header
     col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
     with col1: st.page_link("1_Home.py", label="Introduction", icon="🏀")
     with col2: st.page_link("pages/3_Historical_Analysis.py", label="Historical", icon="🏀")
