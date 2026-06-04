@@ -2,7 +2,7 @@
 
 **Live Dashboard:** [[Click Here]](https://nba-finals-predictor-2026-izrjrrysjipdqjlrqbv5z7.streamlit.app/)
 
-![2026 Finals Matchup](streamlit_app/assets/spursknicks.png)
+![2026 Finals Matchup](streamlit_app/spursknicks.png)
 
 ## The Question: Can we mathematically quantify a "Championship Mindset"?
 
