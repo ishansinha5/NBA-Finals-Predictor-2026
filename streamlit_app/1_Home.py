@@ -7,76 +7,12 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 if (ROOT_DIR not in sys.path):
     sys.path.append(ROOT_DIR)
 
-def get_base64_bg(img_name):
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    img_path = os.path.join(base_dir, img_name)
-    
-    if (os.path.exists(img_path) == False):
-        img_path = os.path.join(os.getcwd(), img_name)
-        
-    if (os.path.exists(img_path) == True):
-        with open(img_path, "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read()).decode()
-            
-        return encoded_string
-        
-    return ""
+from utils.navigation import apply_global_styles, render_navigation
 
-def apply_global_styles():
-    bg_base64 = get_base64_bg("image_04fa1b.jpg")
-    
-    if (bg_base64 != ""):
-        bg_css = f'background: linear-gradient(rgba(11, 26, 48, 0.85), rgba(11, 26, 48, 0.95)), url("data:image/jpg;base64,{bg_base64}"); background-size: cover; background-position: center; background-attachment: fixed;'
-    else:
-        bg_css = 'background-color: #0b1a30;'
 
-    css = f"""
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
-        [data-testid="stSidebar"] {{ display: none !important; }}
-        
-        /* Russo One exclusively for title sections */
-        h1, h2, h3 {{
-            font-family: 'Russo One', Impact, 'Arial Black', sans-serif !important;
-            color: #ffffff !important;
-            letter-spacing: 1px;
-        }}
-        
-        /* Keep Helvetica locked for text layouts to preserve smooth scannability */
-        html, body, [class*="st-"], h4, p, span, div, li {{
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-            color: #ffffff !important;
-        }}
-        
-        h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .st-emotion-cache-1629p8f a {{
-            display: none !important;
-            pointer-events: none !important;
-        }}
-        
-        [data-testid="stAppViewContainer"] {{
-            {bg_css}
-        }}
-        
-        [data-testid="stHeader"] {{ background-color: transparent !important; }}
-    </style>
-    """
-    st.markdown(css, unsafe_allow_html=True)
 
-def render_navigation():
-    # Adjusted column weights to ensure Introduction and Engineering don't get cut off
-    col1, col2, col3, col4, col5, col6, col7 = st.columns([1.1, 1.1, 1.2, 1.1, 1.2, 1.2, 1.2])
-    
-    
-    with col1: st.page_link("1_Home.py", label="Introduction", icon="🏀")
-    with col2: st.page_link("pages/2_Methodology.py", label="Engineering", icon="🏀")
-    with col3: st.page_link("pages/3_Historical_Analysis.py", label="Historical Era", icon="🏀")
-    with col4: st.page_link("pages/4_Modern_Era_Analytics.py", label="Modern Era", icon="🏀")
-    with col5: st.page_link("pages/5_AI_Intelligence_Engine.py", label="RAG Engine", icon="🏀")
-    with col6: st.page_link("pages/6_2026_Finals_Predictor.py", label="2026 Predictor", icon="🏀")
-    with col7: st.page_link("pages/7_Finals_Matchup.py", label="Finals Matchup", icon="🏀")
-    
-    st.markdown("---")
+
 
 # ── Page entry point ──────────────────────────────────────────────────────────
 st.set_page_config(
