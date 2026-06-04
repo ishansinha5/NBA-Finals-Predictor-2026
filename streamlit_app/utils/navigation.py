@@ -129,6 +129,11 @@ def render_navigation():
                 line-height: 1.3 !important;
                 overflow: visible !important;
             }
+            /* When "Introduction" or "Engineering" are the active page, the bold
+               state makes them wider. Shrink them slightly so they stay one line. */
+            [data-testid="stPageLink"] a[aria-current="page"] p {
+                font-size: clamp(0.55rem, 0.9vw, 0.78rem) !important;
+            }
         </style>
     """, unsafe_allow_html=True)
 
