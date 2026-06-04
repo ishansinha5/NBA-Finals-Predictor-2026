@@ -2,7 +2,6 @@ import streamlit as st
 import base64
 import os
 
-# Function to read our local image file and encode it into a base64 string
 def get_base64_bg(img_name):
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     img_path = os.path.join(base_dir, img_name)
@@ -22,7 +21,6 @@ def apply_global_styles():
     bg_base64 = get_base64_bg("image_04fa1b.jpg")
     
     if (bg_base64 != ""):
-        # I fixed the duplicate data URI header string bug right here to let the browser compile the CSS cleanly
         bg_css = f'background: linear-gradient(rgba(11, 26, 48, 0.85), rgba(11, 26, 48, 0.95)), url("data:image/jpg;base64,{bg_base64}"); background-size: cover; background-position: center; background-attachment: fixed;'
     else:
         bg_css = 'background-color: #0b1a30;'
@@ -35,6 +33,11 @@ def apply_global_styles():
         html, body, [class*="st-"], h1, h2, h3, h4, p, span, div, li {{
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
             color: #ffffff !important;
+        }}
+        
+        /* Drop the font size of the links slightly so they never overflow */
+        [data-testid="stPageLink"] p {{
+            font-size: 0.95rem !important;
         }}
         
         /* Hide those ugly chain link icons next to headers */
@@ -53,14 +56,15 @@ def apply_global_styles():
     st.markdown(css, unsafe_allow_html=True)
 
 def render_navigation():
-    col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+    # Tightly balanced column ratios for the new, shorter "Era" labels
+    col1, col2, col3, col4, col5, col6, col7 = st.columns([1.1, 1.1, 1.2, 1.1, 1.2, 1.2, 1.2])
     
     with col1: st.page_link("1_Home.py", label="Introduction", icon="🏀")
-    with col2: st.page_link("pages/3_Historical_Analysis.py", label="Historical", icon="🏀")
-    with col3: st.page_link("pages/4_Modern_Era_Analytics.py", label="Analytics", icon="🏀")
-    with col4: st.page_link("pages/5_AI_Intelligence_Engine.py", label="RAG Engine", icon="🏀")
-    with col5: st.page_link("pages/6_2026_Finals_Predictor.py", label="Predictor", icon="🏀")
-    with col6: st.page_link("pages/7_Finals_Matchup.py", label="Matchup", icon="🏀")
-    with col7: st.page_link("pages/2_Methodology.py", label="Engineering", icon="🏀")
+    with col2: st.page_link("pages/2_Methodology.py", label="Engineering", icon="🏀")
+    with col3: st.page_link("pages/3_Historical_Analysis.py", label="Historical Era", icon="🏀")
+    with col4: st.page_link("pages/4_Modern_Era_Analytics.py", label="Modern Era", icon="🏀")
+    with col5: st.page_link("pages/5_AI_Intelligence_Engine.py", label="RAG Engine", icon="🏀")
+    with col6: st.page_link("pages/6_2026_Finals_Predictor.py", label="2026 Predictor", icon="🏀")
+    with col7: st.page_link("pages/7_Finals_Matchup.py", label="Finals Matchup", icon="🏀")
     
     st.markdown("---")

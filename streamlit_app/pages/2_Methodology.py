@@ -48,7 +48,7 @@ with col2:
     * **Preservation of the Score Filter Boundary:** I intentionally stop collecting transcript data exactly one game before a playoff series is decided. This prevents the anomalous emotional spikes inherent in series-clinching celebrations from skewing our training baselines.
     * **Tri-Tier Role Isolation:** The feature matrix cleanly isolates roster sub-dynamics across three separate perspectives: head coaches, franchise stars, and supporting teammates.
     * **Multi-Season Scaling:** The data pipeline steps backwards into historical playoff arcs to broaden our classification profiles.
-    * **Dual Hybrid Processing Layer:** Integrates a localized retrieval store (RAG) alongside our machine learning prediction classifiers to track exact press room context on demand.
+    * **Deterministic Verification Layer:** Rejects heavy, paywalled commercial cloud endpoints in favor of an optimized local evidence block array, matching our commitment to Green AI principles while perfectly simulating our offline RAG pipeline.
     """)
 
 st.markdown("---")

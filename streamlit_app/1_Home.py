@@ -4,7 +4,7 @@ import os
 import sys
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-if ROOT_DIR not in sys.path:
+if (ROOT_DIR not in sys.path):
     sys.path.append(ROOT_DIR)
 
 def get_base64_bg(img_name):
@@ -64,18 +64,19 @@ def apply_global_styles():
     st.markdown(css, unsafe_allow_html=True)
 
 def render_navigation():
-    col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+    # Adjusted column weights to ensure Introduction and Engineering don't get cut off
+    col1, col2, col3, col4, col5, col6, col7 = st.columns([1.1, 1.1, 1.2, 1.1, 1.2, 1.2, 1.2])
+    
     
     with col1: st.page_link("1_Home.py", label="Introduction", icon="🏀")
-    with col2: st.page_link("pages/3_Historical_Analysis.py", label="Historical", icon="🏀")
-    with col3: st.page_link("pages/4_Modern_Era_Analytics.py", label="Analytics", icon="🏀")
-    with col4: st.page_link("pages/5_AI_Intelligence_Engine.py", label="RAG Engine", icon="🏀")
-    with col5: st.page_link("pages/6_2026_Finals_Predictor.py", label="Predictor", icon="🏀")
-    with col6: st.page_link("pages/7_Finals_Matchup.py", label="Matchup", icon="🏀")
-    with col7: st.page_link("pages/2_Methodology.py", label="Engineering", icon="🏀")
+    with col2: st.page_link("pages/2_Methodology.py", label="Engineering", icon="🏀")
+    with col3: st.page_link("pages/3_Historical_Analysis.py", label="Historical Era", icon="🏀")
+    with col4: st.page_link("pages/4_Modern_Era_Analytics.py", label="Modern Era", icon="🏀")
+    with col5: st.page_link("pages/5_AI_Intelligence_Engine.py", label="RAG Engine", icon="🏀")
+    with col6: st.page_link("pages/6_2026_Finals_Predictor.py", label="2026 Predictor", icon="🏀")
+    with col7: st.page_link("pages/7_Finals_Matchup.py", label="Finals Matchup", icon="🏀")
     
     st.markdown("---")
-
 
 # ── Page entry point ──────────────────────────────────────────────────────────
 st.set_page_config(
@@ -92,8 +93,33 @@ render_navigation()
 st.title("🏀 NBA Post-Game NLP Engine: Decoding Championship Psychology")
 st.markdown("---")
 
-# Hero Visual Section
-st.image("https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2000&auto=format&fit=crop", width="stretch")
+# Bulletproof Image Seeker targeting .png explicitly
+possible_paths = [
+    os.path.join(ROOT_DIR, "spursknicks.png"),
+    os.path.join(ROOT_DIR, "streamlit_app", "spursknicks.png"),
+    os.path.join(ROOT_DIR, "assets", "spursknicks.png"),
+    os.path.join(ROOT_DIR, "streamlit_app", "assets", "spursknicks.png"),
+    os.path.join(os.path.dirname(ROOT_DIR), "assets", "spursknicks.png")
+]
+
+img_path = None
+for p in possible_paths:
+    if (os.path.exists(p) == True):
+        img_path = p
+        break
+
+if (img_path != None):
+    st.image(img_path, use_container_width=True)
+else:
+    st.info("Matchup header graphic 'spursknicks.png' loading out of assets repository...")
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.write(
+    "Welcome to the NBA Post-Game NLP Engine. This project is built to extract, tokenize, and analyze text sentiment "
+    "from press room transcripts, mapping out emotional stability patterns to spot exactly when teams crack under pressure. "
+    "By stacking machine learning classification alongside a localized transcript evidence system, we track how coaches, "
+    "marquee stars, and bench players maintain composure across full postseason runs."
+)
 
 st.markdown("## Project Motivation")
 st.markdown("""
@@ -117,7 +143,7 @@ The overall architecture processes language data across two straightforward laye
 ### Phase 2: Search Index and Retrieval Augmentation (RAG)
 * **Text Partitioning:** The engine divides long interview documents into small paragraphs to make sure text strings do not get clipped by processing thresholds.
 * **Semantic Local Storage:** Passages are saved into a localized search database, allowing us to query exact quotes by team filters or specific game scenarios.
-* **Query Interface:** A simple terminal lets users query real context directly from historical playoff files, making it easy to see exactly what players said without reading through hours of text manually.
+* **Deterministic Verification Terminal:** Instead of relying on expensive, live cloud LLM endpoints that violate Green AI principles, this interface presents pre-compiled, high-yield semantic scenarios. It showcases the exact functionality of our offline ChromaDB pipeline with zero external computational overhead.
 """)
 
 st.markdown("---")

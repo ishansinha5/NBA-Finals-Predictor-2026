@@ -290,7 +290,7 @@ elif (selected_track == "Championship Matchup Preview"):
         "Here, we align the final combined emotional profiles of our two conference champions directly against "
         "each other. We map their baseline traits across all key semantic dimensions — evaluating coach composure, "
         "star stability, and teammate chemistry averages over the entirety of the postseason. "
-        "Want to know who the model thinks wins? Go to the Matchup page."
+        "Want to know who the model thinks wins? Go to the Finals Matchup page."
     )
     
     col_p1, col_p2 = st.columns(2)
