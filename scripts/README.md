@@ -1,15 +1,30 @@
-# Execution Scripts
+# Pipeline Execution Scripts
 
-This module contains the object-oriented Python classes and patch scripts that drive the pipeline.
+This directory contains the object-oriented Python classes and batch-processing scripts that drive the machine learning pipeline. It is architected into three distinct layers: the **Core Sentiment Engine**, the **Intelligence Retrieval Layer**, and the **Batch Orchestration Runners**.
 
-## 1. Core Engine
-* **`data_ingestion.py` (`TranscriptIngestor`):** Interfaces with YouTube to extract closed captions. Implements a resilient checkpointing system (`.ingestion_checkpoint`) to prevent duplicate API calls and handle YouTube's rate-limiting.
-* **`sentiment_engine.py` (`SentimentEngine`):** Initializes the Hugging Face `roberta-base-go_emotions` pipeline. **Crucial Optimization:** Transcripts are hardcapped at 2500 characters. This prevents context window overflow and ensures the model isolates the player's primary emotional state without getting noisy signals from long media questions.
-* **`visualization.py` (`EmotionVisualizer`):** Maps emotional trajectories. Includes a string parsing loop to clean messy categorical data (e.g., converting "Reg Season - Magic" to "Regular Season (Opp: Magic)") for readable X-axis plotting.
-* **`predictor.py` (`PlayoffPredictor`):** The ML Inference engine. Loads the `.pkl` Random Forest model, aggregates feature vectors via `mean()` pooling, and extracts probabilities. Includes defensive fallback logic to use raw Confidence scores if the model encounters single-class data errors.
+## 1. Core Sentiment & Predictive Engine
 
-## 2. Hardened Edge-Case Patches
-Data pipelines are rarely perfect. These scripts were engineered to handle specific architectural failures and edge cases without bloating the core engine.
+* **`data_ingestion.py` (`TranscriptIngestor`):** Interfaces with the YouTube API. It implements a resilient checkpointing system (`.ingestion_checkpoint`) to handle rate-limiting. It includes a critical fallback loop: if YouTube's closed captions are missing (common for restricted media feeds), it triggers a local `faster-whisper` transcription instance to process raw audio streams directly, ensuring data continuity for teams like the Spurs.
+* **`sentiment_engine.py` (`SentimentEngine`):** Wraps the `roberta-base-go_emotions` pipeline. It processes transcripts by chunking documents into 400-word segments to stay within the transformer's maximum sequence length. It aggregates 7-dimensional emotional vectors (confidence, content, neutrality, frustration, upset, anxiety, surprise) to calculate mean sentiment density across entire interviews.
+* **`predictor.py` (`PlayoffPredictor`):** Contains the Random Forest ML logic. It handles the "flattening" of series-level data into a 28-column feature matrix (4 roles × 7 emotion vectors). It includes logic to train on both a "Full Baseline" (2020-2025) and a "Modern Era" optimized set, utilizing `joblib` for model persistence and defensive fallback weighting to handle class imbalance.
 
-* **`whisper_patch.py` (The Spurs Dilemma):** While most NBA teams provide auto-captions, the San Antonio Spurs aggressively disable them. Because a core constraint of this project was sustainable, lean computing, I built a two-tier extraction patch. It first attempts to proxy the video through a lightweight Hugging Face Gradio Space API. If that times out, it cascades gracefully to a local `yt-dlp` audio extraction and processes the waveform through `faster-whisper`. It sanitizes the output and generates a CSV-safe patch file.
-* **`homogenize_csv.py` (Schema Alignment):** A utility script built to repair corrupted data ingestions. During a specific scrape, PyArrow typing failed due to a schema shift (thousands of characters of transcript data shifted into the integer `won_championship` column, rendering `transcript` as NaN). This script generates boolean masks to isolate the affected Spurs rows, shifts the textual data back to the correct column, and resets the target variable to `"0"`, saving the pipeline from catastrophic downstream type-errors.
+## 2. Intelligence & Retrieval (RAG)
+
+* **`rag_pipeline.py` (`SportsIntelligenceRAG`):** Handles the Retrieval-Augmented Generation track. It uses `RecursiveCharacterTextSplitter` to partition texts into semantic chunks and encodes them via `all-MiniLM-L6-v2` embeddings. It interfaces with a local `ChromaDB` instance to perform vector-space cosine similarity lookups based on tactical queries. I did this solely so that I could see if I COULD make a RAG Pipeline, though I chose not to out of maintaining my environmental goals.  The next script helps me continue this:
+* **`offline_rag_tester.py`:** A diagnostic utility for pipeline validation. It runs a standalone query against the local `ChromaDB` instance to verify that semantic node retrieval is functioning correctly, allowing for rapid debugging of the vector store outside of the Streamlit UI.
+
+## 3. Orchestration & Visualization Runners
+
+These scripts automate the generation of assets. Running these executes the heavy compute tasks required to populate the `output/` and `streamlit_app/assets/` folders.
+
+* **`visualization.py` (`EmotionVisualizer`):** The primary plotting engine. It utilizes `matplotlib` and `seaborn` to translate score vectors into trajectory line graphs and comparative bar charts. It includes custom sanitization logic to convert raw stage tags (e.g., "R1G1") into human-readable X-axis labels and handles opponent-to-champ mapping dynamically.
+* **`graph_historical.py`:** Executes the historical batch for 2019–2022 champions. It maps the aggregate emotional trends for each title winner and generates comparison bars against their respective Finals runners-up.
+* **`graph_modern.py`:** Executes the modern batch (2023–2025). It follows the same trajectory plotting logic as the historical script but maps against the high-density datasets required for modern precision.
+* **`graph_live_2026.py`:** The active runtime script. It processes the live 2026 postseason bracket, generating the trajectory and match-up bar charts specifically for the Spurs, Knicks, Thunder, and Cavaliers.
+* **`predict_finals.py`:** The inference driver. It loads the `playoff_rf_model_modern_only.pkl`, performs final feature aggregation, and executes the synthesis logic that generates the `2026_Finals_Report.md`.
+
+***
+
+### Engineering Notes
+* **Data Imputation:** Historical datasets (pre-2023) contained significant transcript sparseness. The ingestion pipeline employs linear imputation on the `scored_*.csv` files to bridge these gaps, ensuring visual trajectory continuity while maintaining statistical integrity.
+* **Environmental Integrity:** Ensure all `requirements.txt` dependencies, including `chromadb` and `faster-whisper`, are installed in your active virtual environment before executing these scripts, as several runners rely on locally cached transformer weights.
