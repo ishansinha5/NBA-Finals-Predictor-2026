@@ -129,10 +129,10 @@ def render_navigation():
                 line-height: 1.3 !important;
                 overflow: visible !important;
             }
-            /* When "Introduction" or "Engineering" are the active page, the bold
-               state makes them wider. Shrink them slightly so they stay one line. */
+            /* Active page: bold adds ~10% extra width, so shrink enough to absorb it.
+               0.72vw keeps "Engineering" and "Introduction" on one line when selected. */
             [data-testid="stPageLink"] a[aria-current="page"] p {
-                font-size: clamp(0.55rem, 0.9vw, 0.78rem) !important;
+                font-size: clamp(0.5rem, 0.72vw, 0.7rem) !important;
             }
         </style>
     """, unsafe_allow_html=True)
@@ -151,7 +151,7 @@ def render_navigation():
             st.page_link("pages/7_Finals_Matchup.py",              label="🏀 Finals Matchup")
     else:
         # Desktop: 7-column row
-        col1, col2, col3, col4, col5, col6, col7 = st.columns([1.1, 1.1, 1.2, 1.1, 1.2, 1.2, 1.2])
+        col1, col2, col3, col4, col5, col6, col7 = st.columns([1.1, 1.3, 1.2, 1.1, 1.2, 1.2, 1.2])
         with col1: st.page_link("1_Home.py",                             label="Introduction",  icon="🏀")
         with col2: st.page_link("pages/2_Methodology.py",                label="Engineering",   icon="🏀")
         with col3: st.page_link("pages/3_Historical_Analysis.py",        label="Historical Era",icon="🏀")
