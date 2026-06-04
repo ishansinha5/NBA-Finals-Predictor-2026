@@ -59,13 +59,25 @@ def render_navigation():
     # Responsive nav: 7-column row on desktop, expander on mobile
     st.markdown("""
         <style>
-            /* Fix desktop tab truncation — allow page link text to wrap */
+            /* Fix desktop tab truncation:
+               Use viewport-relative sizing so it scales down with any browser/OS font setting.
+               clamp(min, preferred, max) keeps it readable at any zoom level. */
             [data-testid="stPageLink"] p {
-                font-size: 0.85rem !important;
+                font-size: clamp(0.65rem, 1.1vw, 0.9rem) !important;
                 white-space: normal !important;
                 word-break: break-word !important;
+                overflow-wrap: break-word !important;
                 text-align: center !important;
                 line-height: 1.3 !important;
+                overflow: visible !important;
+            }
+            /* Hide the raw "double_arrow_right" text that appears on mobile
+               when the Material Symbols font fails to load */
+            span.stIconMaterial,
+            span[data-testid="stIconMaterial"] {
+                font-family: 'Material Symbols Rounded' !important;
+                font-size: 0px !important;
+                visibility: hidden !important;
             }
             @media (max-width: 768px) {
                 .desktop-nav { display: none !important; }
