@@ -6,7 +6,7 @@
 
 ## The Question: Can we mathematically quantify a "Championship Mindset"?
 
-I love basketball, and I wanted to come up with something fun to do while I watched the Finals, seeing as the Bulls aren't in them. I’ve run the traditional statistical models—box scores, true shooting percentages, plus-minus ratings—but I wanted to build something different. Something that captures the *human* element. 
+I love basketball, and I wanted to come up with something fun to do while I watched the Finals, seeing as the Bulls aren't in them. I’ve run the traditional statistical models—box scores, true shooting percentages, plus-minus ratings—but I wanted to build something different. Something that captures the *human* element The NBA is in a historic era of parity, which continues with the Thunder's elimination, so I collected data from most of the prior championships to build a baseline with no overlap. The 2019-2020 Lakers' calm, veteran mindset, the 2024-2025 Thunder's cool nonchalance - all of it, in this model. 
 
 I built this Natural Language Processing (NLP) pipeline to branch out from traditional tabular data science. I wanted to see if the emotional language used in post-game press conferences could reveal a team's psychological readiness to win a ring. My goal was to discover whether steady linguistic composure (or sudden spikes in anxiety and frustration) can actually act as a lead indicator for tracking deep playoff runs.
 
