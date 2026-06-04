@@ -1,5 +1,4 @@
 import streamlit as st
-import random
 import sys
 import os
 
@@ -21,42 +20,68 @@ st.set_page_config(
     layout="wide"
 )
 
-# Apply global background configurations and render our 7-column horizontal link row
+# Apply global background configurations and render our horizontal link row
 apply_global_styles()
 render_navigation()
 
 # --- CUSTOM WIDGET CSS INJECTION ---
 custom_css = """
 <style>
-    /* Centers the label above the selectbox */
+    /* 1. BUTTON STYLING */
+    button[kind="secondary"] {
+        background-color: rgba(11, 26, 48, 0.95) !important;
+        border: 1px solid #1f3a5f !important;
+        color: #ffffff !important;
+        border-radius: 6px !important;
+    }
+    button[kind="secondary"]:hover {
+        background-color: #1f3a5f !important;
+        border-color: #ffffff !important;
+    }
+
+    /* 2. TEXT AREA STYLING (LangChain Output Box) */
+    /* This aggressively targets the deep base-input layer that was causing the grey bleed */
+    .stTextArea textarea, div[data-baseweb="base-input"], div[data-baseweb="base-input"] > textarea {
+        background-color: rgba(11, 26, 48, 0.95) !important;
+        border: 1px solid #1f3a5f !important;
+        color: #ffffff !important;
+        border-radius: 6px !important;
+    }
+
+    /* 3. SELECTBOX STYLING */
     .stSelectbox label {
         display: flex !important;
         font-size: 1.05rem !important;
         padding-bottom: 5px !important;
     }
-
-    /* Forces the main selectbox input into our opaque NBA blue */
     div[data-baseweb="select"] > div {
         background-color: rgba(11, 26, 48, 0.95) !important;
         border: 1px solid #1f3a5f !important;
-        color: white !important;
-        border-radius: 6px;
+        color: #ffffff !important;
+        border-radius: 6px !important;
     }
-    
-    /* Styles the dropdown menu list background */
-    ul[data-baseweb="menu"] {
-        background-color: rgba(11, 26, 48, 0.95) !important;
+    /* This targets the actual dropdown popover menu layer to remove the grey background when clicked */
+    div[data-baseweb="popover"] > div, ul[data-baseweb="menu"] {
+        background-color: rgba(11, 26, 48, 0.98) !important;
         border: 1px solid #1f3a5f !important;
     }
-    
-    /* Styles the individual dropdown options */
     li[data-baseweb="menu-item"] {
-        color: white !important;
+        color: #ffffff !important;
+        background-color: transparent !important;
     }
-    
-    /* Hover effect for dropdown options */
     li[data-baseweb="menu-item"]:hover {
         background-color: #1f3a5f !important;
+    }
+
+    /* 4. EXPANDER ICON FIX (Resolves arrow_down/arrow_right overlap) */
+    span.stIconMaterial, 
+    span[data-testid="stIconMaterial"], 
+    .material-symbols-rounded {
+        font-family: 'Material Symbols Rounded' !important;
+    }
+    
+    [data-testid="stExpander"] details summary p {
+        margin-left: 8px !important;
     }
 </style>
 """
@@ -91,8 +116,24 @@ with col_right:
 st.markdown("---")
 
 # --- MASTER 21-QUERY DETERMINISTIC DATA MATRIX ---
-# 3 unique questions mapped meticulously to each of the 7 scope filters
 rag_database = {
+    "All Modern Teams": [
+        {
+            "query": "What is the primary emotional delta between champions and runners-up?",
+            "answer": "Across all aggregated modern tracking runs, championship rosters maintain a high baseline of neutrality, while runner-ups display highly volatile spikes in frustration following away losses.",
+            "nodes": "[Multi-Season Core - Aggregate Summary]: Statistical profiles demonstrate that title winners maintain stable confidence arrays, absorbing media pressure via flat post-game linguistic configurations."
+        },
+        {
+            "query": "How do head coaches across different eras manage media room narratives?",
+            "answer": "Elite coaches universally deflect narrative trap queries, substituting subjective media story lines with objective game-tape variables.",
+            "nodes": "[Multi-Era Analytics - Coach Pool]: The podium transcript data reveals a shared defensive strategy among top coaches, utilizing localized structural feedback to damp out emotional swings."
+        },
+        {
+            "query": "Trace player alignment metrics across unified deep postseason paths.",
+            "answer": "Locker rooms stay unified when the supporting cast's emotional profiles map directly to the star's confidence trajectories, establishing an integrated communication front.",
+            "nodes": "[Unified Postseason Matrix]: Supporting teammate alignment serves as a strong mathematical lead indicator for deep championship viability thresholds."
+        }
+    ],
     "Spurs": [
         {
             "query": "How do the stars articulate their confidence levels?",
@@ -194,48 +235,36 @@ rag_database = {
             "answer": "Linguistic features show spikes in frustration, with players calling out a lack of physical grit during late-game paint protection sets.",
             "nodes": "[Pacers - R3G3 - teammate]: We let them dictate the physical conditions inside the paint. You can't give up second-chance points in an elimination setting."
         }
-    ],
-    "All Modern Teams": [
-        {
-            "query": "What is the primary emotional delta between champions and runners-up?",
-            "answer": "Across all aggregated modern tracking runs, championship rosters maintain a high baseline of neutrality, while runner-ups display highly volatile spikes in frustration following away losses.",
-            "nodes": "[Multi-Season Core - Aggregate Summary]: Statistical profiles demonstrate that title winners maintain stable confidence arrays, absorbing media pressure via flat post-game linguistic configurations."
-        },
-        {
-            "query": "How do head coaches across different eras manage media room narratives?",
-            "answer": "Elite coaches universally deflect narrative trap queries, substituting subjective media story lines with objective game-tape variables.",
-            "nodes": "[Multi-Era Analytics - Coach Pool]: The podium transcript data reveals a shared defensive strategy among top coaches, utilizing localized structural feedback to damp out emotional swings."
-        },
-        {
-            "query": "Trace player alignment metrics across unified deep postseason paths.",
-            "answer": "Locker rooms stay unified when the supporting cast's emotional profiles map directly to the star's confidence trajectories, establishing an integrated communication front.",
-            "nodes": "[Unified Postseason Matrix]: Supporting teammate alignment serves as a strong mathematical lead indicator for deep championship viability thresholds."
-        }
     ]
 }
 
 # --- ACTIVE TERMINAL STATE MANAGEMENT ---
-# Initialize session keys to keep track of the random query offsets across buttons
 if ("query_index" not in st.session_state):
     st.session_state.query_index = 0
 
-# Selectbox interface targeting our 7 explicit team scopes
-selected_team = st.selectbox("Isolate Team Vector Group (Optional Filter)", list(rag_database.keys()))
+if ("prev_team" not in st.session_state):
+    st.session_state.prev_team = "All Modern Teams"
 
-# Isolate the 3 questions for the chosen team filter
+# Ensure we dynamically extract keys so the selectbox properly defaults
+team_options = []
+for key in rag_database.keys():
+    team_options.append(key)
+
+selected_team = st.selectbox("Isolate Team Vector Group (Optional Filter)", team_options)
+
+if (selected_team != st.session_state.prev_team):
+    st.session_state.query_index = 0
+    st.session_state.prev_team = selected_team
+
 scenarios = rag_database[selected_team]
 
-# Button to rotate through the 3 pre-compiled options natively
 if (st.button("Rotate Example Queries") == True):
-    # Safe modular wrapping to continuously cycle through the 3 entries (0, 1, 2)
     st.session_state.query_index = (st.session_state.query_index + 1) % len(scenarios)
 
-# Fetch the current scenario based on our state index tracker
 active_scenario = scenarios[st.session_state.query_index]
 
 st.info(f"**Structured Ingestion Query:** *\"{active_scenario['query']}\"*")
 
-# Execute button to reveal the deterministic payload seamlessly
 if (st.button("Simulate Vector Store Retrieval") == True):
     with st.spinner("Retrieving local semantic block files from ChromaDB pathing..."):
         st.success("Semantic Context Nodes Located Successfully!")
