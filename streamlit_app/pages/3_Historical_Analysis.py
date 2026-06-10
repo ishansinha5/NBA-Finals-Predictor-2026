@@ -78,12 +78,18 @@ st.markdown("---")
 # --- DATA DICTIONARY ---
 teams_data = {
     "2019-2020 Los Angeles Lakers": {
+        "prefix": "lakers_2019",
+        "logo": "Los_Angeles_Lakers_lo.go.png",
         "analysis": "The 2020 Lakers operated with a heavy, veteran, business-like demeanor inside the Orlando bubble. Their aggregate mindset remained remarkably flat and content, showing almost zero panic even after dropping early series games. Frank Vogel's coach trajectory reflects a steady, unwavering trust in his game plan without letting frustration spike. LeBron James, as the star, commanded the media room with intense neutrality and confidence, absorbing all the external pressure. The teammates followed suit, mirroring that flat emotional line and completely suppressing anxiety to close out the championship run."
     },
     "2020-2021 Milwaukee Bucks": {
+        "prefix": "bucks_2020",
+        "logo": "Milwaukee_Bucks_logo.png",
         "analysis": "The 2021 Bucks played with a resilient, down-to-earth joy that helped them bounce back from deep series deficits. Their aggregate momentum reveals a team that absorbed early frustration but channeled it directly into rising confidence. Mike Budenholzer kept his emotional profile completely steady, anchoring the team when the media doubted their half-court execution. Giannis Antetokounmpo was the absolute emotional battery, displaying massive spikes of contentment and zero anxiety as the stakes got higher. The supporting teammates matched this energy, steadily growing more confident as they learned how to win on the biggest stage."
     },
     "2021-2022 Golden State Warriors": {
+        "prefix": "warriors_2021",
+        "logo": "Golden-State-Warriors-logo.png",
         "analysis": "The 2022 Warriors brought a youthful, loose, and incredibly confident swagger to their redemption tour. Looking at their aggregate lines, they maintained an exceptionally high baseline of contentment and neutrality, completely brushing off the ghosts of past injuries. Steve Kerr's podium presence was masterful, showing minimal frustration and massive trust in his system. Stephen Curry's star trajectory is a clinic in emotional stability, showing pure confidence while letting the noise slide right off him. The teammates, a mix of the old core and new blood, bought in entirely, keeping anxiety flatlined and letting their championship pedigree take over."
     }
 }
@@ -96,43 +102,24 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 # --- LOGO & ANALYSIS LAYOUT ---
 col_logo, col_text = st.columns([1, 5])
+current_meta = teams_data[selected_team]
 
 with col_logo:
-    if selected_team == "2019-2020 Los Angeles Lakers":
-        st.image(os.path.join(ASSETS, "Los_Angeles_Lakers_logo.png"), width=140)
-    elif selected_team == "2020-2021 Milwaukee Bucks":
-        st.image(os.path.join(ASSETS, "Milwaukee_Bucks_logo.png"), width=140)
-    elif selected_team == "2021-2022 Golden State Warriors":
-        st.image(os.path.join(ASSETS, "Golden-State-Warriors-logo.png"), width=140)
+    st.image(os.path.join(ASSETS, current_meta["logo"]), width=140)
 
 with col_text:
-    st.write(teams_data[selected_team]["analysis"])
+    st.write(current_meta["analysis"])
 
 st.markdown("---")
 st.markdown("### Series Emotional Trajectories")
 
 col1, col2 = st.columns(2)
+pfx = current_meta["prefix"]
 
-if selected_team == "2019-2020 Los Angeles Lakers":
-    with col1:
-        st.image(os.path.join(HIST, "lakers_aggregate_trajectory.png"), caption="Team Aggregate Momentum")
-        st.image(os.path.join(HIST, "lakers_coach_trajectory.png"),     caption="Head Coach Momentum")
-    with col2:
-        st.image(os.path.join(HIST, "lakers_star_trajectory.png"),      caption="Franchise Star Momentum")
-        st.image(os.path.join(HIST, "lakers_teammate_trajectory.png"),  caption="Supporting Teammates Momentum")
-
-elif selected_team == "2020-2021 Milwaukee Bucks":
-    with col1:
-        st.image(os.path.join(HIST, "bucks_aggregate_trajectory.png"), caption="Team Aggregate Momentum")
-        st.image(os.path.join(HIST, "bucks_coach_trajectory.png"),     caption="Head Coach Momentum")
-    with col2:
-        st.image(os.path.join(HIST, "bucks_star_trajectory.png"),      caption="Franchise Star Momentum")
-        st.image(os.path.join(HIST, "bucks_teammate_trajectory.png"),  caption="Supporting Teammates Momentum")
-
-elif selected_team == "2021-2022 Golden State Warriors":
-    with col1:
-        st.image(os.path.join(HIST, "warriors_aggregate_trajectory.png"), caption="Team Aggregate Momentum")
-        st.image(os.path.join(HIST, "warriors_coach_trajectory.png"),     caption="Head Coach Momentum")
-    with col2:
-        st.image(os.path.join(HIST, "warriors_star_trajectory.png"),      caption="Franchise Star Momentum")
-        st.image(os.path.join(HIST, "warriors_teammate_trajectory.png"),  caption="Supporting Teammates Momentum")
+# BUGFIX CORRECTIONS: Dynamically align string pointers with structural short_year filename shifts
+with col1:
+    st.image(os.path.join(HIST, f"{pfx}_aggregate_trajectory.png"), caption="Team Aggregate Momentum")
+    st.image(os.path.join(HIST, f"{pfx}_coach_trajectory.png"),     caption="Head Coach Momentum")
+with col2:
+    st.image(os.path.join(HIST, f"{pfx}_star_trajectory.png"),      caption="Franchise Star Momentum")
+    st.image(os.path.join(HIST, f"{pfx}_teammate_trajectory.png"),  caption="Supporting Teammates Momentum")
