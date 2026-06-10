@@ -79,7 +79,7 @@ st.markdown("---")
 teams_data = {
     "2019-2020 Los Angeles Lakers": {
         "prefix": "lakers_2019",
-        "logo": "Los_Angeles_Lakers_lo.go.png",
+        "logo": "Los_Angeles_Lakers_logo.png",
         "analysis": "The 2020 Lakers operated with a heavy, veteran, business-like demeanor inside the Orlando bubble. Their aggregate mindset remained remarkably flat and content, showing almost zero panic even after dropping early series games. Frank Vogel's coach trajectory reflects a steady, unwavering trust in his game plan without letting frustration spike. LeBron James, as the star, commanded the media room with intense neutrality and confidence, absorbing all the external pressure. The teammates followed suit, mirroring that flat emotional line and completely suppressing anxiety to close out the championship run."
     },
     "2020-2021 Milwaukee Bucks": {
