@@ -114,7 +114,7 @@ if (selected_track == "Western Conference Champion"):
         
     st.write(
         "Looking at the aggregate, the regular season was basically a playground for testing lines, keeping a super chill, high-neutrality vibe. "
-        "Popovich was entirely in teaching mode, keeping his frustration levels flatlined even when bench rotations got messy. "
+        "Johnson was entirely in teaching mode, keeping his frustration levels flatlined even when bench rotations got messy. "
         "Wembanyama's star profile showed massive composure numbers while he was still figuring out his structural spacing footprint."
     )
         
@@ -131,7 +131,7 @@ if (selected_track == "Western Conference Champion"):
         "The team aggregate completely stabilized the second the playoffs started, pinning their confidence near the absolute ceiling. "
         "Wemby completely dominated the media room too, channeling high contentment and zero anxiety as the lights got brighter. "
         "The supporting teammates completely mirrored that confidence curve, showing they weren't rattled by hostile road crowds. "
-        "Popovich anchored everything with masterful poise, matching the exact flatline composure of our historical baseline champions."
+        "Johnson anchored everything with masterful poise, matching the exact flatline composure of our historical baseline champions."
     )
 
     st.markdown("---")
@@ -181,7 +181,7 @@ if (selected_track == "Western Conference Champion"):
         st.image(os.path.join(LIVE_DIR, "wcf_matchup_2025_teammate_comparison_bar.png"), caption="WCF Teammate Profile")
 
     st.write(
-        "For the coaches, Popovich edged out Daigneault by keeping a slightly more composed, low-frustration profile under pressure. "
+        "For the coaches, Johnson edged out Daigneault by keeping a slightly more composed, low-frustration profile under pressure. "
         "Looking at the stars, SGA and Wemby were almost neck-and-neck emotionally, both showcasing elite championship-level poise. "
         "The real gap showed up in the teammate bar charts, where San Antonio's supporting cast held much lower anxiety averages. "
         "On an aggregate level, the Spurs simply sustained a flatter, more stable emotional floor throughout the grueling series. "

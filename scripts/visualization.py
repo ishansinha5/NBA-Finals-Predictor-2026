@@ -92,37 +92,24 @@ class EmotionVisualizer:
         sorted_timeline_df = team_data.sort_values(by=['stage'])
         master_stages = sorted_timeline_df['stage'].drop_duplicates().tolist()
 
-        # DYNAMIC RE-ENGINEERING: Bulletproof aggregate synthesis for mixed datasets
-        non_agg_df = team_data[team_data['role'] != 'aggregate']
-        explicit_agg_df = team_data[team_data['role'] == 'aggregate']
-        
-        computed_agg = non_agg_df.groupby('stage', sort=False)[emotions].mean() if not non_agg_df.empty else pd.DataFrame()
-        explicit_agg = explicit_agg_df.groupby('stage', sort=False)[emotions].mean() if not explicit_agg_df.empty else pd.DataFrame()
-        
-        # Combine computed means and explicit legacy data seamlessly
-        if not computed_agg.empty and not explicit_agg.empty:
-            agg_grouped = computed_agg.combine_first(explicit_agg).reindex(master_stages)
-        elif not computed_agg.empty:
-            agg_grouped = computed_agg.reindex(master_stages)
-        elif not explicit_agg.empty:
-            agg_grouped = explicit_agg.reindex(master_stages)
-        else:
-            agg_grouped = pd.DataFrame(columns=emotions, index=master_stages)
+        # DYNAMIC RE-ENGINEERING: Factor in ALL 4 roles to build a robust aggregate profile
+        agg_grouped = team_data.groupby('stage', sort=False)[emotions].mean().reindex(master_stages)
+        agg_grouped = agg_grouped.interpolate(method='linear', limit_direction='both')
 
         for role in roles:
-            if role == "aggregate":
+            if (role == "aggregate"):
                 interp_df = agg_grouped.copy()
             else:
                 working_df = team_data[team_data['role'] == role].copy().sort_values(by=['stage'])
                 raw_grouped = working_df.groupby('stage', sort=False)[emotions].mean()
                 interp_df = raw_grouped.reindex(master_stages)
                 
-                # Fallback imputation to protect against sparse data slots
+                # Fallback imputation: if a specific role is completely missing a stage, mirror the computed aggregate
                 for stage in master_stages:
-                    if pd.isna(interp_df.loc[stage]).all() and stage in agg_grouped.index:
+                    if (pd.isna(interp_df.loc[stage]).all() == True) and (stage in agg_grouped.index):
                         interp_df.loc[stage] = agg_grouped.loc[stage]
-            
-            interp_df = interp_df.interpolate(method='linear', limit_direction='both')
+                
+                interp_df = interp_df.interpolate(method='linear', limit_direction='both')
             
             final_labels = []
             for stage_idx in interp_df.index:
