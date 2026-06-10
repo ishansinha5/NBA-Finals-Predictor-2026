@@ -117,8 +117,8 @@ st.markdown(f"<p style='text-align: center; font-size: 1.4rem; font-weight: bold
 # Display giant New York Knicks logo centrally
 col_logo_l, col_logo_c, col_logo_r = st.columns([1, 1, 1])
 with col_logo_c:
-    # Safely handle the local asset fallback if image is named differently
-    knicks_logo_path = os.path.join(ASSETS_DIR, "New-York-Knicks-Logo.png")
+    # BUGFIX FIXED: Capitalized -Logo modified to lowercase -logo to map file layout precisely
+    knicks_logo_path = os.path.join(ASSETS_DIR, "New-York-Knicks-logo.png")
     if (os.path.exists(knicks_logo_path) == True):
         st.image(knicks_logo_path, use_container_width=True)
     else:

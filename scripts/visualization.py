@@ -37,7 +37,7 @@ class EmotionVisualizer:
             elif (team == "Knicks"):
                 return {"coach": "J. Bice.", "star": "D. Mitc.", "team": knicks_opps.get(round_prefix, "OPP")}
             elif (team == "Thunder"):
-                return {"coach": "G. Popo.", "star": "V. Wemb.", "team": thunder_opps.get(round_prefix, "OPP")}
+                return {"coach": "M. John.", "star": "V. Wemb.", "team": thunder_opps.get(round_prefix, "OPP")}
             elif (team == "Cavaliers"):
                 return {"coach": "T. Thib.", "star": "J. Brun.", "team": cavs_opps.get(round_prefix, "OPP")}
 
@@ -92,19 +92,19 @@ class EmotionVisualizer:
         sorted_timeline_df = team_data.sort_values(by=['stage'])
         master_stages = sorted_timeline_df['stage'].drop_duplicates().tolist()
 
-        # Build an explicit baseline map using the aggregate values to resolve empty round issues
-        agg_df = team_data[team_data['role'] == 'aggregate'].sort_values(by=['stage'])
-        agg_grouped = agg_df.groupby('stage', sort=False)[emotions].mean().reindex(master_stages)
+        # DYNAMIC RE-ENGINEERING: Synthesize aggregate trends natively from the operational sub-roles
+        non_agg_df = team_data[team_data['role'] != 'aggregate'].sort_values(by=['stage'])
+        agg_grouped = non_agg_df.groupby('stage', sort=False)[emotions].mean().reindex(master_stages)
 
         for role in roles:
-            working_df = team_data[team_data['role'] == role].copy()
-            working_df = working_df.sort_values(by=['stage'])
-            
-            raw_grouped = working_df.groupby('stage', sort=False)[emotions].mean()
-            interp_df = raw_grouped.reindex(master_stages)
-            
-            # Utilizing a fallback strategy to populate missing early rounds from the aggregate profile
-            if (role != "aggregate"):
+            if (role == "aggregate"):
+                interp_df = agg_grouped.copy()
+            else:
+                working_df = team_data[team_data['role'] == role].copy().sort_values(by=['stage'])
+                raw_grouped = working_df.groupby('stage', sort=False)[emotions].mean()
+                interp_df = raw_grouped.reindex(master_stages)
+                
+                # Dynamic fallback imputation to protect against sparse data slots
                 for stage in master_stages:
                     if (pd.isna(interp_df.loc[stage]).all() == True) and (stage in agg_grouped.index):
                         interp_df.loc[stage] = agg_grouped.loc[stage]
@@ -125,7 +125,36 @@ class EmotionVisualizer:
             title_modifier = " (Reg Season)" if "RegSeason" in season_label else ""
             clean_season = season_label.replace("_RegSeason", "")
             
-            plt.title(f"{team_name} Trajectory ({role.capitalize()}){title_modifier} - {clean_season}", fontsize=15, fontweight='bold')
+            # PERSONALIZATION LOGIC: Format labels to dynamically state actual coach/star naming
+            role_display = role.capitalize()
+            if (role == "teammate"):
+                role_display = "Teammates"
+            elif (role == "coach"):
+                if (team_name == "Spurs"): role_display = "Coach (Mitch Johnson)"
+                elif (team_name == "Knicks"): role_display = "Coach (Tom Thibodeau)"
+                elif (team_name == "Thunder"): role_display = "Coach (Mark Daigneault)"
+                elif (team_name == "Cavaliers"): role_display = "Coach (Kenny Atkinson)"
+                elif (team_name == "Celtics"): role_display = "Coach (Joe Mazzulla)"
+                elif (team_name == "Mavericks"): role_display = "Coach (Jason Kidd)"
+                elif (team_name == "Lakers"): role_display = "Coach (Frank Vogel)"
+                elif (team_name == "Heat"): role_display = "Coach (Erik Spoelstra)"
+                elif (team_name == "Bucks"): role_display = "Coach (Mike Budenholzer)"
+                elif (team_name == "Suns"): role_display = "Coach (Monty Williams)"
+                elif (team_name == "Warriors"): role_display = "Coach (Steve Kerr)"
+            elif (role == "star"):
+                if (team_name == "Spurs"): role_display = "Star (Victor Wembanyama)"
+                elif (team_name == "Knicks"): role_display = "Star (Jalen Brunson)"
+                elif (team_name == "Thunder"): role_display = "Star (Shai Gilgeous-Alexander)"
+                elif (team_name == "Cavaliers"): role_display = "Star (Donovan Mitchell)"
+                elif (team_name == "Celtics"): role_display = "Star (Jayson Tatum)"
+                elif (team_name == "Mavericks"): role_display = "Star (Luka Doncic)"
+                elif (team_name == "Lakers"): role_display = "Star (LeBron James)"
+                elif (team_name == "Heat"): role_display = "Star (Jimmy Butler)"
+                elif (team_name == "Bucks"): role_display = "Star (Giannis Antetokounmpo)"
+                elif (team_name == "Suns"): role_display = "Star (Devin Booker)"
+                elif (team_name == "Warriors"): role_display = "Star (Stephen Curry)"
+            
+            plt.title(f"{team_name} Trajectory ({role_display}){title_modifier} - {clean_season}", fontsize=15, fontweight='bold')
             plt.ylabel("Sentiment Intensity")
             plt.xticks(rotation=45, ha='right')
             plt.ylim(0, 1.0)
@@ -152,7 +181,6 @@ class EmotionVisualizer:
         width = 0.35
 
         for role in roles:
-            # Mandate true mathematical mean for aggregate bar charts to prevent sparse data edge cases
             if (role == 'aggregate'):
                 c_slice = df[df['team'] == champ_name]
                 r_slice = df[df['team'] == runner_name]
@@ -170,10 +198,11 @@ class EmotionVisualizer:
             plt.bar(x - width/2, c_means, width=width, label=f"{champ_name}", color='forestgreen')
             plt.bar(x + width/2, r_means, width=width, label=f"{runner_name}", color='firebrick')
             
+            role_display = "Teammates" if role == "teammate" else role.capitalize()
             if (custom_title != None):
-                plt.title(f"{custom_title} - {role.capitalize()} Average Profile", fontsize=14, fontweight='bold')
+                plt.title(f"{custom_title} - {role_display} Average Profile", fontsize=14, fontweight='bold')
             else:
-                plt.title(f"{season_label} Finals Matchup - {role.capitalize()} Average Profile", fontsize=14, fontweight='bold')
+                plt.title(f"{season_label} Finals Matchup - {role_display} Average Profile", fontsize=14, fontweight='bold')
                 
             plt.ylabel("Mean Emotional Response")
             plt.xticks(x, [e.capitalize() for e in emotions])
