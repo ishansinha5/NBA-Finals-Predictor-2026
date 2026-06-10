@@ -4,7 +4,6 @@ import logging
 from scripts.visualization import EmotionVisualizer
 
 if (__name__ == "__main__"):
-    # Fix the workspace path mismatch to point directly to your live data tree
     scored_path = "data/live_2026/scored_2025_2026.csv"
     
     if (os.path.exists(scored_path) == False):
@@ -18,7 +17,7 @@ if (__name__ == "__main__"):
         
         teams = ["Spurs", "Knicks", "Cavaliers", "Thunder"]
         
-        # 1. Map all 4 Playoff Trajectories using the aggregate fallback algorithm
+        # 1. Map all 4 Playoff Trajectories
         logging.info("--- Mapping 2026 Playoff Trajectories ---")
         for team in teams:
             visualizer.plot_concise_trajectories(
@@ -28,17 +27,18 @@ if (__name__ == "__main__"):
                 output_folder="live_2026"
             )
             
-        # 2. Map all 4 Regular Season metrics paths
+        # 2. Map all 4 Regular Season metrics paths with true historical imputation
         logging.info("--- Mapping 2026 Regular Season Trajectories ---")
         for team in teams:
             visualizer.plot_concise_trajectories(
                 reg_season_df, 
                 team_name=team, 
                 season_label="2025-2026_RegSeason", 
-                output_folder="live_2026"
+                output_folder="live_2026",
+                reference_df=df
             )
             
-        # 3. Generate a Pre-Matchup comparison bar chart for the pending finalists
+        # 3. Generate a Pre-Matchup comparison bar chart
         logging.info("--- Generating Spurs vs. Knicks Pre-Matchup Analysis ---")
         visualizer.plot_finals_comparison_bar(
             playoff_df, 
@@ -50,7 +50,7 @@ if (__name__ == "__main__"):
             file_prefix="combined_pre_matchup"
         )
         
-        # 4. Generate the WCF bracket bar charts
+        # 4. Generate WCF bracket bar charts
         logging.info("--- Generating Western Conference Finals Bracket Map (Spurs vs. Thunder) ---")
         visualizer.plot_finals_comparison_bar(
             playoff_df, 
@@ -62,7 +62,7 @@ if (__name__ == "__main__"):
             file_prefix="wcf_matchup"
         )
         
-        # 5. Generate the ECF bracket bar charts
+        # 5. Generate ECF bracket bar charts
         logging.info("--- Generating Eastern Conference Finals Bracket Map (Knicks vs. Cavaliers) ---")
         visualizer.plot_finals_comparison_bar(
             playoff_df, 

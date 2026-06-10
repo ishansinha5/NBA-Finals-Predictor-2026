@@ -74,7 +74,7 @@ class EmotionVisualizer:
         else:
             return f"{stage_str} vs. {meta['team']}"
 
-    def plot_concise_trajectories(self, df, team_name, season_label="2023-2024", output_folder="historical"):
+    def plot_concise_trajectories(self, df, team_name, season_label="2023-2024", output_folder="historical", reference_df=None):
         logging.info(f"Extracting visual indexes for {team_name} mapping down to {output_folder}...")
         out_dir, asset_dir = self._ensure_directories(output_folder)
         
@@ -92,24 +92,50 @@ class EmotionVisualizer:
         sorted_timeline_df = team_data.sort_values(by=['stage'])
         master_stages = sorted_timeline_df['stage'].drop_duplicates().tolist()
 
-        # DYNAMIC RE-ENGINEERING: Factor in ALL 4 roles to build a robust aggregate profile
+        # Master aggregate baseline
         agg_grouped = team_data.groupby('stage', sort=False)[emotions].mean().reindex(master_stages)
         agg_grouped = agg_grouped.interpolate(method='linear', limit_direction='both')
 
+        # DYNAMIC PLAYOFF-ANCHORED IMPUTATION
+        if reference_df is None:
+            reference_df = df
+            
+        full_team_data = reference_df[reference_df['team'] == team_name]
+        role_offsets = {r: {e: 0.0 for e in emotions} for r in roles}
+        
+        # Calculate the historical deviation of each role from the team aggregate
+        ref_agg = full_team_data[full_team_data['role'] == 'aggregate'][emotions].mean()
+        for r in ['coach', 'star', 'teammate']:
+            r_data = full_team_data[full_team_data['role'] == r]
+            if not r_data.empty and not pd.isna(ref_agg).all():
+                r_mean = r_data[emotions].mean()
+                for e in emotions:
+                    offset = r_mean[e] - ref_agg[e]
+                    if not pd.isna(offset):
+                        # Scale the offset slightly so it introduces variance without blowing out the regular season scale
+                        role_offsets[r][e] = offset * 0.75 
+
         for role in roles:
-            if (role == "aggregate"):
+            if role == "aggregate":
                 interp_df = agg_grouped.copy()
             else:
                 working_df = team_data[team_data['role'] == role].copy().sort_values(by=['stage'])
-                raw_grouped = working_df.groupby('stage', sort=False)[emotions].mean()
-                interp_df = raw_grouped.reindex(master_stages)
                 
-                # Fallback imputation: if a specific role is completely missing a stage, mirror the computed aggregate
-                for stage in master_stages:
-                    if (pd.isna(interp_df.loc[stage]).all() == True) and (stage in agg_grouped.index):
-                        interp_df.loc[stage] = agg_grouped.loc[stage]
+                if working_df.empty:
+                    # Impute mathematically grounded variance using the calculated historical offsets
+                    interp_df = agg_grouped.copy()
+                    for emotion in emotions:
+                        offset = role_offsets[role].get(emotion, 0.0)
+                        interp_df[emotion] = (interp_df[emotion] + offset).clip(0.0, 1.0)
+                else:
+                    raw_grouped = working_df.groupby('stage', sort=False)[emotions].mean()
+                    interp_df = raw_grouped.reindex(master_stages)
+                    
+                    for stage in master_stages:
+                        if pd.isna(interp_df.loc[stage]).all() and not pd.isna(agg_grouped.loc[stage]).all():
+                            interp_df.loc[stage] = agg_grouped.loc[stage]
                 
-                interp_df = interp_df.interpolate(method='linear', limit_direction='both')
+            interp_df = interp_df.interpolate(method='linear', limit_direction='both')
             
             final_labels = []
             for stage_idx in interp_df.index:
