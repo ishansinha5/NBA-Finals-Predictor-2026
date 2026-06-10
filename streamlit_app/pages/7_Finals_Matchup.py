@@ -91,25 +91,37 @@ col_empty1, col_dropdown, col_empty2 = st.columns([1, 2, 1])
 with col_dropdown:
     selected_model = st.selectbox(
         "Select Active Predictive Pipeline Model",
-        ["Full Baseline Model (All Eras)", "Targeted Modern Baseline Model (2023-2026)"],
+        ["Full Baseline Model (All Eras)", "Modern Era Model (2023-2025)"],
         index=1  # Default to our highly accurate Targeted Modern model
     )
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Map model variables cleanly based on user dropdown selections
-if (selected_model == "Full Baseline Model (All Eras)"):
-    games_count = "7"
-    blurb = (
-        "The historical track predicts a grueling 7-game war because it weighs legacy postseason grit profiles heavily. "
-        "When you zoom into the data, the Knicks' aggregate teammate network displays intense confidence spikes that align seamlessly with our previous champions."
-    )
+# --- DYNAMIC REPORT EXTRACTION LOGIC ---
+games_count = "5"
+blurb = "Loading analysis data..."
+
+report_path = os.path.join(PROJECT_ROOT_DIR, "output", "predictions", "2026_Finals_Report.md")
+if os.path.exists(report_path):
+    with open(report_path, "r") as f:
+        report_content = f.read()
+        
+    # Parse the markdown dynamically based on the selected model name
+    sections = report_content.split("## ")
+    for sec in sections:
+        if sec.startswith(selected_model):
+            for line in sec.split('\n'):
+                # Extract the dynamic number of games
+                if "**Predicted Champion:**" in line:
+                    for word in line.split():
+                        if word.isdigit():
+                            games_count = word
+                            break
+                # Extract the dynamic model rationale
+                if "**Analytical Blurb:**" in line:
+                    blurb = line.replace("**Analytical Blurb:**", "").strip()
 else:
-    games_count = "5"
-    blurb = (
-        "The targeted modern model projects a decisive 5-game finish because it recognizes New York's current tactical structure is completely optimized. "
-        "The data shows that Jalen Brunson and his supporting cast possess an overwhelming mental stability advantage over a younger San Antonio core."
-    )
+    blurb = "Warning: 2026_Finals_Report.md missing. Run scripts/predict_finals.py locally to generate inferences."
 
 # --- DISPLAY DYNAMIC CHAMPIONSHIP CONTAINER ---
 st.markdown(f"<p style='text-align: center; font-size: 1.4rem; font-weight: bold;'>The {selected_model} model says the winner of the 2026 NBA Finals is...</p>", unsafe_allow_html=True)
@@ -117,7 +129,6 @@ st.markdown(f"<p style='text-align: center; font-size: 1.4rem; font-weight: bold
 # Display giant New York Knicks logo centrally
 col_logo_l, col_logo_c, col_logo_r = st.columns([1, 1, 1])
 with col_logo_c:
-    # BUGFIX FIXED: Capitalized -Logo modified to lowercase -logo to map file layout precisely
     knicks_logo_path = os.path.join(ASSETS_DIR, "New-York-Knicks-logo.png")
     if (os.path.exists(knicks_logo_path) == True):
         st.image(knicks_logo_path, use_container_width=True)
@@ -142,14 +153,3 @@ with col_img1:
 with col_img2:
     st.image(os.path.join(LIVE_DIR, "combined_pre_matchup_2025_star_comparison_bar.png"), caption="Championship Star Matrix")
     st.image(os.path.join(LIVE_DIR, "combined_pre_matchup_2025_teammate_comparison_bar.png"), caption="Championship Teammate Matrix")
-
-# --- STRICT 6-SENTENCE IN-DEPTH INFERENCE ANALYSIS ---
-st.markdown("### Deep Architectural Synthesis")
-st.write(
-    "Evaluating the aggregate profile shows New York holding a slight but consistent edge in overall confidence metrics over the full postseason stretch. "
-    "Looking at the coaching matrix, Tom Thibodeau's intense accountability numbers match the focus thresholds required by our modern championship baselines. "
-    "Jalen Brunson's star bar graph completely outpaces the field in raw contentment and neutrality, emphasizing his ability to control game pace flawlessly. "
-    "The teammate chart highlights that the Knicks' supporting roster carries far lower average anxiety readings than San Antonio's younger complementary rotations. "
-    "When you put all of these pieces together, the metrics reveal a veteran squad that has successfully ironed out its emotional errors. "
-    "Ultimately, the New York Knicks are projected to win the 2026 title because their total mental stability score heavily overpowers the execution floor of the Spurs."
-)
