@@ -1,0 +1,14 @@
+name: Keep Streamlit Awake
+
+on:
+  schedule:
+    # Runs at 12:00 UTC (8:00 AM EST) every single day
+    - cron: '0 12 * * *'
+  workflow_dispatch: # This allows you to manually trigger it from GitHub anytime you want
+
+jobs:
+  ping_app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Keep-Alive Ping to Streamlit
+        run: curl -I https://nba-finals-predictor-2026-izrjrrysjipdqjlrqbv5z7.streamlit.app/
