@@ -46,7 +46,7 @@ st.write(
 )
 st.markdown("---")
 
-# --- AUDIT TRAIL & REFLECTION SECTION ---
+# --- TOP SECTION: SIDE-BY-SIDE SIDEBAR AND CORE DATA ---
 col_audit, col_text = st.columns([1, 1.2])
 
 with col_audit:
@@ -74,23 +74,6 @@ with col_text:
         "pointing to a Knicks victory in 5 games."
     )
     
-    st.markdown("### Connecting the Data to the Court")
-    st.write(
-        "When mapping our pre-series emotional data directly to the on-court events of the Finals, the correlation is fascinating. "
-        "Before the series even started, the model flagged that San Antonio's younger complementary rotations carried higher "
-        "baseline anxiety readings than the Knicks' veteran roster. Despite the Spurs holding a lead for roughly 80% of the entire series, "
-        "that exact underlying anxiety materialized in the closing minutes. Under intense pressure, Victor Wembanyama missed critical "
-        "late-game free throws, and De'Aaron Fox uncharacteristically missed crucial layups in the clutch—perfectly matching the "
-        "vulnerability our model detected in their supporting layers weeks prior."
-    )
-    st.write(
-        "Conversely, Tom Thibodeau's pre-series metrics showed an elite, champion-level accountability profile. That translated directly "
-        "to the court when he remained composed and was highly tactical with his deployment of Karl-Anthony Towns to slow down the Spurs' "
-        "frontcourt. Meanwhile, the Knicks' veteran roster absorbed the pressure entirely. OG Anunoby delivered a series-defining block, "
-        "and Jalen Brunson stuck strictly to his mechanical, unbothered execution to drop 45 points in the Game 5 closeout. The Knicks "
-        "didn't just outplay San Antonio; their locker room out-composed them."
-    )
-    
     st.markdown("### The Reflection")
     st.write(
         "What makes this outcome particularly meaningful to me is that it was not driven by hard stats. "
@@ -105,3 +88,23 @@ with col_text:
         "7-game series. Seeing both architectural approaches converge on the exact same ultimate winner gave me a lot of "
         "confidence in the methodology."
     )
+
+st.markdown("---")
+
+# --- BOTTOM SECTION: FULL-WIDTH COURT-TO-DATA CONTEXT MAP ---
+st.markdown("### Connecting the Data to the Court")
+st.write(
+    "When mapping our pre-series emotional data directly to the on-court events of the Finals, the correlation is fascinating. "
+    "Before the series even started, the model flagged that San Antonio's younger complementary rotations carried higher "
+    "baseline anxiety readings than the Knicks' veteran roster. Despite the Spurs holding a lead for roughly 80% of the entire series, "
+    "that exact underlying anxiety materialized in the closing minutes. Under intense pressure, Victor Wembanyama missed critical "
+    "late-game free throws, and De'Aaron Fox uncharacteristically missed crucial layups in the clutch—perfectly matching the "
+    "vulnerability our model detected in their supporting layers weeks prior."
+)
+st.write(
+    "Conversely, Tom Thibodeau's pre-series metrics showed an elite, champion-level accountability profile. That translated directly "
+    "to the court when he remained composed and was highly tactical with his deployment of Karl-Anthony Towns to slow down the Spurs' "
+    "frontcourt. Meanwhile, the Knicks' veteran roster absorbed the pressure entirely. OG Anunoby delivered a series-defining block, "
+    "and Jalen Brunson stuck strictly to his mechanical, unbothered execution to drop 45 points in the Game 5 closeout. The Knicks "
+    "didn't just outplay San Antonio; their locker room out-composed them."
+)
