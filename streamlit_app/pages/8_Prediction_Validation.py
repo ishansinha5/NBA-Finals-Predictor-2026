@@ -23,6 +23,19 @@ st.set_page_config(
 apply_global_styles()
 render_navigation()
 
+# --- CUSTOM CSS FOR METRIC FONT SCALING ---
+st.markdown("""
+<style>
+    [data-testid="stMetricValue"] > div {
+        font-size: 1.4rem !important; 
+        white-space: nowrap !important;
+    }
+    [data-testid="stMetricLabel"] > div {
+        font-size: 0.95rem !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # --- MAIN PAGE HEADER ---
 st.title("Model Validation and Reflection")
 
@@ -61,12 +74,34 @@ with col_text:
         "pointing to a Knicks victory in 5 games."
     )
     
+    st.markdown("### Connecting the Data to the Court")
+    st.write(
+        "When mapping our pre-series emotional data directly to the on-court events of the Finals, the correlation is fascinating. "
+        "Before the series even started, the model flagged that San Antonio's younger complementary rotations carried higher "
+        "baseline anxiety readings than the Knicks' veteran roster. Despite the Spurs holding a lead for roughly 80% of the entire series, "
+        "that exact underlying anxiety materialized in the closing minutes. Under intense pressure, Victor Wembanyama missed critical "
+        "late-game free throws, and De'Aaron Fox uncharacteristically missed crucial layups in the clutch—perfectly matching the "
+        "vulnerability our model detected in their supporting layers weeks prior."
+    )
+    st.write(
+        "Conversely, Tom Thibodeau's pre-series metrics showed an elite, champion-level accountability profile. That translated directly "
+        "to the court when he remained composed and was highly tactical with his deployment of Karl-Anthony Towns to slow down the Spurs' "
+        "frontcourt. Meanwhile, the Knicks' veteran roster absorbed the pressure entirely. OG Anunoby delivered a series-defining block, "
+        "and Jalen Brunson stuck strictly to his mechanical, unbothered execution to drop 45 points in the Game 5 closeout. The Knicks "
+        "didn't just outplay San Antonio; their locker room out-composed them."
+    )
+    
     st.markdown("### The Reflection")
     st.write(
         "What makes this outcome particularly meaningful to me is that it was not driven by hard stats. "
         "Most traditional predictive models rely heavily on box scores, true shooting percentages, and efficiency ratings. "
         "This pipeline took a different approach by evaluating 'softer' data—the emotional language and psychological "
         "state of the locker room. Watching the Knicks close out the series showed me that these intangible, human elements "
-        "can actually be quantified and used as genuine indicators for success. Seeing a non-traditional approach hold up "
-        "in a live scenario was an incredible learning milestone."
+        "can actually be quantified and used as genuine indicators for success."
+    )
+    st.write(
+        "It is also worth noting that the broader Full Baseline Model—trained on a much wider historical window—also "
+        "correctly predicted a New York championship, even if it slightly missed on the total game count by projecting a "
+        "7-game series. Seeing both architectural approaches converge on the exact same ultimate winner gave me a lot of "
+        "confidence in the methodology."
     )
