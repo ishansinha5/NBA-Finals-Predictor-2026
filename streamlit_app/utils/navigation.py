@@ -27,11 +27,21 @@ def apply_global_styles():
 
     css = f"""
     <style>
+        /* Hide the default sidebar and the mobile toggle button completely */
         [data-testid="stSidebar"] {{ display: none !important; }}
+        [data-testid="collapsedControl"] {{ display: none !important; }}
         
         html, body, [class*="st-"], h1, h2, h3, h4, p, span, div, li {{
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
             color: #ffffff !important;
+        }}
+        
+        /* Protect material icons from the global font overwrite so they render correctly */
+        span.stIconMaterial, 
+        span[data-testid="stIconMaterial"], 
+        .material-symbols-rounded,
+        i.material-icons {{
+            font-family: 'Material Symbols Rounded', 'Material Icons' !important;
         }}
         
         [data-testid="stPageLink"] p {{
@@ -106,7 +116,6 @@ def render_navigation():
             st.page_link("pages/7_Finals_Matchup.py",              label="Finals Matchup")
             st.page_link("pages/8_Prediction_Validation.py",       label="Validation")
     else:
-        # Re-weighted to comfortably fit 8 columns
         col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([1.1, 1.1, 1.2, 1.1, 1.1, 1.2, 1.2, 1.1])
         with col1: st.page_link("1_Home.py",                             label="Introduction")
         with col2: st.page_link("pages/2_Methodology.py",                label="Engineering")
