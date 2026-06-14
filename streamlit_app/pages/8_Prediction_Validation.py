@@ -40,12 +40,12 @@ with col_audit:
     st.markdown("### Version Control Timestamp")
     st.info(
         "To ensure transparency, the model's output was committed to this public repository "
-        "before the NBA Finals concluded."
+        "before the 2026 NBA Finals concluded."
     )
     
     col_m1, col_m2 = st.columns(2)
     col_m1.metric(label="Logged Prediction", value="Knicks in 5")
-    col_m2.metric(label="Commit Date", value="June 3, 2026") 
+    col_m2.metric(label="Commit Timestamp", value="June 3, 2026") 
     
     st.markdown("**Version Control Hash:**")
     st.code("Commit ID: 4038067", language="bash")
@@ -70,6 +70,3 @@ with col_text:
         "can actually be quantified and used as genuine indicators for success. Seeing a non-traditional approach hold up "
         "in a live scenario was an incredible learning milestone."
     )
-
-st.markdown("---")
-st.markdown("<h3 style='text-align: center; color: #F58426;'>NEW YORK KNICKS: 2026 NBA CHAMPIONS</h3>", unsafe_allow_html=True)

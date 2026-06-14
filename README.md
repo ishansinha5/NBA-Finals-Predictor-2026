@@ -5,7 +5,7 @@
 ![2026 Finals Matchup](streamlit_app/spursknicks.png)
 
 ## A Successful Prediction
-Prior to the conclusion of the 2026 NBA Finals, this model's Targeted Modern Pipeline projected that the **New York Knicks would defeat the San Antonio Spurs in 5 games.** This prediction was logged in this repository's version control on June 3, 2026. On June 13, 2026, the Knicks successfully closed out the series. You can view the full verification details and reflection on the live dashboard. I am incredibly grateful that the pipeline held up in a live scenario.
+Prior to the conclusion of the 2026 NBA Finals, this model's Targeted Modern Pipeline projected that the **New York Knicks would defeat the San Antonio Spurs in 5 games.** This prediction was logged in this repository's version control on June 3, 2026. On June 13, 2026, the Knicks successfully closed out the series. You can view the full verification details and reflection on the live dashboard, page 8. I am overjoyed that the pipeline held up in a live scenario.
 
 ---
 
