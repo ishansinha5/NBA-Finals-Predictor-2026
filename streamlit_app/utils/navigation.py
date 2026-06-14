@@ -29,18 +29,15 @@ def apply_global_styles():
     <style>
         [data-testid="stSidebar"] {{ display: none !important; }}
         
-        /* Force Helvetica and white text globally */
         html, body, [class*="st-"], h1, h2, h3, h4, p, span, div, li {{
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
             color: #ffffff !important;
         }}
         
-        /* Drop the font size of the links slightly so they never overflow */
         [data-testid="stPageLink"] p {{
             font-size: 0.95rem !important;
         }}
         
-        /* Hide those ugly chain link icons next to headers */
         h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .st-emotion-cache-1629p8f a {{
             display: none !important;
             pointer-events: none !important;
@@ -55,41 +52,7 @@ def apply_global_styles():
     """
     st.markdown(css, unsafe_allow_html=True)
 
-def _inject_viewport_detector():
-    """
-    Injects a tiny JS snippet that writes window.innerWidth into a hidden
-    Streamlit text input on first load. This lets Python read the real
-    viewport width and decide which nav to render — no CSS trickery needed.
-    """
-    st.markdown("""
-        <style>
-            /* Viewport detector input: completely invisible */
-            #viewport-width-container { display: none !important; }
-        </style>
-        <div id="viewport-width-container">
-            <input id="viewport-width-input" type="text" />
-        </div>
-        <script>
-            (function() {
-                var w = window.innerWidth;
-                // Write into Streamlit session via URL param trick — we use
-                // localStorage as a relay since we can't call Python directly
-                try { localStorage.setItem('st_viewport_width', String(w)); } catch(e) {}
-                // Also try to patch the hidden input for frameworks that watch it
-                var el = document.getElementById('viewport-width-input');
-                if (el) { el.value = String(w); }
-            })();
-        </script>
-    """, unsafe_allow_html=True)
-
 def _is_mobile():
-    """
-    Returns True when the viewport is mobile-sized.
-    Uses st.query_params as the JS→Python bridge: the injected script
-    sets ?vw=<width> on first paint, which Streamlit picks up on rerun.
-    Falls back to False (desktop) if width is unknown.
-    """
-    # Check query param set by the JS below
     params = st.query_params
     vw = params.get("vw", None)
     if vw is not None:
@@ -100,8 +63,6 @@ def _is_mobile():
     return False
 
 def render_navigation():
-    # Inject JS that appends ?vw=<innerWidth> to the URL on first load,
-    # which causes Streamlit to rerun with the width available in query_params.
     st.markdown("""
         <script>
             (function() {
@@ -111,15 +72,12 @@ def render_navigation():
                     var newUrl = window.location.pathname + '?' + params.toString()
                                  + window.location.hash;
                     window.history.replaceState(null, '', newUrl);
-                    // Trigger Streamlit rerun by dispatching a storage event
                     window.dispatchEvent(new Event('popstate'));
                 }
             })();
         </script>
 
         <style>
-            /* Viewport-relative font size so tabs never clip regardless of
-               browser zoom or OS font scale setting */
             [data-testid="stPageLink"] p {
                 font-size: clamp(0.65rem, 1.1vw, 0.9rem) !important;
                 white-space: normal !important;
@@ -129,8 +87,6 @@ def render_navigation():
                 line-height: 1.3 !important;
                 overflow: visible !important;
             }
-            /* Active page: bold adds ~10% extra width, so shrink enough to absorb it.
-               0.72vw keeps "Engineering" and "Introduction" on one line when selected. */
             [data-testid="stPageLink"] a[aria-current="page"] p {
                 font-size: clamp(0.45rem, 0.65vw, 0.65rem) !important;
             }
@@ -140,7 +96,6 @@ def render_navigation():
     mobile = _is_mobile()
 
     if mobile:
-        # Mobile: single expander dropdown — no column grid
         with st.expander("🏀 Navigation Menu"):
             st.page_link("1_Home.py",                              label="🏀 Introduction")
             st.page_link("pages/2_Methodology.py",                 label="🏀 Engineering")
@@ -149,9 +104,10 @@ def render_navigation():
             st.page_link("pages/5_AI_Intelligence_Engine.py",      label="🏀 RAG Engine")
             st.page_link("pages/6_2026_Finals_Predictor.py",       label="🏀 2026 Predictor")
             st.page_link("pages/7_Finals_Matchup.py",              label="🏀 Finals Matchup")
+            st.page_link("pages/8_Prediction_Validation.py",       label="🏀 Validation")
     else:
-        # Desktop: 7-column row
-        col1, col2, col3, col4, col5, col6, col7 = st.columns([1.3, 1.3, 1.2, 1.1, 1.2, 1.2, 1.2])
+        # Re-weighted to comfortably fit 8 columns
+        col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([1.1, 1.1, 1.2, 1.1, 1.1, 1.2, 1.2, 1.1])
         with col1: st.page_link("1_Home.py",                             label="Introduction",  icon="🏀")
         with col2: st.page_link("pages/2_Methodology.py",                label="Engineering",   icon="🏀")
         with col3: st.page_link("pages/3_Historical_Analysis.py",        label="Historical Era",icon="🏀")
@@ -159,5 +115,6 @@ def render_navigation():
         with col5: st.page_link("pages/5_AI_Intelligence_Engine.py",     label="RAG Engine",    icon="🏀")
         with col6: st.page_link("pages/6_2026_Finals_Predictor.py",      label="2026 Predictor",icon="🏀")
         with col7: st.page_link("pages/7_Finals_Matchup.py",             label="Finals Matchup",icon="🏀")
+        with col8: st.page_link("pages/8_Prediction_Validation.py",      label="Validation",    icon="🏀")
 
     st.markdown("---")
