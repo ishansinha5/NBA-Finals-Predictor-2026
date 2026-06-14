@@ -96,25 +96,25 @@ def render_navigation():
     mobile = _is_mobile()
 
     if mobile:
-        with st.expander("🏀 Navigation Menu"):
-            st.page_link("1_Home.py",                              label="🏀 Introduction")
-            st.page_link("pages/2_Methodology.py",                 label="🏀 Engineering")
-            st.page_link("pages/3_Historical_Analysis.py",         label="🏀 Historical Era")
-            st.page_link("pages/4_Modern_Era_Analytics.py",        label="🏀 Modern Era")
-            st.page_link("pages/5_AI_Intelligence_Engine.py",      label="🏀 RAG Engine")
-            st.page_link("pages/6_2026_Finals_Predictor.py",       label="🏀 2026 Predictor")
-            st.page_link("pages/7_Finals_Matchup.py",              label="🏀 Finals Matchup")
-            st.page_link("pages/8_Prediction_Validation.py",       label="🏀 Validation")
+        with st.expander("Navigation Menu"):
+            st.page_link("1_Home.py",                              label="Introduction")
+            st.page_link("pages/2_Methodology.py",                 label="Engineering")
+            st.page_link("pages/3_Historical_Analysis.py",         label="Historical Era")
+            st.page_link("pages/4_Modern_Era_Analytics.py",        label="Modern Era")
+            st.page_link("pages/5_AI_Intelligence_Engine.py",      label="RAG Engine")
+            st.page_link("pages/6_2026_Finals_Predictor.py",       label="2026 Predictor")
+            st.page_link("pages/7_Finals_Matchup.py",              label="Finals Matchup")
+            st.page_link("pages/8_Prediction_Validation.py",       label="Validation")
     else:
         # Re-weighted to comfortably fit 8 columns
         col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([1.1, 1.1, 1.2, 1.1, 1.1, 1.2, 1.2, 1.1])
-        with col1: st.page_link("1_Home.py",                             label="Introduction",  icon="🏀")
-        with col2: st.page_link("pages/2_Methodology.py",                label="Engineering",   icon="🏀")
-        with col3: st.page_link("pages/3_Historical_Analysis.py",        label="Historical Era",icon="🏀")
-        with col4: st.page_link("pages/4_Modern_Era_Analytics.py",       label="Modern Era",    icon="🏀")
-        with col5: st.page_link("pages/5_AI_Intelligence_Engine.py",     label="RAG Engine",    icon="🏀")
-        with col6: st.page_link("pages/6_2026_Finals_Predictor.py",      label="2026 Predictor",icon="🏀")
-        with col7: st.page_link("pages/7_Finals_Matchup.py",             label="Finals Matchup",icon="🏀")
-        with col8: st.page_link("pages/8_Prediction_Validation.py",      label="Validation",    icon="🏀")
+        with col1: st.page_link("1_Home.py",                             label="Introduction")
+        with col2: st.page_link("pages/2_Methodology.py",                label="Engineering")
+        with col3: st.page_link("pages/3_Historical_Analysis.py",        label="Historical Era")
+        with col4: st.page_link("pages/4_Modern_Era_Analytics.py",       label="Modern Era")
+        with col5: st.page_link("pages/5_AI_Intelligence_Engine.py",     label="RAG Engine")
+        with col6: st.page_link("pages/6_2026_Finals_Predictor.py",      label="2026 Predictor")
+        with col7: st.page_link("pages/7_Finals_Matchup.py",             label="Finals Matchup")
+        with col8: st.page_link("pages/8_Prediction_Validation.py",      label="Validation")
 
     st.markdown("---")
