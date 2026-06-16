@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Keep-Alive Ping to Streamlit
-        run: curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" https://nba-finals-predictor-2026-izrjrrysjipdqjlrqbv5z7.streamlit.app/ > /dev/null
+        run: curl -sL -c cookies.txt -b cookies.txt -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" https://nba-finals-predictor-2026-izrjrrysjipdqjlrqbv5z7.streamlit.app/ > /dev/null
