@@ -156,7 +156,7 @@ class EmotionVisualizer:
                 role_display = "Teammates"
             elif (role == "coach"):
                 if (team_name == "Spurs"): role_display = "Coach (Mitch Johnson)"
-                elif (team_name == "Knicks"): role_display = "Coach (Tom Thibodeau)"
+                elif (team_name == "Knicks"): role_display = "Coach (Mike Brown)"
                 elif (team_name == "Thunder"): role_display = "Coach (Mark Daigneault)"
                 elif (team_name == "Cavaliers"): role_display = "Coach (Kenny Atkinson)"
                 elif (team_name == "Celtics"): role_display = "Coach (Joe Mazzulla)"

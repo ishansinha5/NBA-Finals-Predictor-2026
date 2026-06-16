@@ -1,16 +1,34 @@
 import pandas as pd
 import os
+import sys
 import logging
-from scripts.visualization import EmotionVisualizer
+
+# --- BULLETPROOF ROUTING CORRECTION ---
+# This guarantees that paths and imports resolve correctly whether run from root or inside /scripts
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+if CURRENT_DIR not in sys.path:
+    sys.path.append(CURRENT_DIR)
+
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+if PROJECT_ROOT not in sys.path:
+    sys.path.append(PROJECT_ROOT)
+
+from visualization import EmotionVisualizer
 
 if (__name__ == "__main__"):
-    scored_path = "data/live_2026/scored_2025_2026.csv"
+    # Target the CSV relative to the absolute project root
+    scored_path = os.path.join(PROJECT_ROOT, "data", "live_2026", "scored_2025_2026.csv")
     
     if (os.path.exists(scored_path) == False):
         logging.error(f"⚠️ Target metrics file missing at verified tree layout: {scored_path}")
     else:
         df = pd.read_csv(scored_path)
-        visualizer = EmotionVisualizer(primary_output_dir="./output", streamlit_asset_dir="./streamlit_app/assets")
+        
+        # Absolute pathing for output destinations to protect terminal context
+        output_dir = os.path.join(PROJECT_ROOT, "output")
+        asset_dir = os.path.join(PROJECT_ROOT, "streamlit_app", "assets")
+        
+        visualizer = EmotionVisualizer(primary_output_dir=output_dir, streamlit_asset_dir=asset_dir)
         
         playoff_df = df[~df['stage'].str.startswith("Reg Season")]
         reg_season_df = df[df['stage'].str.startswith("Reg Season")]

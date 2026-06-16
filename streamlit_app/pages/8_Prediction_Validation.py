@@ -102,7 +102,7 @@ st.write(
     "vulnerability our model detected in their supporting layers weeks prior."
 )
 st.write(
-    "Conversely, Tom Thibodeau's pre-series metrics showed an elite, champion-level accountability profile. That translated directly "
+    "Conversely, Mike Brown's pre-series metrics showed an elite, champion-level accountability profile. That translated directly "
     "to the court when he remained composed and was highly tactical with his deployment of Karl-Anthony Towns to slow down the Spurs' "
     "frontcourt. Meanwhile, the Knicks' veteran roster absorbed the pressure entirely. OG Anunoby delivered a series-defining block, "
     "and Jalen Brunson stuck strictly to his mechanical, unbothered execution to drop 45 points in the Game 5 closeout. The Knicks "

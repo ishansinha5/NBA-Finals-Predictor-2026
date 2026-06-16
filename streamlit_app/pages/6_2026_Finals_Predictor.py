@@ -223,7 +223,7 @@ elif (selected_track == "Eastern Conference Champion"):
         "The moment the playoffs kicked off, the team aggregate completely locked in and stabilized around an intense, focused baseline. "
         "Jalen Brunson operated at an absolute superstar level of composure, filtering out the media noise and pacing the offense perfectly. "
         "The supporting teammates fed directly off that energy, showing an unbelievable level of defensive grit and alignment. "
-        "Thibs still had his classic intense podium moments, but his baseline metrics shifted from pure frustration to controlled confidence."
+        "Mike Brown still had his classic intense podium moments, but his baseline metrics shifted from pure frustration to controlled confidence."
     )
 
     st.markdown("---")

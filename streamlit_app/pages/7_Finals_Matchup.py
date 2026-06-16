@@ -164,7 +164,7 @@ st.markdown("### Deep Architectural Synthesis")
 if selected_model == "Full Baseline Model (All Eras)":
     synthesis_text = (
         f"Evaluating the aggregate profile across all historical eras shows a razor-thin statistical margin, reflected perfectly in the model's {spurs_prob} to {knicks_prob} Head-to-Head Probability Split. "
-        "Looking at the coaching matrix, Tom Thibodeau's intense accountability numbers match the focus thresholds required by legacy championship baselines. "
+        "Looking at the coaching matrix, Mike Brown's intense accountability numbers match the focus thresholds required by legacy championship baselines. "
         "While Jalen Brunson's star bar graph outpaces the field in raw contentment, the Spurs' legacy grit profile keeps the math incredibly tight. "
         "The teammate chart highlights that the Knicks' supporting roster carries intense confidence spikes that align mathematically with recent NBA Champions. "
         f"When you put all of these pieces together, the metrics reveal a grueling {games_count}-game war. "
@@ -173,7 +173,7 @@ if selected_model == "Full Baseline Model (All Eras)":
 else:
     synthesis_text = (
         f"Evaluating the targeted 2023-2025 modern profile shows New York holding a decisive advantage, reflected in the model's {knicks_prob} to {spurs_prob} Head-to-Head Probability Split favoring the Knicks. "
-        "Looking at the coaching matrix, Tom Thibodeau's modern accountability numbers perfectly match the execution thresholds of the last two championship teams. "
+        "Looking at the coaching matrix, Mike Brown's modern accountability numbers perfectly match the execution thresholds of the last two championship teams. "
         "Jalen Brunson's star bar graph completely outpaces the field in raw contentment and neutrality, emphasizing his ability to control game pace flawlessly. "
         "The teammate chart highlights that the Knicks' supporting roster carries far lower average anxiety readings than San Antonio's younger complementary rotations. "
         "When you put all of these pieces together, the metrics reveal a veteran squad completely optimized for current tactical structures. "
