@@ -30,10 +30,11 @@ jobs:
             console.log('Navigating to Streamlit app...');
             await page.goto('https://nba-finals-predictor-2026-izrjrrysjipdqjlrqbv5z7.streamlit.app/', { waitUntil: 'networkidle2', timeout: 60000 });
             
-            // Check if the Streamlit 'Wake up app' button exists on the page
+            // Check if the Streamlit hibernation button exists on the page
             const wakeUpButton = await page.evaluate(() => {
               const buttons = Array.from(document.querySelectorAll('button'));
-              const target = buttons.find(b => b.textContent.includes('Wake up app'));
+              // CORRECTED: Hunting for the actual Streamlit UI text
+              const target = buttons.find(b => b.textContent.includes('get this app back up'));
               if (target) {
                 target.click();
                 return true;
@@ -42,9 +43,8 @@ jobs:
             });
 
             if (wakeUpButton) {
-              console.log('Detected hibernation gateway. Clicked \"Wake up app\" button.');
+              console.log('Detected hibernation gateway. Clicked \"Yes, get this app back up!\" button.');
               console.log('Waiting for container compilation (this can take up to 45 seconds)...');
-              // Wait an extra 45 seconds for the cloud container to fully build and render your app
               await new Promise(r => setTimeout(r, 45000));
             } else {
               console.log('App was already awake. No bypass required.');
