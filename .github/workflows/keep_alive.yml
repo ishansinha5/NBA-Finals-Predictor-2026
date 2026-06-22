@@ -4,11 +4,34 @@ on:
   schedule:
     # Runs at 12:00 UTC (8:00 AM EST) every single day
     - cron: '0 12 * * *'
-  workflow_dispatch: # This allows you to manually trigger it from GitHub anytime you want
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   ping_app:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Keep-Alive Ping to Streamlit
-        run: curl -sL -c cookies.txt -b cookies.txt -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" https://nba-finals-predictor-2026-izrjrrysjipdqjlrqbv5z7.streamlit.app/ > /dev/null
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Puppeteer (Headless Browser Engine)
+        run: npm install puppeteer
+        
+      - name: Wake up Streamlit via Real Browser Simulation
+        run: |
+          node -e "
+          const puppeteer = require('puppeteer');
+          (async () => {
+            console.log('Launching headless browser...');
+            const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+            const page = await browser.newPage();
+            
+            console.log('Navigating to Streamlit app...');
+            // networkidle0 ensures the script waits until all WebSockets and React elements fully render
+            await page.goto('https://nba-finals-predictor-2026-izrjrrysjipdqjlrqbv5z7.streamlit.app/', { waitUntil: 'networkidle0', timeout: 60000 });
+            
+            console.log('App successfully loaded and WebSocket established. Container is awake.');
+            await browser.close();
+          })();
+          "
